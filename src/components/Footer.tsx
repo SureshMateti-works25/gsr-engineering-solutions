@@ -195,7 +195,11 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, onNavigateToSe
               </a>
               <div className="flex items-start gap-2 text-slate-400 pt-1">
                 <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                <span>State of Telangana & Andhra Pradesh, India</span>
+                <div>
+                  <span className="text-slate-300 font-medium">Registered Address:</span>
+                  <p className="text-slate-400 text-[11px] leading-relaxed">Ambedkar Veedhi, Tadepalligudem, Andhra Pradesh - 534176, India</p>
+                  <p className="text-slate-500 text-[10px] mt-0.5">Service Reach: Telangana & Andhra Pradesh</p>
+                </div>
               </div>
             </div>
           </div>

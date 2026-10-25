@@ -8,7 +8,8 @@ import {
   MessageCircle, 
   CheckCircle2, 
   Copy,
-  Check
+  Check,
+  MapPin
 } from 'lucide-react';
 import type { RfqItem } from '../types';
 
@@ -225,6 +226,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <div>• Monday – Saturday: <span className="text-slate-900 font-bold">9:00 AM – 8:00 PM</span></div>
                 <div>• Critical Breakdown Hotline: <span className="text-emerald-600 font-bold">24/7 Available</span></div>
                 <div>• Dispatch Coverage: <span className="text-slate-900 font-semibold">All industrial areas in Telangana & AP</span></div>
+            </div>
+
+            {/* Registered Office & Regional Dispatch Card */}
+            <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2 text-xs">
+              <div className="flex items-center gap-2 text-slate-900 font-bold">
+                <MapPin className="w-4 h-4 text-emerald-600" />
+                <span>Registered Address & Operational Hubs</span>
+              </div>
+              <div className="text-slate-600 pl-6 space-y-1.5">
+                <div>
+                  <span className="font-semibold text-slate-900">Registered Office:</span>
+                  <div className="text-slate-700">Ambedkar Veedhi, Tadepalligudem, Andhra Pradesh - 534176, India</div>
+                </div>
+                <div>
+                  <span className="font-semibold text-slate-900">Coverage & Delivery Hubs:</span>
+                  <div className="text-slate-700">Hyderabad & Secunderabad (Telangana), Vizag, Vijayawada & Guntur (Andhra Pradesh)</div>
+                </div>
               </div>
             </div>
 
