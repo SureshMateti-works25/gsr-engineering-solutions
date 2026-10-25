@@ -226,6 +226,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <div>• Monday – Saturday: <span className="text-slate-900 font-bold">9:00 AM – 8:00 PM</span></div>
                 <div>• Critical Breakdown Hotline: <span className="text-emerald-600 font-bold">24/7 Available</span></div>
                 <div>• Dispatch Coverage: <span className="text-slate-900 font-semibold">All industrial areas in Telangana & AP</span></div>
+              </div>
             </div>
 
             {/* Registered Office & Regional Dispatch Card */}
