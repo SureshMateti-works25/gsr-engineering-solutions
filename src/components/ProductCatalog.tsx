@@ -6,10 +6,14 @@ import {
   SlidersHorizontal, 
   RotateCcw,
   ShieldCheck,
+  ShieldAlert,
   Zap,
   Cog,
   Wrench,
-  Sparkles
+  Sparkles,
+  FileText,
+  CheckCircle2,
+  Eye
 } from 'lucide-react';
 import type { ProductItem, ProductCategory, RfqItem } from '../types';
 import { productsData, productCategoriesList } from '../data/products';
@@ -23,6 +27,7 @@ interface ProductCatalogProps {
   rfqList: RfqItem[];
   onToggleRfq: (product: ProductItem) => void;
   onSelectProduct: (product: ProductItem) => void;
+  onOpenFlyer?: () => void;
 }
 
 export const ProductCatalog: React.FC<ProductCatalogProps> = ({
@@ -32,7 +37,8 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
   onSelectCategory,
   rfqList,
   onToggleRfq,
-  onSelectProduct
+  onSelectProduct,
+  onOpenFlyer
 }) => {
   const [selectedBrand, setSelectedBrand] = useState<string>('all');
   const [selectedSubCategory, setSelectedSubCategory] = useState<string>('all');
@@ -140,6 +146,77 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
         return isActive 
           ? 'bg-gradient-to-r from-slate-900 via-blue-950 to-blue-900 text-white shadow-md shadow-slate-900/25 ring-2 ring-blue-500' 
           : 'bg-white text-slate-700 hover:text-blue-700 hover:bg-blue-50 border border-slate-200';
+    }
+  };
+
+  const getCategoryBannerData = (cat: ProductCategory) => {
+    switch (cat) {
+      case 'ss-material':
+        return {
+          number: '01',
+          name: 'SS MATERIAL',
+          headline: 'Stainless Steel Piping, Fittings, Valves, Flanges & Vessels',
+          description: 'Supplying ASTM A312 / A269 seamless and welded SS pipes, forged flanges (Class 150 - 2500#), butt-weld & threaded fittings, industrial ball/gate valves, sheets, plates, and process tanks with 100% Original Mill Test Certificates (MTC).',
+          gradient: 'from-sky-600 via-blue-600 to-blue-800',
+          border: 'border-sky-400/40',
+          features: ['ASTM A312 / A269', 'Grades 304, 316, 316L, 310', 'SCH 5S to XXS', 'PMI & Hydrostatic Tested'],
+          icon: Layers
+        };
+      case 'pharma-material':
+        return {
+          number: '02',
+          name: 'PHARMA MATERIAL',
+          headline: 'Electropolished Sanitary Tubes, Diaphragm Valves & cGMP Supplies',
+          description: 'High-purity ASME BPE sanitary electropolished tubing (guaranteed Ra < 0.38 µm), zero-deadleg aseptic diaphragm valves, tri-clamp ferrules and bends, FDA compliant seals, and sterile filtration housings for pharmaceutical & biotech loops.',
+          gradient: 'from-emerald-600 via-teal-600 to-emerald-800',
+          border: 'border-emerald-400/40',
+          features: ['ASME BPE Table DT-4-1', 'Electropolished Ra < 0.38 µm', 'FDA 21 CFR 177 / USP Class VI', 'WFI & Pure Steam Loops'],
+          icon: ShieldAlert
+        };
+      case 'electrical-material':
+        return {
+          number: '03',
+          name: 'ELECTRICAL MATERIAL',
+          headline: 'MCCB, MCB, Air Circuit Breakers (ACB), Contactors & Power Cables',
+          description: 'Tier-1 electrical switchgear and motor control products from Schneider, Siemens, ABB, and L&T. Covering breakers up to 6300A, heavy-duty contactors, thermal bimetallic relays, pilot devices, and XLPE armoured multicore power cables.',
+          gradient: 'from-purple-600 via-indigo-600 to-purple-850',
+          border: 'border-purple-400/40',
+          features: ['Schneider / Siemens / ABB', 'Up to 100kA Breaking (Icu)', 'IEC / IS 60947 Standards', '1.1 kV XLPE Armoured'],
+          icon: Zap
+        };
+      case 'mechanical-material':
+        return {
+          number: '04',
+          name: 'MECHANICAL MATERIAL',
+          headline: 'Industrial Gearboxes, Hardened Gears, Bearings & Power Transmission',
+          description: 'High-torque reduction gearboxes, 58-62 HRC carburized gear wheels & pinions, flexible tyre and pin-bush couplings, genuine SKF / FAG / Timken bearings, industrial roller chains, carbon steel piping, and high-tensile Gr 8.8/10.9 fasteners.',
+          gradient: 'from-amber-500 via-orange-500 to-amber-700',
+          border: 'border-amber-400/40',
+          features: ['Elecon / Fenner / SKF', '58-62 HRC Case Carburized', 'High Torque Absorbing', 'High Tensile 8.8 / 10.9 Fasteners'],
+          icon: Cog
+        };
+      case 'other-industrial':
+        return {
+          number: '05',
+          name: 'OTHER INDUSTRIAL ITEMS',
+          headline: 'Centrifugal Pumps, IE2/IE3/IE4 Motors, Instrumentation & PPE Safety',
+          description: 'Complete range of fluid handling centrifugal and process pumps, continuous S1 duty energy-efficient induction motors, precision WIKA pressure gauges, certified plant PPE gear, packaging machine spares, and Loctite maintenance consumables.',
+          gradient: 'from-rose-600 via-pink-600 to-rose-800',
+          border: 'border-rose-400/40',
+          features: ['Kirloskar / ABB / WIKA', 'IE2 / IE3 / IE4 Electric Motors', 'IS 2925 Certified PPE', 'Loctite & Castrol Consumables'],
+          icon: Wrench
+        };
+      default:
+        return {
+          number: 'ALL',
+          name: 'FULL INDUSTRIAL INVENTORY',
+          headline: '44 Specialized Supplies Across 5 Official Categories',
+          description: 'Browse complete catalog or use quick filters above to narrow by category, sub-category, or OEM manufacturer. All materials backed by verified GST invoicing and manufacturer test certificates.',
+          gradient: 'from-[#0a2569] via-blue-900 to-indigo-950',
+          border: 'border-blue-400/30',
+          features: ['5 Specialized Categories', '44 Item Catalog', 'Official Catalogue Flyer', '24/7 Field Maintenance'],
+          icon: Sparkles
+        };
     }
   };
 
@@ -270,6 +347,76 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
             )}
           </div>
         </div>
+
+        {/* Category Showcase Banner - Bright & Colorful matching Flyer */}
+        {(() => {
+          const banner = getCategoryBannerData(selectedCategory);
+          const BannerIcon = banner.icon;
+          return (
+            <div className={`relative mb-8 rounded-2xl bg-gradient-to-r ${banner.gradient} text-white p-6 sm:p-7 shadow-lg border ${banner.border} overflow-hidden`}>
+              {/* Subtle background glow effect */}
+              <div className="absolute -right-10 -bottom-10 w-60 h-60 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                <div className="space-y-2 max-w-3xl">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-black/25 text-white border border-white/20 tracking-wider">
+                      <BannerIcon className="w-3.5 h-3.5" />
+                      CATEGORY {banner.number}
+                    </span>
+                    <span className="text-xs font-bold uppercase tracking-wider text-white/90">
+                      {banner.name}
+                    </span>
+                    {selectedCategory !== 'all' && (
+                      <span className="hidden sm:inline-block text-xs text-white/60">•</span>
+                    )}
+                    {selectedCategory !== 'all' && (
+                      <span className="hidden sm:inline-block text-xs font-medium text-white/90">
+                        Official GSR Catalogue Section
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+                    {banner.headline}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
+                    {banner.description}
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-2 pt-2">
+                    {banner.features.map((feat, idx) => (
+                      <span 
+                        key={idx}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-bold bg-white/15 text-white border border-white/20"
+                      >
+                        <CheckCircle2 className="w-3 h-3 text-amber-300" />
+                        <span>{feat}</span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {onOpenFlyer && (
+                  <div className="shrink-0 flex sm:flex-col items-center justify-end gap-2">
+                    <button
+                      onClick={onOpenFlyer}
+                      className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-slate-900 hover:bg-amber-400 font-extrabold text-xs shadow-md transition-all hover:scale-105"
+                    >
+                      <FileText className="w-4 h-4 text-blue-900" />
+                      <span>View Full Flyer</span>
+                      <Eye className="w-3.5 h-3.5 text-slate-500" />
+                    </button>
+                    <span className="text-[10px] text-white/80 font-medium hidden sm:block text-center">
+                      Proprietor: G Sandeep Kumar
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* Products Grid */}
         {filteredProducts.length > 0 ? (

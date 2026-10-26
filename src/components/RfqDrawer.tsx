@@ -33,6 +33,17 @@ export const RfqDrawer: React.FC<RfqDrawerProps> = ({
 
   const totalCount = rfqList.reduce((acc, item) => acc + (item.quantity || 1), 0);
 
+  const getCategoryColor = (cat: string) => {
+    switch (cat) {
+      case 'ss-material': return 'bg-sky-50 text-sky-700 border-sky-200';
+      case 'pharma-material': return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+      case 'electrical-material': return 'bg-purple-50 text-purple-700 border-purple-200';
+      case 'mechanical-material': return 'bg-amber-50 text-amber-800 border-amber-200';
+      case 'other-industrial': return 'bg-rose-50 text-rose-700 border-rose-200';
+      default: return 'bg-slate-50 text-slate-700 border-slate-200';
+    }
+  };
+
   // Generate WhatsApp message with all RFQ items
   const generateWhatsAppRfq = () => {
     let msg = `*GSR Engineering Solutions - RFQ Inquiry*\n`;
@@ -70,21 +81,21 @@ export const RfqDrawer: React.FC<RfqDrawerProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Drawer Header */}
-        <div className="p-5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+        <div className="p-4 sm:p-5 bg-gradient-to-r from-[#0a2569] via-blue-900 to-indigo-900 text-white flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-amber-100 text-amber-700 border border-amber-200">
-              <ShoppingBag className="w-5 h-5" />
+            <div className="h-10 w-auto bg-white p-1 rounded-xl flex items-center justify-center shadow-xs">
+              <img src="./gsr-logo.png" alt="GSR Logo" className="h-8 w-auto object-contain" />
             </div>
             <div>
-              <h3 className="font-extrabold text-slate-900 text-base">Request For Quote (RFQ)</h3>
-              <p className="text-xs text-slate-500 font-medium">
-                {rfqList.length} unique items ({totalCount} total qty)
+              <h3 className="font-extrabold text-white text-base leading-tight">Request For Quote</h3>
+              <p className="text-xs text-blue-200 font-medium">
+                {rfqList.length} items ({totalCount} total qty) • GSR Solutions
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors"
+            className="p-1.5 rounded-xl text-white/80 hover:text-white hover:bg-white/15 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -115,8 +126,13 @@ export const RfqDrawer: React.FC<RfqDrawerProps> = ({
                       <h4 className="text-xs font-bold text-slate-900 line-clamp-1">
                         {item.product.name}
                       </h4>
-                      <div className="text-[11px] text-blue-600 font-semibold">
-                        {item.product.subCategory}
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <span className={`inline-block px-1.5 py-0.2 rounded text-[9px] font-extrabold uppercase border ${getCategoryColor(item.product.category)}`}>
+                          {item.product.category.replace('-', ' ')}
+                        </span>
+                        <span className="text-[11px] text-slate-500 font-medium">
+                          {item.product.subCategory}
+                        </span>
                       </div>
                     </div>
                     <button

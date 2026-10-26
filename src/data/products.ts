@@ -20,7 +20,7 @@ export const productsData: ProductItem[] = [
     popular: true,
     applications: ['Chemical Plants', 'Pharma Process Lines', 'Food & Dairy', 'Water Treatment', 'Heat Exchangers'],
     badge: 'Best Seller',
-    imageUrl: 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'ss-fittings',
@@ -58,7 +58,7 @@ export const productsData: ProductItem[] = [
     brands: ['Viraj Profiles', 'Tata Steel', 'Jindal Steel & Power'],
     popular: false,
     applications: ['Process Plant Piping', 'Pipeline Valves', 'Boiler Headers', 'Vessel Manways'],
-    imageUrl: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'ss-valves',
@@ -116,7 +116,7 @@ export const productsData: ProductItem[] = [
     brands: ['Viraj Profiles', 'Midhani', 'Sundram Fasteners'],
     popular: false,
     applications: ['Flange Bolting', 'Machinery Assembly', 'Marine Structures', 'Chemical Skid Assembly'],
-    imageUrl: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'ss-pipe-fittings-butt-weld',
@@ -135,7 +135,7 @@ export const productsData: ProductItem[] = [
     brands: ['Ratnamani Metals', 'Viraj Profiles', 'Midhani'],
     popular: false,
     applications: ['High Temperature Steam', 'Pharmaceutical Loops', 'Refineries', 'Chemical Transmission'],
-    imageUrl: 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'ss-tanks-vessels',
@@ -155,7 +155,7 @@ export const productsData: ProductItem[] = [
     popular: true,
     applications: ['Chemical Processing', 'Pharmaceutical Blending', 'Brewery & Distilleries', 'WFI Storage'],
     badge: 'Turnkey Solution',
-    imageUrl: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'ss-accessories',
@@ -174,7 +174,7 @@ export const productsData: ProductItem[] = [
     brands: ['Viraj Profiles', 'Midhani'],
     popular: false,
     applications: ['Visual Flow Monitoring', 'Vessel Cleaning', 'Clean-In-Place (CIP)', 'Sampling Points'],
-    imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1581092446327-9b52bd1570c2?auto=format&fit=crop&w=600&q=80'
   },
 
   // ================= 2. PHARMA MATERIAL (Green Category) =================
@@ -292,7 +292,7 @@ export const productsData: ProductItem[] = [
     brands: ['Alfa Laval', 'Saunders'],
     popular: false,
     applications: ['Syrup Preparation', 'Liquid Dosage Forms', 'Pre-filter Protection', 'Pump Suction'],
-    imageUrl: 'https://images.unsplash.com/photo-1579165466791-78818925567b?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'gaskets-seals',
@@ -312,7 +312,7 @@ export const productsData: ProductItem[] = [
     popular: true,
     applications: ['Tri-Clamp Connections', 'Reaction Vessel Lids', 'Manhole Seals', 'Valve Diaphragms'],
     badge: 'USP Class VI',
-    imageUrl: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'clamps-accessories',
@@ -331,7 +331,7 @@ export const productsData: ProductItem[] = [
     brands: ['Alfa Laval', 'Saunders'],
     popular: false,
     applications: ['Cleanroom Piping Support', 'Vessel Port Blanking', 'Quick-Disconnect Process Skids'],
-    imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80'
   },
 
   // ================= 3. ELECTRICAL MATERIAL (Purple Category) =================
@@ -392,7 +392,7 @@ export const productsData: ProductItem[] = [
     popular: true,
     applications: ['Transformer Incomers', 'Main Power Distribution (PCC)', 'Industrial Generators (DG)', 'UPS Paralleling'],
     badge: 'Heavy Industrial',
-    imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'ac-switches',
@@ -411,7 +411,7 @@ export const productsData: ProductItem[] = [
     brands: ['Schneider Electric', 'L&T Electrical', 'Socomec', 'Siemens'],
     popular: false,
     applications: ['Mains-DG Changeover', 'Local Motor Isolators', 'Solar Inverter Disconnect', 'Panel Master Switches'],
-    imageUrl: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'mcb-rccb',
@@ -430,7 +430,7 @@ export const productsData: ProductItem[] = [
     brands: ['Schneider Electric', 'Siemens', 'ABB', 'Legrand', 'Havells'],
     popular: false,
     applications: ['Industrial Socket Outlets', 'Wet Area Equipment', 'Control Panels', 'HVAC Equipment'],
-    imageUrl: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'contactors',
@@ -450,7 +450,7 @@ export const productsData: ProductItem[] = [
     popular: true,
     applications: ['Direct-On-Line (DOL) Starters', 'Star-Delta Starters', 'Capacitor Banks (APFC)', 'Crane Hoists'],
     badge: 'Industrial Grade',
-    imageUrl: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'relays',
@@ -469,7 +469,7 @@ export const productsData: ProductItem[] = [
     brands: ['Schneider Electric', 'Siemens', 'ABB', 'Omron', 'L&T Electrical'],
     popular: false,
     applications: ['Motor Overload Protection', 'PLC Output Isolation', 'Interlock Logic', 'Alarm Annunciation'],
-    imageUrl: 'https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1581092916357-5896ebc48073?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'control-components',
@@ -488,7 +488,7 @@ export const productsData: ProductItem[] = [
     brands: ['Schneider Electric', 'Siemens', 'Omron', 'Phoenix Contact', 'Delta'],
     popular: false,
     applications: ['Control Desks', 'Operator Consoles', 'Packaging Machines', 'Automation Panels'],
-    imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'cable-glands-lugs',
@@ -507,7 +507,7 @@ export const productsData: ProductItem[] = [
     brands: ['Dowells', 'Comet', 'Braco', 'Phoenix Contact'],
     popular: false,
     applications: ['Panel Cable Entry', 'Junction Boxes', 'Motor Terminal Boxes', 'Hazardous Area Termination'],
-    imageUrl: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'cable-wires',
@@ -527,7 +527,7 @@ export const productsData: ProductItem[] = [
     popular: true,
     applications: ['Factory Power Distribution', 'Motor Feeder Runs', 'Analog Signal Transducers', 'Machine Internal Wiring'],
     badge: 'IS Certified',
-    imageUrl: 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80'
   },
 
   // ================= 4. MECHANICAL MATERIAL (Orange Category) =================
@@ -587,7 +587,7 @@ export const productsData: ProductItem[] = [
     brands: ['Fenner', 'Elecon', 'Lovejoy', 'Flender'],
     popular: true,
     applications: ['Motor-Pump Sets', 'Compressor Drives', 'Turbine Drives', 'Rolling Mill Lines'],
-    imageUrl: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'bearings',
@@ -607,7 +607,7 @@ export const productsData: ProductItem[] = [
     popular: true,
     applications: ['Electric Motors', 'Conveyor Idlers', 'Centrifugal Pumps', 'Gearbox Shafts', 'Fans & Blowers'],
     badge: '100% Genuine',
-    imageUrl: 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'power-transmission',
@@ -626,7 +626,7 @@ export const productsData: ProductItem[] = [
     brands: ['Fenner', 'Diamond Chains', 'Gates', 'Continental'],
     popular: false,
     applications: ['Packaging Machines', 'Assembly Conveyors', 'Agricultural Machinery', 'Mining Plants'],
-    imageUrl: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'shafts-key',
@@ -645,7 +645,7 @@ export const productsData: ProductItem[] = [
     brands: ['Tata Steel', 'Kalyani', 'Midhani'],
     popular: false,
     applications: ['Motor Couplings', 'Gearbox Output Shafts', 'Linear Motion Bushings', 'Pump Impeller Shafts'],
-    imageUrl: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'pipes-pipe-fittings-mech',
@@ -665,7 +665,7 @@ export const productsData: ProductItem[] = [
     popular: true,
     applications: ['High Pressure Steam Lines', 'Boiler Feed Water', 'Fire Fighting Ring Mains', 'Cooling Water Circuits'],
     badge: 'Heavy Utility',
-    imageUrl: 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'flanges-mech',
@@ -684,7 +684,7 @@ export const productsData: ProductItem[] = [
     brands: ['Viraj Profiles', 'Tata Steel', 'SAIL'],
     popular: false,
     applications: ['Steam Isolation', 'Cooling Tower Piping', 'Compressed Air Mains', 'Storage Tank Nozzles'],
-    imageUrl: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'industrial-hardware',
@@ -703,7 +703,7 @@ export const productsData: ProductItem[] = [
     brands: ['Unbrako', 'TVS Fasteners', 'Sundram Fasteners'],
     popular: false,
     applications: ['Equipment Leveling', 'Motor Alignment', 'Tool Room Jigs', 'Heavy Rigging & Maintenance'],
-    imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80'
   },
 
   // ================= 5. OTHER INDUSTRIAL ITEMS (Pink/Crimson Category) =================
@@ -725,7 +725,7 @@ export const productsData: ProductItem[] = [
     popular: true,
     applications: ['Boiler Feed Water', 'Chemical Circulation', 'Cooling Water Circulation', 'ETP/STP Plants', 'Pharma Transfer'],
     badge: 'Core Machinery',
-    imageUrl: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'motors',
@@ -764,7 +764,7 @@ export const productsData: ProductItem[] = [
     brands: ['WIKA', 'Endress+Hauser', 'Siemens', 'Omron'],
     popular: false,
     applications: ['Boiler Monitoring', 'Reactor Temperature Control', 'Tank Level Measurement', 'Water Custody Transfer'],
-    imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'welding-consumables',
@@ -783,7 +783,7 @@ export const productsData: ProductItem[] = [
     brands: ['ESAB', 'Ador Welding', 'D&H Secheron', 'L&T Welding'],
     popular: false,
     applications: ['Pipe Welding', 'Pressure Vessel Fabrication', 'Maintenance Hardfacing', 'Structural Erection'],
-    imageUrl: 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'safety-items',
@@ -802,7 +802,7 @@ export const productsData: ProductItem[] = [
     brands: ['Karam', '3M', 'Honeywell', 'Udyogi'],
     popular: false,
     applications: ['Factory Operations', 'Chemical Handling', 'High Altitude Maintenance', 'Electrical Substation Work'],
-    imageUrl: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'industrial-tools',
@@ -821,7 +821,7 @@ export const productsData: ProductItem[] = [
     brands: ['Bosch', 'DeWalt', 'Stanley', 'Taparia'],
     popular: true,
     applications: ['Plant Maintenance', 'Equipment Overhaul', 'Piping Assembly', 'Machinery Rigging'],
-    imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 'packing-machine-spare-parts',
@@ -861,7 +861,7 @@ export const productsData: ProductItem[] = [
     popular: true,
     applications: ['Preventive Maintenance', 'Gearbox Oil Top-up', 'Flange Gasketing', 'Motor Bearing Lubrication'],
     badge: 'Daily Essential',
-    imageUrl: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=600&q=80'
   }
 ];
 

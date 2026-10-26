@@ -109,6 +109,7 @@ export function App() {
           rfqList={rfqList}
           onToggleRfq={handleToggleRfq}
           onSelectProduct={setSelectedProductModal}
+          onOpenFlyer={() => setIsFlyerModalOpen(true)}
         />
 
         {/* OEM Brands Partner Showcase */}

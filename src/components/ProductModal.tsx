@@ -29,16 +29,60 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 }) => {
   if (!product) return null;
 
-  const getCategoryLabel = (cat: string) => {
+  const getCategoryTheme = (cat: string) => {
     switch (cat) {
-      case 'ss-material': return 'SS Material';
-      case 'pharma-material': return 'Pharma Material';
-      case 'electrical-material': return 'Electrical Material';
-      case 'mechanical-material': return 'Mechanical Material';
-      case 'other-industrial': return 'Other Industrial Items';
-      default: return cat;
+      case 'ss-material':
+        return {
+          label: 'SS Material',
+          gradient: 'from-sky-600 via-blue-600 to-blue-800',
+          accentColor: 'text-sky-600',
+          borderAccent: 'border-sky-300',
+          badgeBg: 'bg-sky-50 text-sky-800 border-sky-300'
+        };
+      case 'pharma-material':
+        return {
+          label: 'Pharma Material',
+          gradient: 'from-emerald-600 via-teal-600 to-emerald-800',
+          accentColor: 'text-emerald-600',
+          borderAccent: 'border-emerald-300',
+          badgeBg: 'bg-emerald-50 text-emerald-800 border-emerald-300'
+        };
+      case 'electrical-material':
+        return {
+          label: 'Electrical Material',
+          gradient: 'from-purple-600 via-indigo-600 to-purple-800',
+          accentColor: 'text-purple-600',
+          borderAccent: 'border-purple-300',
+          badgeBg: 'bg-purple-50 text-purple-800 border-purple-300'
+        };
+      case 'mechanical-material':
+        return {
+          label: 'Mechanical Material',
+          gradient: 'from-amber-500 via-orange-500 to-amber-700',
+          accentColor: 'text-amber-600',
+          borderAccent: 'border-amber-300',
+          badgeBg: 'bg-amber-50 text-amber-800 border-amber-300'
+        };
+      case 'other-industrial':
+        return {
+          label: 'Other Industrial Items',
+          gradient: 'from-rose-600 via-pink-600 to-rose-800',
+          accentColor: 'text-rose-600',
+          borderAccent: 'border-rose-300',
+          badgeBg: 'bg-rose-50 text-rose-800 border-rose-300'
+        };
+      default:
+        return {
+          label: 'Industrial Item',
+          gradient: 'from-slate-900 via-blue-900 to-slate-900',
+          accentColor: 'text-blue-600',
+          borderAccent: 'border-blue-300',
+          badgeBg: 'bg-blue-50 text-blue-800 border-blue-300'
+        };
     }
   };
+
+  const theme = getCategoryTheme(product.category);
 
   const getWhatsAppMessage = (prodName: string) => {
     const text = encodeURIComponent(
@@ -48,22 +92,32 @@ export const ProductModal: React.FC<ProductModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
       <div 
-        className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200"
+        className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Modal Header */}
-        <div className="px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200">
-              {getCategoryLabel(product.category)}
-            </span>
-            <span className="text-xs text-slate-500 font-mono">ID: {product.id}</span>
+        {/* Modal Header with Category Matching Gradient */}
+        <div className={`px-6 py-4 bg-gradient-to-r ${theme.gradient} text-white flex items-center justify-between`}>
+          <div className="flex items-center gap-3">
+            <div className="h-9 w-auto bg-white p-1 rounded-lg flex items-center justify-center shadow-xs">
+              <img src="./gsr-logo.png" alt="GSR Logo" className="h-7 w-auto object-contain" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-black uppercase tracking-wider bg-black/20 text-white px-2.5 py-0.5 rounded-full border border-white/20">
+                  {theme.label}
+                </span>
+                <span className="text-[11px] text-white/80 font-mono">#{product.id}</span>
+              </div>
+              <p className="text-[11px] text-white/90 font-medium">
+                GSR Engineering Solution's • Official Catalogue
+              </p>
+            </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors"
+            className="p-1.5 rounded-xl text-white/80 hover:text-white hover:bg-white/20 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
