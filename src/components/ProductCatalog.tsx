@@ -5,10 +5,11 @@ import {
   Layers, 
   SlidersHorizontal, 
   RotateCcw,
-  Cog,
+  ShieldCheck,
   Zap,
-  Cpu,
-  Wind
+  Cog,
+  Wrench,
+  Sparkles
 } from 'lucide-react';
 import type { ProductItem, ProductCategory, RfqItem } from '../types';
 import { productsData, productCategoriesList } from '../data/products';
@@ -104,34 +105,64 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
 
   const getCategoryIcon = (id: string) => {
     switch (id) {
-      case 'mechanical': return Cog;
-      case 'electrical': return Zap;
-      case 'electronics-automation': return Cpu;
-      case 'pneumatics': return Wind;
-      default: return Layers;
+      case 'ss-material': return Layers;
+      case 'pharma-material': return ShieldCheck;
+      case 'electrical-material': return Zap;
+      case 'mechanical-material': return Cog;
+      case 'other-industrial': return Wrench;
+      default: return Sparkles;
+    }
+  };
+
+  const getCategoryButtonClasses = (id: string, isActive: boolean) => {
+    switch (id) {
+      case 'ss-material':
+        return isActive 
+          ? 'bg-gradient-to-r from-sky-600 to-blue-700 text-white shadow-md shadow-sky-500/25 ring-2 ring-sky-400' 
+          : 'bg-white text-slate-700 hover:text-sky-700 hover:bg-sky-50 border border-slate-200';
+      case 'pharma-material':
+        return isActive 
+          ? 'bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-md shadow-emerald-500/25 ring-2 ring-emerald-400' 
+          : 'bg-white text-slate-700 hover:text-emerald-700 hover:bg-emerald-50 border border-slate-200';
+      case 'electrical-material':
+        return isActive 
+          ? 'bg-gradient-to-r from-purple-600 to-indigo-700 text-white shadow-md shadow-purple-500/25 ring-2 ring-purple-400' 
+          : 'bg-white text-slate-700 hover:text-purple-700 hover:bg-purple-50 border border-slate-200';
+      case 'mechanical-material':
+        return isActive 
+          ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-md shadow-amber-500/25 ring-2 ring-amber-400' 
+          : 'bg-white text-slate-700 hover:text-amber-800 hover:bg-amber-50 border border-slate-200';
+      case 'other-industrial':
+        return isActive 
+          ? 'bg-gradient-to-r from-rose-600 to-pink-700 text-white shadow-md shadow-rose-500/25 ring-2 ring-rose-400' 
+          : 'bg-white text-slate-700 hover:text-rose-700 hover:bg-rose-50 border border-slate-200';
+      default:
+        return isActive 
+          ? 'bg-gradient-to-r from-slate-900 via-blue-950 to-blue-900 text-white shadow-md shadow-slate-900/25 ring-2 ring-blue-500' 
+          : 'bg-white text-slate-700 hover:text-blue-700 hover:bg-blue-50 border border-slate-200';
     }
   };
 
   return (
-    <section id="catalog" className="py-16 sm:py-24 bg-slate-100/70 border-t border-b border-slate-200">
+    <section id="catalog" className="py-16 sm:py-24 bg-slate-50 border-t border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
-            <Layers className="w-3.5 h-3.5" />
-            Complete Industrial Product Showcase
+            <Sparkles className="w-3.5 h-3.5" />
+            Official GSR Product Catalogue
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             High Precision Components & OEM Supplies
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600">
-            Source high-grade Mechanical, Electrical, Electronics, and Pneumatics products backed by manufacturer test certificates and guaranteed reliability.
+            Organized across our 5 flagship industrial categories: SS Material, Pharma Material, Electrical Material, Mechanical Material, and Industrial Utilities.
           </p>
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex items-center justify-start sm:justify-center overflow-x-auto pb-4 mb-8 gap-2 scrollbar-none">
+        {/* Category Tabs - Bright & Colorful Matching Flyer */}
+        <div className="flex items-center justify-start sm:justify-center overflow-x-auto pb-4 mb-8 gap-2.5 scrollbar-none">
           {productCategoriesList.map((cat) => {
             const Icon = getCategoryIcon(cat.id);
             const isActive = selectedCategory === cat.id;
@@ -143,16 +174,12 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   setSelectedBrand('all');
                   setSelectedSubCategory('all');
                 }}
-                className={`whitespace-nowrap flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all shrink-0 ${
-                  isActive
-                    ? 'bg-blue-600 text-white shadow-md shadow-blue-500/25 ring-2 ring-blue-500/30'
-                    : 'bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-200 shadow-xs'
-                }`}
+                className={`whitespace-nowrap flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all shrink-0 shadow-xs ${getCategoryButtonClasses(cat.id, isActive)}`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-500'}`} />
+                <Icon className="w-4 h-4 shrink-0" />
                 <span>{cat.label}</span>
-                <span className={`px-1.5 py-0.5 rounded text-[10px] ${
-                  isActive ? 'bg-blue-700 text-blue-100' : 'bg-slate-100 text-slate-600'
+                <span className={`px-1.5 py-0.5 rounded-md text-[10px] font-extrabold ${
+                  isActive ? 'bg-black/20 text-white' : 'bg-slate-100 text-slate-600'
                 }`}>
                   {cat.count}
                 </span>
@@ -172,7 +199,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 type="text"
                 value={searchQuery}
                 onChange={(e) => onSearchChange(e.target.value)}
-                placeholder="Filter by keyword, part name, grade, specification..."
+                placeholder="Search products by part name, specifications, grade (e.g., SS 316, MCCB, Gearbox)..."
                 className="w-full pl-9 pr-8 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
               />
               {searchQuery && (
@@ -210,15 +237,14 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 ))}
               </select>
 
-              {/* Reset filter button if any active */}
+              {/* Active filters reset */}
               {(selectedBrand !== 'all' || selectedSubCategory !== 'all' || searchQuery !== '' || selectedCategory !== 'all') && (
                 <button
                   onClick={resetFilters}
-                  className="p-2.5 rounded-xl text-xs text-amber-700 bg-amber-50 hover:bg-amber-100 transition-colors flex items-center gap-1 border border-amber-300 font-semibold"
+                  className="p-2.5 rounded-xl text-slate-500 hover:text-rose-600 hover:bg-rose-50 border border-slate-200 transition-colors"
                   title="Reset all filters"
                 >
-                  <RotateCcw className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Reset</span>
+                  <RotateCcw className="w-4 h-4" />
                 </button>
               )}
             </div>
@@ -227,47 +253,51 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
 
           {/* Results Summary Bar */}
           <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-            <div>
-              Showing <strong className="text-slate-900">{filteredProducts.length}</strong> industrial items
-              {searchQuery && <span> matching "<span className="text-blue-600 font-semibold">{searchQuery}</span>"</span>}
+            <div className="flex items-center gap-2">
+              <SlidersHorizontal className="w-3.5 h-3.5 text-blue-600" />
+              <span>Showing <strong>{filteredProducts.length}</strong> industrial items</span>
+              {selectedCategory !== 'all' && (
+                <span className="font-semibold text-blue-600">
+                  in {productCategoriesList.find(c => c.id === selectedCategory)?.label}
+                </span>
+              )}
             </div>
-            <div className="hidden sm:flex items-center gap-2 text-slate-500">
-              <span>Quick Actions:</span>
-              <span className="text-emerald-600 font-semibold">WhatsApp Quote</span>
-              <span>•</span>
-              <span className="text-blue-600 font-semibold">Add to RFQ List</span>
-            </div>
+            
+            {rfqList.length > 0 && (
+              <span className="font-semibold text-emerald-600">
+                {rfqList.length} item{rfqList.length > 1 ? 's' : ''} in RFQ cart
+              </span>
+            )}
           </div>
         </div>
 
-        {/* Product Grid */}
+        {/* Products Grid */}
         {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProducts.map((product) => {
-              const isInRfq = rfqList.some(item => item.product.id === product.id);
-              return (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  isInRfq={isInRfq}
-                  onToggleRfq={onToggleRfq}
-                  onSelectProduct={onSelectProduct}
-                />
-              );
-            })}
+            {filteredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                isInRfq={rfqList.some((item) => item.product.id === product.id)}
+                onToggleRfq={onToggleRfq}
+                onSelectProduct={onSelectProduct}
+              />
+            ))}
           </div>
         ) : (
-          <div className="py-16 text-center rounded-2xl bg-white border border-dashed border-slate-300 p-8 shadow-xs">
-            <SlidersHorizontal className="w-12 h-12 text-slate-400 mx-auto mb-3" />
-            <h3 className="text-lg font-bold text-slate-900">No matching products found</h3>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-md mx-auto">
-              We supply thousands of custom items not listed here. Try clearing filters or submit a custom inquiry.
+          <div className="p-12 text-center rounded-2xl bg-white border border-slate-200">
+            <div className="w-12 h-12 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-3">
+              <Search className="w-6 h-6" />
+            </div>
+            <h3 className="text-base font-bold text-slate-800">No items match your filter</h3>
+            <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+              Try clearing your search term, selecting a different OEM brand, or resetting to "All Categories".
             </p>
             <button
               onClick={resetFilters}
-              className="mt-4 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-xs font-bold text-white shadow-sm"
+              className="mt-4 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-colors shadow-xs"
             >
-              Reset Filters & View All
+              Reset Filters
             </button>
           </div>
         )}

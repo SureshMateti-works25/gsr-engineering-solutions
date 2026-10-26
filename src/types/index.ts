@@ -1,14 +1,15 @@
 export type ProductCategory = 
   | 'all'
-  | 'mechanical'
-  | 'electrical'
-  | 'electronics-automation'
-  | 'pneumatics';
+  | 'ss-material'
+  | 'pharma-material'
+  | 'electrical-material'
+  | 'mechanical-material'
+  | 'other-industrial';
 
 export interface ProductItem {
   id: string;
   name: string;
-  category: 'mechanical' | 'electrical' | 'electronics-automation' | 'pneumatics';
+  category: 'ss-material' | 'pharma-material' | 'electrical-material' | 'mechanical-material' | 'other-industrial';
   subCategory: string;
   tagline: string;
   description: string;

@@ -29,6 +29,17 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 }) => {
   if (!product) return null;
 
+  const getCategoryLabel = (cat: string) => {
+    switch (cat) {
+      case 'ss-material': return 'SS Material';
+      case 'pharma-material': return 'Pharma Material';
+      case 'electrical-material': return 'Electrical Material';
+      case 'mechanical-material': return 'Mechanical Material';
+      case 'other-industrial': return 'Other Industrial Items';
+      default: return cat;
+    }
+  };
+
   const getWhatsAppMessage = (prodName: string) => {
     const text = encodeURIComponent(
       `Hello GSR Engineering Solutions, I need technical details and a quote for: "${prodName}". Please connect with me.`
@@ -46,7 +57,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
         <div className="px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200">
-              {product.category.replace('-', ' & ')}
+              {getCategoryLabel(product.category)}
             </span>
             <span className="text-xs text-slate-500 font-mono">ID: {product.id}</span>
           </div>

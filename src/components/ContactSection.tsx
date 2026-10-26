@@ -411,11 +411,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         onChange={handleChange}
                         className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-sm text-slate-800 font-medium focus:outline-none focus:bg-white focus:border-blue-600"
                       >
-                        <option value="all">Multiple / General Spares</option>
-                        <option value="mechanical">Mechanical & Piping</option>
-                        <option value="electrical">Electrical & Switchgear</option>
-                        <option value="electronics-automation">Electronics & Automation</option>
-                        <option value="pneumatics">Pneumatics (OEM)</option>
+                        <option value="all">Multiple / General Inquiry</option>
+                        <option value="ss-material">SS Material</option>
+                        <option value="pharma-material">Pharma Material</option>
+                        <option value="electrical-material">Electrical Material</option>
+                        <option value="mechanical-material">Mechanical Material</option>
+                        <option value="other-industrial">Other Industrial Items</option>
                         <option value="services">Maintenance Services</option>
                       </select>
                     </div>

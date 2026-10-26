@@ -5,10 +5,11 @@ import {
   MessageCircle, 
   Info, 
   Tag, 
-  Cog, 
+  Layers, 
+  ShieldCheck, 
   Zap, 
-  Cpu, 
-  Wind 
+  Cog, 
+  Wrench 
 } from 'lucide-react';
 import type { ProductItem } from '../types';
 import { BrandLogo } from './BrandLogo';
@@ -30,16 +31,72 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   const getCategoryMeta = (cat: string) => {
     switch (cat) {
-      case 'mechanical':
-        return { label: 'Mechanical', icon: Cog, color: 'text-amber-800 bg-amber-50/95 border-amber-300' };
-      case 'electrical':
-        return { label: 'Electrical', icon: Zap, color: 'text-blue-800 bg-blue-50/95 border-blue-300' };
-      case 'electronics-automation':
-        return { label: 'Automation', icon: Cpu, color: 'text-purple-800 bg-purple-50/95 border-purple-300' };
-      case 'pneumatics':
-        return { label: 'Pneumatics', icon: Wind, color: 'text-emerald-800 bg-emerald-50/95 border-emerald-300' };
+      case 'ss-material':
+        return { 
+          label: 'SS Material', 
+          icon: Layers, 
+          badgeColor: 'text-sky-900 bg-sky-50/95 border-sky-300',
+          headerGradient: 'from-sky-500 via-blue-600 to-blue-700',
+          accentText: 'text-sky-600',
+          hoverBorder: 'hover:border-sky-400 hover:shadow-sky-500/15',
+          bannerBg: 'bg-sky-600',
+          tagBg: 'bg-sky-50 text-sky-700 border-sky-200'
+        };
+      case 'pharma-material':
+        return { 
+          label: 'Pharma Material', 
+          icon: ShieldCheck, 
+          badgeColor: 'text-emerald-900 bg-emerald-50/95 border-emerald-300',
+          headerGradient: 'from-emerald-500 via-teal-600 to-emerald-700',
+          accentText: 'text-emerald-600',
+          hoverBorder: 'hover:border-emerald-400 hover:shadow-emerald-500/15',
+          bannerBg: 'bg-emerald-600',
+          tagBg: 'bg-emerald-50 text-emerald-700 border-emerald-200'
+        };
+      case 'electrical-material':
+        return { 
+          label: 'Electrical Material', 
+          icon: Zap, 
+          badgeColor: 'text-purple-900 bg-purple-50/95 border-purple-300',
+          headerGradient: 'from-purple-500 via-indigo-600 to-purple-700',
+          accentText: 'text-purple-600',
+          hoverBorder: 'hover:border-purple-400 hover:shadow-purple-500/15',
+          bannerBg: 'bg-purple-600',
+          tagBg: 'bg-purple-50 text-purple-700 border-purple-200'
+        };
+      case 'mechanical-material':
+        return { 
+          label: 'Mechanical Material', 
+          icon: Cog, 
+          badgeColor: 'text-amber-900 bg-amber-50/95 border-amber-300',
+          headerGradient: 'from-amber-500 via-orange-500 to-amber-700',
+          accentText: 'text-amber-600',
+          hoverBorder: 'hover:border-amber-400 hover:shadow-amber-500/15',
+          bannerBg: 'bg-amber-600',
+          tagBg: 'bg-amber-50 text-amber-800 border-amber-200'
+        };
+      case 'other-industrial':
+        return { 
+          label: 'Other Industrial Items', 
+          icon: Wrench, 
+          badgeColor: 'text-rose-900 bg-rose-50/95 border-rose-300',
+          headerGradient: 'from-rose-500 via-pink-600 to-rose-700',
+          accentText: 'text-rose-600',
+          hoverBorder: 'hover:border-rose-400 hover:shadow-rose-500/15',
+          bannerBg: 'bg-rose-600',
+          tagBg: 'bg-rose-50 text-rose-700 border-rose-200'
+        };
       default:
-        return { label: 'Industrial', icon: Cog, color: 'text-slate-800 bg-slate-100 border-slate-300' };
+        return { 
+          label: 'Industrial', 
+          icon: Cog, 
+          badgeColor: 'text-slate-900 bg-slate-100 border-slate-300',
+          headerGradient: 'from-blue-600 to-slate-700',
+          accentText: 'text-blue-600',
+          hoverBorder: 'hover:border-blue-400 hover:shadow-blue-500/15',
+          bannerBg: 'bg-blue-600',
+          tagBg: 'bg-slate-50 text-slate-700 border-slate-200'
+        };
     }
   };
 
@@ -54,8 +111,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <div className="group relative bg-white hover:bg-white rounded-2xl border border-slate-200 hover:border-blue-400 transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-xs hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1">
+    <div className={`group relative bg-white rounded-2xl border border-slate-200 ${meta.hoverBorder} transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1`}>
       
+      {/* Top Category Color Accent Strip */}
+      <div className={`h-1.5 w-full bg-gradient-to-r ${meta.headerGradient}`} />
+
       {/* Product Image Header */}
       <div 
         onClick={() => onSelectProduct(product)}
@@ -81,7 +141,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
         {/* Badges Over Image */}
         <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-          <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold border shadow-xs ${meta.color}`}>
+          <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold border shadow-xs ${meta.badgeColor}`}>
             <IconComponent className="w-3.5 h-3.5" />
             <span>{meta.label}</span>
           </span>
@@ -104,30 +164,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       {/* Product Content Details */}
       <div className="p-5 pt-3.5 flex-1 flex flex-col justify-between">
         <div>
-          <div className="text-[11px] text-blue-600 font-bold tracking-wide uppercase">
+          <div className={`text-[11px] font-bold tracking-wide uppercase ${meta.accentText}`}>
             {product.subCategory}
           </div>
 
           <h3 
             onClick={() => onSelectProduct(product)}
-            className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors cursor-pointer mt-1 line-clamp-1"
+            className="text-base font-bold text-slate-900 group-hover:text-blue-700 transition-colors cursor-pointer mt-1 line-clamp-1"
           >
             {product.name}
           </h3>
 
-          <p className="mt-1.5 text-xs text-slate-600 line-clamp-2 leading-relaxed font-normal">
-            {product.description}
+          <p className="text-xs text-slate-500 line-clamp-2 mt-1 leading-relaxed">
+            {product.tagline}
           </p>
 
-          {/* Key Specifications preview */}
-          <div className="mt-3 pt-3 border-t border-slate-100 space-y-1">
-            <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-              Key Specifications:
-            </div>
-            <ul className="text-xs text-slate-700 space-y-1">
+          {/* Quick Specifications preview */}
+          <div className="mt-3 pt-3 border-t border-slate-100">
+            <ul className="text-xs text-slate-600 space-y-1">
               {product.specifications.slice(0, 2).map((spec, idx) => (
-                <li key={idx} className="flex items-start gap-1.5 line-clamp-1 text-[11px]">
-                  <span className="text-blue-600 font-bold">•</span>
+                <li key={idx} className="flex items-center gap-1.5 text-[11px]">
+                  <span className={`w-1.5 h-1.5 rounded-full ${meta.bannerBg} shrink-0`} />
                   <span className="truncate">{spec}</span>
                 </li>
               ))}
@@ -180,30 +237,29 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               <MessageCircle className="w-4 h-4" />
             </a>
 
-            {/* Add to RFQ cart */}
+            {/* Add to RFQ Button */}
             <button
               onClick={() => onToggleRfq(product)}
-              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs ${
+              className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ${
                 isInRfq
-                  ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-500/20'
-                  : 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20'
+                  ? 'bg-emerald-600 text-white shadow-xs'
+                  : 'bg-slate-900 hover:bg-blue-700 text-white shadow-xs'
               }`}
             >
               {isInRfq ? (
                 <>
                   <Check className="w-3.5 h-3.5" />
-                  <span>In RFQ</span>
+                  <span>Added</span>
                 </>
               ) : (
                 <>
                   <Plus className="w-3.5 h-3.5" />
-                  <span>Add to RFQ</span>
+                  <span>RFQ</span>
                 </>
               )}
             </button>
           </div>
         </div>
-
       </div>
     </div>
   );

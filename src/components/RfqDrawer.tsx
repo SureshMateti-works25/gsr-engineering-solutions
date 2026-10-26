@@ -39,9 +39,20 @@ export const RfqDrawer: React.FC<RfqDrawerProps> = ({
     msg += `----------------------------------------\n`;
     msg += `I would like to request a quotation for the following items:\n\n`;
 
+    const formatCat = (c: string) => {
+      switch(c) {
+        case 'ss-material': return 'SS Material';
+        case 'pharma-material': return 'Pharma Material';
+        case 'electrical-material': return 'Electrical Material';
+        case 'mechanical-material': return 'Mechanical Material';
+        case 'other-industrial': return 'Other Industrial Items';
+        default: return c;
+      }
+    };
+
     rfqList.forEach((item, idx) => {
       msg += `${idx + 1}. *${item.product.name}*\n`;
-      msg += `   - Category: ${item.product.category}\n`;
+      msg += `   - Category: ${formatCat(item.product.category)}\n`;
       msg += `   - Quantity: ${item.quantity || 1} units\n`;
       msg += `   - OEM Brands: ${item.product.brands.slice(0, 3).join(', ')}\n\n`;
     });

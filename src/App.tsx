@@ -11,6 +11,7 @@ import { Footer } from './components/Footer';
 import { ProductModal } from './components/ProductModal';
 import { RfqDrawer } from './components/RfqDrawer';
 import { QuickContactFloating } from './components/QuickContactFloating';
+import { CatalogueModal } from './components/CatalogueModal';
 
 export function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -18,6 +19,7 @@ export function App() {
   const [rfqList, setRfqList] = useState<RfqItem[]>([]);
   const [selectedProductModal, setSelectedProductModal] = useState<ProductItem | null>(null);
   const [isRfqDrawerOpen, setIsRfqDrawerOpen] = useState(false);
+  const [isFlyerModalOpen, setIsFlyerModalOpen] = useState(false);
   const [prefilledService, setPrefilledService] = useState<string>('');
 
   // RFQ handlers
@@ -78,25 +80,27 @@ export function App() {
     : false;
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-[#0a2569] selection:text-white">
       {/* Top Navbar */}
       <Navbar
         rfqList={rfqList}
         onOpenRfq={() => setIsRfqDrawerOpen(true)}
         onNavigateToSection={handleNavigateToSection}
+        onOpenFlyer={() => setIsFlyerModalOpen(true)}
       />
 
       {/* Main Content Sections */}
       <main className="flex-1">
-        {/* Hero Section */}
+        {/* Hero Section with Official GSR Logo and 5 Colorful Categories */}
         <Hero
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
           onSelectCategory={setSelectedCategory}
           onNavigateToSection={handleNavigateToSection}
+          onOpenFlyer={() => setIsFlyerModalOpen(true)}
         />
 
-        {/* Product Catalog Section */}
+        {/* Product Catalog Section with 5 Flyer Colors */}
         <ProductCatalog
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
@@ -112,7 +116,7 @@ export function App() {
           onSelectBrandForSearch={handleSelectBrandForSearch}
         />
 
-        {/* Industrial Services Section */}
+        {/* Industrial Services Section (5 Flyer Services) */}
         <ServicesSection
           onInquireService={handleInquireService}
         />
@@ -132,6 +136,7 @@ export function App() {
       <Footer
         onSelectCategory={setSelectedCategory}
         onNavigateToSection={handleNavigateToSection}
+        onOpenFlyer={() => setIsFlyerModalOpen(true)}
       />
 
       {/* Product Details Modal */}
@@ -141,6 +146,13 @@ export function App() {
         isInRfq={isCurrentProductInRfq}
         onToggleRfq={handleToggleRfq}
         onQuickInquire={handleQuickInquireProduct}
+      />
+
+      {/* Official Product Catalogue Flyer Modal */}
+      <CatalogueModal
+        isOpen={isFlyerModalOpen}
+        onClose={() => setIsFlyerModalOpen(false)}
+        onNavigateToContact={() => handleNavigateToSection('contact')}
       />
 
       {/* RFQ Drawer */}
