@@ -88,7 +88,7 @@ export const Hero: React.FC<HeroProps> = ({
 
   const handleQuickCategory = (catId: ProductCategory) => {
     onSelectCategory(catId);
-    onNavigateToSection('catalog');
+    window.location.hash = `#/category/${catId}`;
   };
 
   const handleSearchSubmit = (e: React.FormEvent) => {

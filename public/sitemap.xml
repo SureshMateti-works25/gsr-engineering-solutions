@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Home Page -->
+  <url>
+    <loc>https://gsrengineeringsolutions.com/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://gsrengineeringsolutions.com/gsr-poster.png</image:loc>
+      <image:title>GSR Engineering Solutions Master 62-Product Poster</image:title>
+      <image:caption>Complete range of mechanical items, electrical switchgear, automation electronics, and OEM pneumatics</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Category: Mechanical Items -->
+  <url>
+    <loc>https://gsrengineeringsolutions.com/#/category/mechanical-items</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Category: Electrical Items -->
+  <url>
+    <loc>https://gsrengineeringsolutions.com/#/category/electrical-items</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Category: Automation & Electronics -->
+  <url>
+    <loc>https://gsrengineeringsolutions.com/#/category/automation-electronics</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Category: Pneumatics Items (OEM Make) -->
+  <url>
+    <loc>https://gsrengineeringsolutions.com/#/category/pneumatics-items</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Projects & Case Studies (Supply + Installation) -->
+  <url>
+    <loc>https://gsrengineeringsolutions.com/#/projects</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Services & AMC Contracts -->
+  <url>
+    <loc>https://gsrengineeringsolutions.com/#/services</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Contact & RFQ Inquiry -->
+  <url>
+    <loc>https://gsrengineeringsolutions.com/#/contact</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

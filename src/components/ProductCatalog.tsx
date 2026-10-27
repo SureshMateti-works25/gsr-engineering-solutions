@@ -386,21 +386,31 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   </div>
                 </div>
 
-                {onOpenFlyer && (
-                  <div className="shrink-0 flex sm:flex-col items-center justify-end gap-2">
+                <div className="shrink-0 flex flex-col sm:items-end justify-center gap-2">
+                  {selectedCategory !== 'all' && (
+                    <button
+                      onClick={() => { window.location.hash = `#/category/${selectedCategory}`; }}
+                      className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-xs shadow-md transition-all hover:scale-105"
+                    >
+                      <span>Open Dedicated Category Page</span>
+                      <span>→</span>
+                    </button>
+                  )}
+
+                  {onOpenFlyer && (
                     <button
                       onClick={onOpenFlyer}
-                      className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-slate-900 hover:bg-amber-400 font-extrabold text-xs shadow-md transition-all hover:scale-105"
+                      className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs border border-white/20 transition-all"
                     >
-                      <FileText className="w-4 h-4 text-blue-900" />
-                      <span>View Full Flyer</span>
-                      <Eye className="w-3.5 h-3.5 text-slate-500" />
+                      <FileText className="w-3.5 h-3.5 text-amber-300" />
+                      <span>View Official Poster</span>
+                      <Eye className="w-3 h-3 text-white/80" />
                     </button>
-                    <span className="text-[10px] text-white/80 font-medium hidden sm:block text-center">
-                      Proprietor: G Sandeep Kumar
-                    </span>
-                  </div>
-                )}
+                  )}
+                  <span className="text-[10px] text-white/80 font-medium hidden sm:block text-right">
+                    Proprietor: G Sandeep Kumar (+91 8712444439)
+                  </span>
+                </div>
               </div>
             </div>
           );

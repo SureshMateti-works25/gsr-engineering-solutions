@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 70" width="240" height="70">
+    <rect width="100%" height="100%" fill="transparent"/>
+    <g transform="translate(10, 10)">
+      <!-- Schneider Arc Icon -->
+      <path d="M 12 4 C 5 12 5 28 12 36 C 18 42 28 42 34 36 C 36 34 38 31 38 27 L 29 27 C 28 29 26 31 24 31 C 19 31 16 26 16 20 C 16 14 19 9 24 9 C 26 9 28 11 29 13 L 38 13 C 38 9 36 6 34 4 C 28 -2 18 -2 12 4 Z" fill="#3DCD58"/>
+      <path d="M 23 2 C 28 2 33 5 36 9 L 29 13 C 27 11 25 9 23 9 C 19 9 16 13 16 20 L 7 20 C 7 10 14 2 23 2 Z" fill="#008000"/>
+      <!-- Text -->
+      <text x="48" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="19" font-weight="800" fill="#2B394A" letter-spacing="-0.3">Schneider</text>
+      <text x="48" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#3DCD58" letter-spacing="1.5">ELECTRIC</text>
+    </g>
+  </svg>

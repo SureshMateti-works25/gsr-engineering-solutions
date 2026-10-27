@@ -115,16 +115,23 @@ export const Navbar: React.FC<NavbarProps> = ({
               Products Catalog
             </button>
             <button
-              onClick={() => handleNavClick('brands')}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors"
+              onClick={() => handleNavClick('projects')}
+              className="px-3 py-2 rounded-lg text-sm font-semibold text-emerald-800 bg-emerald-50/70 hover:bg-emerald-100 border border-emerald-200 transition-colors flex items-center gap-1.5"
             >
-              OEM Brands
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Projects & Case Studies</span>
             </button>
             <button
               onClick={() => handleNavClick('services')}
               className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors"
             >
-              Industrial Services
+              Installation & AMC
+            </button>
+            <button
+              onClick={() => handleNavClick('brands')}
+              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors"
+            >
+              OEM Brands
             </button>
             <button
               onClick={() => handleNavClick('why-us')}
@@ -217,18 +224,25 @@ export const Navbar: React.FC<NavbarProps> = ({
             Products Catalog
           </button>
           <button
-            onClick={() => handleNavClick('brands')}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-100"
+            onClick={() => handleNavClick('projects')}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-semibold text-emerald-800 bg-emerald-50/70 hover:bg-emerald-100 border border-emerald-200"
           >
-            <ShieldCheck className="w-5 h-5 text-amber-600" />
-            OEM Brands & Partners
+            <ShieldCheck className="w-5 h-5 text-emerald-600" />
+            Projects & Case Studies (Supply + Install)
           </button>
           <button
             onClick={() => handleNavClick('services')}
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-100"
           >
-            <Settings className="w-5 h-5 text-emerald-600" />
-            Industrial Services
+            <Settings className="w-5 h-5 text-blue-600" />
+            Turnkey Services & AMC
+          </button>
+          <button
+            onClick={() => handleNavClick('brands')}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-100"
+          >
+            <Sparkles className="w-5 h-5 text-amber-600" />
+            OEM Brands & Partners
           </button>
           <button
             onClick={() => handleNavClick('why-us')}
