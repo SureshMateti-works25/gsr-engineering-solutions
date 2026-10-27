@@ -3,16 +3,15 @@ import {
   ArrowRight, 
   ShieldCheck, 
   Sparkles, 
-  Layers,
-  ShieldAlert,
   Zap, 
   Cog, 
-  Wrench, 
   PhoneCall, 
   MessageCircle,
   Search,
   FileText,
-  Eye
+  Eye,
+  Cpu,
+  Wind
 } from 'lucide-react';
 import type { ProductCategory } from '../types';
 import { BrandLogo } from './BrandLogo';
@@ -32,66 +31,59 @@ export const Hero: React.FC<HeroProps> = ({
   onNavigateToSection,
   onOpenFlyer
 }) => {
-  // 5 exact categories from official GSR catalogue flyer
+  // 4 exact divisions from official GSR catalogue poster (62 products)
   const quickCategories = [
     { 
-      id: 'ss-material' as ProductCategory, 
-      label: 'SS Material', 
-      sub: 'Pipes, Fittings, Valves, Flanges',
-      icon: Layers, 
-      bg: 'bg-sky-50 text-sky-900 border-sky-300 hover:border-sky-500 hover:shadow-sky-500/20',
-      iconBg: 'bg-sky-600 text-white',
-      badge: '9 Products'
-    },
-    { 
-      id: 'pharma-material' as ProductCategory, 
-      label: 'Pharma Material', 
-      sub: 'Triclamp Tubes, Diaphragm Valves, Gaskets',
-      icon: ShieldAlert, 
-      bg: 'bg-emerald-50 text-emerald-900 border-emerald-300 hover:border-emerald-500 hover:shadow-emerald-500/20',
-      iconBg: 'bg-emerald-600 text-white',
-      badge: '8 Products'
-    },
-    { 
-      id: 'electrical-material' as ProductCategory, 
-      label: 'Electrical Material', 
-      sub: 'MCCB, MCB, ACB, Contactors, Cables',
-      icon: Zap, 
-      bg: 'bg-purple-50 text-purple-900 border-purple-300 hover:border-purple-500 hover:shadow-purple-500/20',
-      iconBg: 'bg-purple-600 text-white',
-      badge: '10 Products'
-    },
-    { 
-      id: 'mechanical-material' as ProductCategory, 
-      label: 'Mechanical Material', 
-      sub: 'Gearboxes, Gears, Bearings, Couplings',
+      id: 'mechanical-items' as ProductCategory, 
+      label: 'Mechanical Items', 
+      sub: 'SS & MS Pipes, Flanges, Valves, Fasteners, Tools, Bearings',
       icon: Cog, 
       bg: 'bg-amber-50 text-amber-900 border-amber-300 hover:border-amber-500 hover:shadow-amber-500/20',
       iconBg: 'bg-amber-500 text-white',
-      badge: '9 Products'
+      badge: '18 Products'
     },
     { 
-      id: 'other-industrial' as ProductCategory, 
-      label: 'Other Industrial Items', 
-      sub: 'Pumps, Motors, Instrumentation, Tools',
-      icon: Wrench, 
-      bg: 'bg-rose-50 text-rose-900 border-rose-300 hover:border-rose-500 hover:shadow-rose-500/20',
-      iconBg: 'bg-rose-600 text-white',
-      badge: '8 Products'
+      id: 'electrical-items' as ProductCategory, 
+      label: 'Electrical Items', 
+      sub: 'MCCB, MCB, ACB, Contactors, Cables, Panel Enclosures',
+      icon: Zap, 
+      bg: 'bg-blue-50 text-blue-900 border-blue-300 hover:border-blue-500 hover:shadow-blue-500/20',
+      iconBg: 'bg-blue-600 text-white',
+      badge: '18 Products'
+    },
+    { 
+      id: 'automation-electronics' as ProductCategory, 
+      label: 'Automation & Electronics', 
+      sub: 'Sensors, Drives, PLC, HMI, VFD, Encoders, SMPS',
+      icon: Cpu, 
+      bg: 'bg-purple-50 text-purple-900 border-purple-300 hover:border-purple-500 hover:shadow-purple-500/20',
+      iconBg: 'bg-purple-600 text-white',
+      badge: '15 Products'
+    },
+    { 
+      id: 'pneumatics-items' as ProductCategory, 
+      label: 'Pneumatics Items (OEM)', 
+      sub: 'Cylinders, FRL, Solenoid Valves, Push-In Fittings, PU Tubing',
+      icon: Wind, 
+      bg: 'bg-cyan-50 text-cyan-900 border-cyan-300 hover:border-cyan-500 hover:shadow-cyan-500/20',
+      iconBg: 'bg-cyan-600 text-white',
+      badge: '11 Products'
     }
   ];
 
   const topBrandLogos = [
-    'Tata Steel',
     'Schneider Electric',
     'Siemens',
     'ABB',
+    'Eaton',
+    'L&T Electrical & Automation',
+    'Havells',
     'SMC',
     'FESTO',
-    'L&T Electrical & Automation',
-    'JSW Steel',
-    'Havells',
-    'Parker Legris'
+    'AirTAC',
+    'Parker Legris',
+    'Legrand',
+    'CKD'
   ];
 
   const handleQuickCategory = (catId: ProductCategory) => {
@@ -162,7 +154,7 @@ export const Hero: React.FC<HeroProps> = ({
               type="text"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              placeholder="Search 44+ industrial items: SS 316 Pipes, MCCB, Gearbox, Diaphragm Valves, Pumps..."
+              placeholder="Search 62 industrial items: SS Pipes, MCCB, PLC, VFD, Solenoid Valves, SMC Cylinders..."
               className="w-full pl-12 pr-32 py-4 rounded-2xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0a2569] focus:border-transparent text-sm sm:text-base shadow-sm"
             />
             <button
@@ -174,17 +166,17 @@ export const Hero: React.FC<HeroProps> = ({
             </button>
           </form>
           <div className="flex items-center justify-between mt-2.5 px-3 text-xs text-slate-500">
-            <span>Popular: <span className="text-slate-800 font-medium">SS Pipes, Pharma Valves, MCCB Breakers, Industrial Pumps, Gearboxes</span></span>
-            <span className="hidden sm:inline text-emerald-700 font-bold">✓ 100% Genuine Materials</span>
+            <span>Popular: <span className="text-slate-800 font-medium">SS Pipes, MCCB Breakers, PLC / HMI, VFD Drives, Pneumatic Cylinders</span></span>
+            <span className="hidden sm:inline text-emerald-700 font-bold">✓ 62 Genuine Products • 21 OEM Brands</span>
           </div>
         </div>
 
-        {/* 5 Bright, Colorful Category Pillars Matching Flyer */}
+        {/* 4 Bright, Colorful Category Pillars Matching Poster */}
         <div className="mb-10">
           <div className="text-xs font-bold uppercase tracking-wider text-slate-500 text-center mb-3">
-            Explore By Product Category (From Official Catalogue)
+            Explore 62 Products Across 4 Official Divisions
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 max-w-6xl mx-auto">
             {quickCategories.map((cat) => {
               const Icon = cat.icon;
               return (

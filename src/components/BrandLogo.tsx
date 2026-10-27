@@ -8,6 +8,39 @@ interface BrandLogoProps {
   showText?: boolean;
 }
 
+const LOCAL_OEM_LOGOS: Record<string, string> = {
+  'schneider electric': './brands/schneider.png',
+  'schneider': './brands/schneider.png',
+  'siemens': './brands/siemens.png',
+  'abb': './brands/abb.png',
+  'eaton': './brands/eaton.png',
+  'l&t electrical & automation': './brands/lnt.png',
+  'l&t electrical': './brands/lnt.png',
+  'l&t': './brands/lnt.png',
+  'havells': './brands/havells.png',
+  'legrand': './brands/legrand.png',
+  'chnt': './brands/chnt.png',
+  'c&s electric': './brands/cs-electric.png',
+  'c&s': './brands/cs-electric.png',
+  'panasonic': './brands/panasonic.png',
+  'smc': './brands/smc.png',
+  'festo': './brands/festo.png',
+  'airtac': './brands/airtac.png',
+  'mindman': './brands/mindman.png',
+  'ckd': './brands/ckd.png',
+  'parker legris': './brands/parker-legris.png',
+  'parker': './brands/parker-legris.png',
+  'camozzi': './brands/camozzi.png',
+  'camozzi automation': './brands/camozzi.png',
+  'rg ss': './brands/rg-ss.png',
+  'rgss': './brands/rg-ss.png',
+  'metal work': './brands/metal-work.png',
+  'metal work pneumatic': './brands/metal-work.png',
+  'janatics': './brands/janatics.png',
+  'janatics pneumatic': './brands/janatics.png',
+  'yuken': './brands/yuken.png'
+};
+
 export const BrandLogo: React.FC<BrandLogoProps> = ({
   name,
   logoUrl,
@@ -22,12 +55,30 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
 
   // Size styling
   const sizeClasses = {
-    sm: 'h-6 text-xs',
-    md: 'h-10 text-sm',
-    lg: 'h-14 text-base'
+    sm: 'h-7 text-xs',
+    md: 'h-11 text-sm',
+    lg: 'h-16 text-base'
   }[size];
 
-  // If a logoUrl is provided and hasn't failed, attempt to render it
+  // 1. Direct local original OEM logo check
+  const matchedKey = Object.keys(LOCAL_OEM_LOGOS).find(k => cleanName === k || cleanName.includes(k));
+  const localLogo = matchedKey ? LOCAL_OEM_LOGOS[matchedKey] : null;
+
+  if (localLogo && !imgFailed) {
+    return (
+      <div className={`inline-flex items-center justify-center p-1 bg-white rounded-lg border border-slate-200/90 shadow-2xs hover:border-blue-400 transition-all ${sizeClasses} ${className}`}>
+        <img
+          src={localLogo}
+          alt={`${name} Original OEM Logo`}
+          onError={() => setImgFailed(true)}
+          className="max-h-full max-w-full object-contain"
+          loading="lazy"
+        />
+      </div>
+    );
+  }
+
+  // If an external logoUrl is provided and hasn't failed, attempt to render it
   if (logoUrl && !imgFailed) {
     return (
       <div className={`flex items-center justify-center p-1.5 ${sizeClasses} ${className}`}>

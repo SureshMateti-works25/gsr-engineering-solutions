@@ -9,7 +9,9 @@ import {
   ShieldCheck, 
   Zap, 
   Cog, 
-  Wrench 
+  Cpu, 
+  Wind, 
+  Percent 
 } from 'lucide-react';
 import type { ProductItem } from '../types';
 import { BrandLogo } from './BrandLogo';
@@ -31,6 +33,51 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   const getCategoryMeta = (cat: string) => {
     switch (cat) {
+      case 'mechanical-items':
+        return { 
+          label: 'Mechanical Items', 
+          icon: Cog, 
+          badgeColor: 'text-amber-900 bg-amber-50/95 border-amber-300',
+          headerGradient: 'from-amber-500 via-orange-500 to-amber-700',
+          accentText: 'text-amber-600',
+          hoverBorder: 'hover:border-amber-400 hover:shadow-amber-500/15',
+          bannerBg: 'bg-amber-600',
+          tagBg: 'bg-amber-50 text-amber-800 border-amber-200'
+        };
+      case 'electrical-items':
+        return { 
+          label: 'Electrical Items', 
+          icon: Zap, 
+          badgeColor: 'text-blue-900 bg-blue-50/95 border-blue-300',
+          headerGradient: 'from-blue-600 via-indigo-600 to-blue-800',
+          accentText: 'text-blue-600',
+          hoverBorder: 'hover:border-blue-400 hover:shadow-blue-500/15',
+          bannerBg: 'bg-blue-600',
+          tagBg: 'bg-blue-50 text-blue-700 border-blue-200'
+        };
+      case 'automation-electronics':
+        return { 
+          label: 'Automation & Electronics', 
+          icon: Cpu, 
+          badgeColor: 'text-purple-900 bg-purple-50/95 border-purple-300',
+          headerGradient: 'from-purple-600 via-indigo-700 to-violet-800',
+          accentText: 'text-purple-600',
+          hoverBorder: 'hover:border-purple-400 hover:shadow-purple-500/15',
+          bannerBg: 'bg-purple-600',
+          tagBg: 'bg-purple-50 text-purple-700 border-purple-200'
+        };
+      case 'pneumatics-items':
+        return { 
+          label: 'Pneumatics Items (OEM)', 
+          icon: Wind, 
+          badgeColor: 'text-cyan-900 bg-cyan-50/95 border-cyan-300',
+          headerGradient: 'from-cyan-600 via-teal-600 to-blue-700',
+          accentText: 'text-cyan-600',
+          hoverBorder: 'hover:border-cyan-400 hover:shadow-cyan-500/15',
+          bannerBg: 'bg-cyan-600',
+          tagBg: 'bg-cyan-50 text-cyan-800 border-cyan-200'
+        };
+      // Fallback for legacy categories
       case 'ss-material':
         return { 
           label: 'SS Material', 
@@ -53,42 +100,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           bannerBg: 'bg-emerald-600',
           tagBg: 'bg-emerald-50 text-emerald-700 border-emerald-200'
         };
-      case 'electrical-material':
-        return { 
-          label: 'Electrical Material', 
-          icon: Zap, 
-          badgeColor: 'text-purple-900 bg-purple-50/95 border-purple-300',
-          headerGradient: 'from-purple-500 via-indigo-600 to-purple-700',
-          accentText: 'text-purple-600',
-          hoverBorder: 'hover:border-purple-400 hover:shadow-purple-500/15',
-          bannerBg: 'bg-purple-600',
-          tagBg: 'bg-purple-50 text-purple-700 border-purple-200'
-        };
-      case 'mechanical-material':
-        return { 
-          label: 'Mechanical Material', 
-          icon: Cog, 
-          badgeColor: 'text-amber-900 bg-amber-50/95 border-amber-300',
-          headerGradient: 'from-amber-500 via-orange-500 to-amber-700',
-          accentText: 'text-amber-600',
-          hoverBorder: 'hover:border-amber-400 hover:shadow-amber-500/15',
-          bannerBg: 'bg-amber-600',
-          tagBg: 'bg-amber-50 text-amber-800 border-amber-200'
-        };
-      case 'other-industrial':
-        return { 
-          label: 'Other Industrial Items', 
-          icon: Wrench, 
-          badgeColor: 'text-rose-900 bg-rose-50/95 border-rose-300',
-          headerGradient: 'from-rose-500 via-pink-600 to-rose-700',
-          accentText: 'text-rose-600',
-          hoverBorder: 'hover:border-rose-400 hover:shadow-rose-500/15',
-          bannerBg: 'bg-rose-600',
-          tagBg: 'bg-rose-50 text-rose-700 border-rose-200'
-        };
       default:
         return { 
-          label: 'Industrial', 
+          label: 'Industrial Item', 
           icon: Cog, 
           badgeColor: 'text-slate-900 bg-slate-100 border-slate-300',
           headerGradient: 'from-blue-600 to-slate-700',
@@ -140,18 +154,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
 
         {/* Badges Over Image */}
-        <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+        <div className="absolute top-2.5 left-2.5 right-2.5 flex items-start justify-between gap-1 pointer-events-none">
           <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold border shadow-xs ${meta.badgeColor}`}>
             <IconComponent className="w-3.5 h-3.5" />
             <span>{meta.label}</span>
           </span>
 
-          {product.badge && (
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-500 text-white shadow-xs">
-              <Tag className="w-3 h-3" />
-              {product.badge}
-            </span>
-          )}
+          <div className="flex flex-col items-end gap-1">
+            {product.discountBadge && (
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-md animate-pulse">
+                <Percent className="w-3 h-3" />
+                {product.discountBadge}
+              </span>
+            )}
+            {product.badge && !product.discountBadge && (
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500 text-white shadow-xs">
+                <Tag className="w-3 h-3" />
+                {product.badge}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Hover Click Hint */}

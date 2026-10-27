@@ -8,6 +8,7 @@ import {
   FileText
 } from 'lucide-react';
 import type { ProductCategory } from '../types';
+import { VisitorCounterWidget } from './VisitorCounterWidget';
 
 interface FooterProps {
   onSelectCategory: (cat: ProductCategory) => void;
@@ -96,13 +97,18 @@ export const Footer: React.FC<FooterProps> = ({
                   className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-blue-900/60 hover:bg-blue-800 text-white text-xs font-bold border border-blue-700 transition-colors"
                 >
                   <FileText className="w-4 h-4 text-amber-400" />
-                  <span>View Official Product Flyer</span>
+                  <span>View Official Product Poster (62 Items)</span>
                 </button>
               </div>
             )}
+
+            {/* Live Visitors Analytics Card */}
+            <div className="pt-3 max-w-xs">
+              <VisitorCounterWidget variant="card" />
+            </div>
           </div>
 
-          {/* Column 2: Product Categories (5 from Flyer) */}
+          {/* Column 2: Product Categories (4 Divisions from Poster) */}
           <div className="space-y-3">
             <h4 className="text-white font-bold text-sm tracking-wider uppercase text-[11px] text-sky-400">
               Product Categories
@@ -110,42 +116,42 @@ export const Footer: React.FC<FooterProps> = ({
             <ul className="space-y-2 text-xs">
               <li>
                 <button 
-                  onClick={() => handleCategoryClick('ss-material')} 
+                  onClick={() => handleCategoryClick('mechanical-items')} 
                   className="hover:text-white transition-colors text-left"
                 >
-                  SS Material (Pipes, Flanges, Valves)
+                  Mechanical Items (18 Items)
                 </button>
               </li>
               <li>
                 <button 
-                  onClick={() => handleCategoryClick('pharma-material')} 
+                  onClick={() => handleCategoryClick('electrical-items')} 
                   className="hover:text-white transition-colors text-left"
                 >
-                  Pharma Material (Sanitary, Gaskets)
+                  Electrical Items (18 Items)
                 </button>
               </li>
               <li>
                 <button 
-                  onClick={() => handleCategoryClick('electrical-material')} 
+                  onClick={() => handleCategoryClick('automation-electronics')} 
                   className="hover:text-white transition-colors text-left"
                 >
-                  Electrical Material (MCCB, ACB, Cables)
+                  Electronics & Automation (15 Items)
                 </button>
               </li>
               <li>
                 <button 
-                  onClick={() => handleCategoryClick('mechanical-material')} 
+                  onClick={() => handleCategoryClick('pneumatics-items')} 
                   className="hover:text-white transition-colors text-left"
                 >
-                  Mechanical Material (Gears, Bearings)
+                  Pneumatics Items - OEM Make (11 Items)
                 </button>
               </li>
               <li>
                 <button 
-                  onClick={() => handleCategoryClick('other-industrial')} 
-                  className="hover:text-white transition-colors text-left"
+                  onClick={() => handleCategoryClick('all')} 
+                  className="hover:text-white transition-colors text-left text-amber-400 font-bold"
                 >
-                  Other Industrial Items (Pumps, Tools)
+                  View All 62 Products & Offers →
                 </button>
               </li>
             </ul>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { ProductCategory, ProductItem, RfqItem } from './types';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { OffersCarousel } from './components/OffersCarousel';
 import { ProductCatalog } from './components/ProductCatalog';
 import { BrandShowcase } from './components/BrandShowcase';
 import { ServicesSection } from './components/ServicesSection';
@@ -91,7 +92,7 @@ export function App() {
 
       {/* Main Content Sections */}
       <main className="flex-1">
-        {/* Hero Section with Official GSR Logo and 5 Colorful Categories */}
+        {/* Hero Section with Official GSR Logo and 4 Colorful Divisions */}
         <Hero
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
@@ -100,7 +101,13 @@ export function App() {
           onOpenFlyer={() => setIsFlyerModalOpen(true)}
         />
 
-        {/* Product Catalog Section with 5 Flyer Colors */}
+        {/* Special Discounts & Product Offers Image Carousel */}
+        <OffersCarousel
+          onSelectCategory={setSelectedCategory}
+          onNavigateToSection={handleNavigateToSection}
+        />
+
+        {/* Product Catalog Section with 62 Products across 4 Poster Divisions */}
         <ProductCatalog
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}

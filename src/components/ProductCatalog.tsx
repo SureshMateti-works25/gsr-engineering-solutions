@@ -6,14 +6,15 @@ import {
   SlidersHorizontal, 
   RotateCcw,
   ShieldCheck,
-  ShieldAlert,
   Zap,
   Cog,
   Wrench,
   Sparkles,
   FileText,
   CheckCircle2,
-  Eye
+  Eye,
+  Cpu,
+  Wind
 } from 'lucide-react';
 import type { ProductItem, ProductCategory, RfqItem } from '../types';
 import { productsData, productCategoriesList } from '../data/products';
@@ -111,10 +112,12 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
 
   const getCategoryIcon = (id: string) => {
     switch (id) {
+      case 'mechanical-items': return Cog;
+      case 'electrical-items': return Zap;
+      case 'automation-electronics': return Cpu;
+      case 'pneumatics-items': return Wind;
       case 'ss-material': return Layers;
       case 'pharma-material': return ShieldCheck;
-      case 'electrical-material': return Zap;
-      case 'mechanical-material': return Cog;
       case 'other-industrial': return Wrench;
       default: return Sparkles;
     }
@@ -122,26 +125,22 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
 
   const getCategoryButtonClasses = (id: string, isActive: boolean) => {
     switch (id) {
-      case 'ss-material':
-        return isActive 
-          ? 'bg-gradient-to-r from-sky-600 to-blue-700 text-white shadow-md shadow-sky-500/25 ring-2 ring-sky-400' 
-          : 'bg-white text-slate-700 hover:text-sky-700 hover:bg-sky-50 border border-slate-200';
-      case 'pharma-material':
-        return isActive 
-          ? 'bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-md shadow-emerald-500/25 ring-2 ring-emerald-400' 
-          : 'bg-white text-slate-700 hover:text-emerald-700 hover:bg-emerald-50 border border-slate-200';
-      case 'electrical-material':
-        return isActive 
-          ? 'bg-gradient-to-r from-purple-600 to-indigo-700 text-white shadow-md shadow-purple-500/25 ring-2 ring-purple-400' 
-          : 'bg-white text-slate-700 hover:text-purple-700 hover:bg-purple-50 border border-slate-200';
-      case 'mechanical-material':
+      case 'mechanical-items':
         return isActive 
           ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-md shadow-amber-500/25 ring-2 ring-amber-400' 
           : 'bg-white text-slate-700 hover:text-amber-800 hover:bg-amber-50 border border-slate-200';
-      case 'other-industrial':
+      case 'electrical-items':
         return isActive 
-          ? 'bg-gradient-to-r from-rose-600 to-pink-700 text-white shadow-md shadow-rose-500/25 ring-2 ring-rose-400' 
-          : 'bg-white text-slate-700 hover:text-rose-700 hover:bg-rose-50 border border-slate-200';
+          ? 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-md shadow-blue-500/25 ring-2 ring-blue-400' 
+          : 'bg-white text-slate-700 hover:text-blue-700 hover:bg-blue-50 border border-slate-200';
+      case 'automation-electronics':
+        return isActive 
+          ? 'bg-gradient-to-r from-purple-600 to-violet-700 text-white shadow-md shadow-purple-500/25 ring-2 ring-purple-400' 
+          : 'bg-white text-slate-700 hover:text-purple-700 hover:bg-purple-50 border border-slate-200';
+      case 'pneumatics-items':
+        return isActive 
+          ? 'bg-gradient-to-r from-cyan-600 to-teal-700 text-white shadow-md shadow-cyan-500/25 ring-2 ring-cyan-400' 
+          : 'bg-white text-slate-700 hover:text-cyan-800 hover:bg-cyan-50 border border-slate-200';
       default:
         return isActive 
           ? 'bg-gradient-to-r from-slate-900 via-blue-950 to-blue-900 text-white shadow-md shadow-slate-900/25 ring-2 ring-blue-500' 
@@ -151,70 +150,59 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
 
   const getCategoryBannerData = (cat: ProductCategory) => {
     switch (cat) {
-      case 'ss-material':
+      case 'mechanical-items':
         return {
           number: '01',
-          name: 'SS MATERIAL',
-          headline: 'Stainless Steel Piping, Fittings, Valves, Flanges & Vessels',
-          description: 'Supplying ASTM A312 / A269 seamless and welded SS pipes, forged flanges (Class 150 - 2500#), butt-weld & threaded fittings, industrial ball/gate valves, sheets, plates, and process tanks with 100% Original Mill Test Certificates (MTC).',
-          gradient: 'from-sky-600 via-blue-600 to-blue-800',
-          border: 'border-sky-400/40',
-          features: ['ASTM A312 / A269', 'Grades 304, 316, 316L, 310', 'SCH 5S to XXS', 'PMI & Hydrostatic Tested'],
-          icon: Layers
-        };
-      case 'pharma-material':
-        return {
-          number: '02',
-          name: 'PHARMA MATERIAL',
-          headline: 'Electropolished Sanitary Tubes, Diaphragm Valves & cGMP Supplies',
-          description: 'High-purity ASME BPE sanitary electropolished tubing (guaranteed Ra < 0.38 µm), zero-deadleg aseptic diaphragm valves, tri-clamp ferrules and bends, FDA compliant seals, and sterile filtration housings for pharmaceutical & biotech loops.',
-          gradient: 'from-emerald-600 via-teal-600 to-emerald-800',
-          border: 'border-emerald-400/40',
-          features: ['ASME BPE Table DT-4-1', 'Electropolished Ra < 0.38 µm', 'FDA 21 CFR 177 / USP Class VI', 'WFI & Pure Steam Loops'],
-          icon: ShieldAlert
-        };
-      case 'electrical-material':
-        return {
-          number: '03',
-          name: 'ELECTRICAL MATERIAL',
-          headline: 'MCCB, MCB, Air Circuit Breakers (ACB), Contactors & Power Cables',
-          description: 'Tier-1 electrical switchgear and motor control products from Schneider, Siemens, ABB, and L&T. Covering breakers up to 6300A, heavy-duty contactors, thermal bimetallic relays, pilot devices, and XLPE armoured multicore power cables.',
-          gradient: 'from-purple-600 via-indigo-600 to-purple-850',
-          border: 'border-purple-400/40',
-          features: ['Schneider / Siemens / ABB', 'Up to 100kA Breaking (Icu)', 'IEC / IS 60947 Standards', '1.1 kV XLPE Armoured'],
-          icon: Zap
-        };
-      case 'mechanical-material':
-        return {
-          number: '04',
-          name: 'MECHANICAL MATERIAL',
-          headline: 'Industrial Gearboxes, Hardened Gears, Bearings & Power Transmission',
-          description: 'High-torque reduction gearboxes, 58-62 HRC carburized gear wheels & pinions, flexible tyre and pin-bush couplings, genuine SKF / FAG / Timken bearings, industrial roller chains, carbon steel piping, and high-tensile Gr 8.8/10.9 fasteners.',
-          gradient: 'from-amber-500 via-orange-500 to-amber-700',
+          name: 'MECHANICAL ITEMS (18 PRODUCTS)',
+          headline: 'SS & ERW Pipes, Flanges, Industrial Valves, Fasteners, Tools & Spares',
+          description: 'Supplying ASTM A312/A269 seamless and ERW pipes, forged flanges (Class 150-2500#), butt-weld & threaded fittings, ball/butterfly/gate valves, gaskets, high-tensile fasteners, certified safety gear, hand tools, bearings, couplings, and reduction gearboxes with 100% Original Mill Test Certificates.',
+          gradient: 'from-amber-500 via-orange-600 to-amber-700',
           border: 'border-amber-400/40',
-          features: ['Elecon / Fenner / SKF', '58-62 HRC Case Carburized', 'High Torque Absorbing', 'High Tensile 8.8 / 10.9 Fasteners'],
+          features: ['ASTM A312 / A269', 'Grades 304, 316, 316L, MS', 'Flanges & Butt-Weld Fittings', 'High-Tensile 8.8 / 10.9 & Bearings'],
           icon: Cog
         };
-      case 'other-industrial':
+      case 'electrical-items':
         return {
-          number: '05',
-          name: 'OTHER INDUSTRIAL ITEMS',
-          headline: 'Centrifugal Pumps, IE2/IE3/IE4 Motors, Instrumentation & PPE Safety',
-          description: 'Complete range of fluid handling centrifugal and process pumps, continuous S1 duty energy-efficient induction motors, precision WIKA pressure gauges, certified plant PPE gear, packaging machine spares, and Loctite maintenance consumables.',
-          gradient: 'from-rose-600 via-pink-600 to-rose-800',
-          border: 'border-rose-400/40',
-          features: ['Kirloskar / ABB / WIKA', 'IE2 / IE3 / IE4 Electric Motors', 'IS 2925 Certified PPE', 'Loctite & Castrol Consumables'],
-          icon: Wrench
+          number: '02',
+          name: 'ELECTRICAL ITEMS (18 PRODUCTS)',
+          headline: 'MCCB, MCB, ACB, Switch Disconnectors, Contactors & Armoured Power Cables',
+          description: 'Tier-1 electrical switchgear and motor control products from Schneider Electric, Siemens, ABB, L&T, Havells, Legrand, CHNT, C&S, and Panasonic. Breakers up to 6300A, thermal overload relays, industrial plugs, energy meters, push buttons, terminal blocks, panel cooling fans, and XLPE cables.',
+          gradient: 'from-blue-600 via-indigo-600 to-blue-850',
+          border: 'border-blue-400/40',
+          features: ['Schneider / Siemens / ABB / L&T', 'Up to 100kA Breaking (Icu)', 'IEC 60947 Certified Switchgear', '1.1 kV XLPE Armoured Cables'],
+          icon: Zap
+        };
+      case 'automation-electronics':
+        return {
+          number: '03',
+          name: 'ELECTRONICS & INDUSTRIAL AUTOMATION (15 PRODUCTS)',
+          headline: 'Sensors, Controllers, PLC, HMI, VFD Drives, Servo Systems & SMPS',
+          description: 'Turnkey industrial automation components: inductive/capacitive proximity sensors, photoelectric sensors, rotary encoders, PID temperature controllers, PLC modular controllers, touchscreen HMIs, Variable Frequency Drives (VFD), servo motors, DIN-rail SMPS, and safety light curtains.',
+          gradient: 'from-purple-600 via-indigo-700 to-violet-850',
+          border: 'border-purple-400/40',
+          features: ['Omron / Siemens / Schneider', '0-10V & 4-20mA Signals', 'VFD & Servo Motion Control', 'IP67 Sealed Rugged Sensors'],
+          icon: Cpu
+        };
+      case 'pneumatics-items':
+        return {
+          number: '04',
+          name: 'PNEUMATICS ITEMS (OEM MAKE - 11 PRODUCTS)',
+          headline: 'Pneumatic Cylinders, Solenoid Valves, FRL Air Prep, Push-In Fittings & Tubing',
+          description: 'Genuine OEM pneumatic automation equipment from SMC, FESTO, AirTAC, Mindman, CKD, Parker Legris, Camozzi, RG SS, Metal Work, Janatics, and Yuken. Standard and compact ISO cylinders, 5/2 & 5/3-way solenoid valves, precision FRL modular units, PU tubing, and quick couplings.',
+          gradient: 'from-cyan-600 via-teal-600 to-blue-800',
+          border: 'border-cyan-400/40',
+          features: ['SMC / FESTO / AirTAC / Parker', 'ISO 15552 & ISO 21287 Cylinders', 'High-Flow 24VDC/230VAC Solenoids', 'Polyurethane PU & Coiled Hoses'],
+          icon: Wind
         };
       default:
         return {
           number: 'ALL',
           name: 'FULL INDUSTRIAL INVENTORY',
-          headline: '44 Specialized Supplies Across 5 Official Categories',
+          headline: '62 Specialized Industrial Products Across 4 Official Poster Divisions',
           description: 'Browse complete catalog or use quick filters above to narrow by category, sub-category, or OEM manufacturer. All materials backed by verified GST invoicing and manufacturer test certificates.',
           gradient: 'from-[#0a2569] via-blue-900 to-indigo-950',
           border: 'border-blue-400/30',
-          features: ['5 Specialized Categories', '44 Item Catalog', 'Official Catalogue Flyer', '24/7 Field Maintenance'],
+          features: ['4 Specialized Categories', '62 Item Inventory', 'Official OEM Brands', '24/7 Field Maintenance'],
           icon: Sparkles
         };
     }
@@ -234,7 +222,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
             High Precision Components & OEM Supplies
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600">
-            Organized across our 5 flagship industrial categories: SS Material, Pharma Material, Electrical Material, Mechanical Material, and Industrial Utilities.
+            Organized across our 4 flagship divisions from our official poster: Mechanical Items (18), Electrical Items (18), Electronics & Industrial Automation (15), and Pneumatics Items OEM Make (11).
           </p>
         </div>
 

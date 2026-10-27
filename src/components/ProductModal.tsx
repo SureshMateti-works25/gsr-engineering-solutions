@@ -31,6 +31,39 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 
   const getCategoryTheme = (cat: string) => {
     switch (cat) {
+      case 'mechanical-items':
+        return {
+          label: 'Mechanical Items',
+          gradient: 'from-amber-500 via-orange-500 to-amber-700',
+          accentColor: 'text-amber-600',
+          borderAccent: 'border-amber-300',
+          badgeBg: 'bg-amber-50 text-amber-800 border-amber-300'
+        };
+      case 'electrical-items':
+        return {
+          label: 'Electrical Items',
+          gradient: 'from-blue-600 via-indigo-600 to-blue-800',
+          accentColor: 'text-blue-600',
+          borderAccent: 'border-blue-300',
+          badgeBg: 'bg-blue-50 text-blue-800 border-blue-300'
+        };
+      case 'automation-electronics':
+        return {
+          label: 'Automation & Electronics',
+          gradient: 'from-purple-600 via-indigo-700 to-violet-800',
+          accentColor: 'text-purple-600',
+          borderAccent: 'border-purple-300',
+          badgeBg: 'bg-purple-50 text-purple-800 border-purple-300'
+        };
+      case 'pneumatics-items':
+        return {
+          label: 'Pneumatics Items (OEM)',
+          gradient: 'from-cyan-600 via-teal-600 to-blue-700',
+          accentColor: 'text-cyan-600',
+          borderAccent: 'border-cyan-300',
+          badgeBg: 'bg-cyan-50 text-cyan-800 border-cyan-300'
+        };
+      // Fallback
       case 'ss-material':
         return {
           label: 'SS Material',
@@ -46,30 +79,6 @@ export const ProductModal: React.FC<ProductModalProps> = ({
           accentColor: 'text-emerald-600',
           borderAccent: 'border-emerald-300',
           badgeBg: 'bg-emerald-50 text-emerald-800 border-emerald-300'
-        };
-      case 'electrical-material':
-        return {
-          label: 'Electrical Material',
-          gradient: 'from-purple-600 via-indigo-600 to-purple-800',
-          accentColor: 'text-purple-600',
-          borderAccent: 'border-purple-300',
-          badgeBg: 'bg-purple-50 text-purple-800 border-purple-300'
-        };
-      case 'mechanical-material':
-        return {
-          label: 'Mechanical Material',
-          gradient: 'from-amber-500 via-orange-500 to-amber-700',
-          accentColor: 'text-amber-600',
-          borderAccent: 'border-amber-300',
-          badgeBg: 'bg-amber-50 text-amber-800 border-amber-300'
-        };
-      case 'other-industrial':
-        return {
-          label: 'Other Industrial Items',
-          gradient: 'from-rose-600 via-pink-600 to-rose-800',
-          accentColor: 'text-rose-600',
-          borderAccent: 'border-rose-300',
-          badgeBg: 'bg-rose-50 text-rose-800 border-rose-300'
         };
       default:
         return {
@@ -134,10 +143,15 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 className="w-full h-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-3 left-4">
+              <div className="absolute bottom-3 left-4 flex items-center gap-2">
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-600 text-white shadow-sm">
                   Genuine Industrial Item
                 </span>
+                {product.discountBadge && (
+                  <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-red-600 text-white shadow-md animate-pulse">
+                    Special Offer: {product.discountBadge}
+                  </span>
+                )}
               </div>
             </div>
           )}

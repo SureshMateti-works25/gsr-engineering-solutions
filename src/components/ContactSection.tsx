@@ -411,13 +411,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         onChange={handleChange}
                         className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-sm text-slate-800 font-medium focus:outline-none focus:bg-white focus:border-blue-600"
                       >
-                        <option value="all">Multiple / General Inquiry</option>
-                        <option value="ss-material">SS Material</option>
-                        <option value="pharma-material">Pharma Material</option>
-                        <option value="electrical-material">Electrical Material</option>
-                        <option value="mechanical-material">Mechanical Material</option>
-                        <option value="other-industrial">Other Industrial Items</option>
-                        <option value="services">Maintenance Services</option>
+                        <option value="all">Multiple / General Inquiry (All 62 Products)</option>
+                        <option value="mechanical-items">Mechanical Items (18 Items: Pipes, Flanges, Valves, Fasteners)</option>
+                        <option value="electrical-items">Electrical Items (18 Items: Switchgear, Breakers, Cables)</option>
+                        <option value="automation-electronics">Electronics & Automation (15 Items: Sensors, PLC, VFD, HMI)</option>
+                        <option value="pneumatics-items">Pneumatics Items - OEM Make (11 Items: SMC, FESTO, AirTAC)</option>
+                        <option value="services">Maintenance & AMC Services</option>
                       </select>
                     </div>
 

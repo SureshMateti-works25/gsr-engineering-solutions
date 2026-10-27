@@ -16,8 +16,8 @@ export const CatalogueModal: React.FC<CatalogueModalProps> = ({
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = './gsr-catalogue-banner.jpg';
-    link.download = 'GSR-Engineering-Solutions-Product-Catalogue.jpg';
+    link.href = './gsr-poster.png';
+    link.download = 'GSR-Engineering-Solutions-Master-Product-Catalogue.png';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -65,12 +65,12 @@ export const CatalogueModal: React.FC<CatalogueModalProps> = ({
           </div>
         </div>
 
-        {/* Modal Body - Scrollable Full Flyer View */}
+        {/* Modal Body - Scrollable Full Poster View */}
         <div className="p-2 sm:p-6 overflow-y-auto flex-1 bg-slate-100 flex flex-col items-center justify-start">
           <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-300 max-w-full bg-white">
             <img
-              src="./gsr-catalogue-banner.jpg"
-              alt="GSR Engineering Solutions Complete Product Catalogue Flyer"
+              src="./gsr-poster.png"
+              alt="GSR Engineering Solutions Complete 62-Product Poster & OEM Brand Partners"
               className="w-full h-auto object-contain select-none"
             />
           </div>

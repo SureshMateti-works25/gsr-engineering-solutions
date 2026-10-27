@@ -14,6 +14,7 @@ import {
   Eye
 } from 'lucide-react';
 import type { RfqItem } from '../types';
+import { VisitorCounterWidget } from './VisitorCounterWidget';
 
 interface NavbarProps {
   rfqList: RfqItem[];
@@ -53,7 +54,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             </span>
           </div>
 
-          <div className="flex items-center space-x-4 sm:space-x-6 text-xs">
+          <div className="flex items-center space-x-3 sm:space-x-5 text-xs">
+            {/* Live Visitor Counter */}
+            <div className="hidden sm:block">
+              <VisitorCounterWidget variant="compact" />
+            </div>
+
             <a 
               href="tel:+918712444439" 
               className="flex items-center gap-1.5 hover:text-amber-300 transition-colors font-bold text-white"
@@ -240,6 +246,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           <div className="pt-3 border-t border-slate-200 flex flex-col gap-2">
+            <div className="py-1 flex justify-center">
+              <VisitorCounterWidget variant="badge" />
+            </div>
             <a
               href="tel:+918712444439"
               className="w-full py-2.5 px-4 rounded-xl text-center font-semibold text-slate-800 bg-slate-100 hover:bg-slate-200 flex items-center justify-center gap-2 text-sm border border-slate-200"

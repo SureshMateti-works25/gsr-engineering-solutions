@@ -1,15 +1,14 @@
 export type ProductCategory = 
   | 'all'
-  | 'ss-material'
-  | 'pharma-material'
-  | 'electrical-material'
-  | 'mechanical-material'
-  | 'other-industrial';
+  | 'mechanical-items'
+  | 'electrical-items'
+  | 'automation-electronics'
+  | 'pneumatics-items';
 
 export interface ProductItem {
   id: string;
   name: string;
-  category: 'ss-material' | 'pharma-material' | 'electrical-material' | 'mechanical-material' | 'other-industrial';
+  category: 'mechanical-items' | 'electrical-items' | 'automation-electronics' | 'pneumatics-items';
   subCategory: string;
   tagline: string;
   description: string;
@@ -19,11 +18,14 @@ export interface ProductItem {
   applications: string[];
   badge?: string;
   imageUrl?: string;
+  originalPrice?: string;
+  discountPrice?: string;
+  discountBadge?: string;
 }
 
 export interface BrandPartner {
   name: string;
-  category: 'mechanical' | 'electrical' | 'pneumatics' | 'all';
+  category: 'mechanical' | 'electrical' | 'pneumatics' | 'automation' | 'all';
   type: string;
   description?: string;
   popular?: boolean;
@@ -47,6 +49,21 @@ export interface RfqItem {
   quantity?: number;
   note?: string;
 }
+
+export interface OfferItem {
+  id: string;
+  title: string;
+  badge: string;
+  category: ProductCategory;
+  couponCode: string;
+  description: string;
+  discount: string;
+  highlightText: string;
+  validUntil: string;
+  imageUrl: string;
+  targetCategoryLabel: string;
+}
+
 
 export interface InquiryFormData {
   fullName: string;

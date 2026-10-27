@@ -55,6 +55,43 @@ export const BrandShowcase: React.FC<BrandShowcaseProps> = ({ onSelectBrandForSe
           </p>
         </div>
 
+        {/* Official OEM Partners Banner Strips from Master Poster */}
+        <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center justify-between">
+            <div className="text-xs font-bold uppercase tracking-wider text-blue-700 mb-2 flex items-center gap-1.5">
+              <Zap className="w-4 h-4 text-blue-600" />
+              Electrical & Automation OEM Brands
+            </div>
+            <div className="w-full bg-slate-50 rounded-xl p-2 border border-slate-100 flex items-center justify-center">
+              <img 
+                src="./brands/banner-electrical-partners.png" 
+                alt="Electrical OEM Partners: Schneider, Siemens, ABB, Eaton, L&T, Havells, Legrand, CHNT, C&S, Panasonic" 
+                className="max-h-20 w-auto object-contain"
+              />
+            </div>
+            <p className="text-[11px] text-slate-500 mt-2 text-center">
+              Schneider Electric • Siemens • ABB • Eaton • L&T • Havells • Legrand • CHNT • C&S • Panasonic
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center justify-between">
+            <div className="text-xs font-bold uppercase tracking-wider text-cyan-700 mb-2 flex items-center gap-1.5">
+              <Wind className="w-4 h-4 text-cyan-600" />
+              Pneumatics & Fluid Power OEM Brands
+            </div>
+            <div className="w-full bg-slate-50 rounded-xl p-2 border border-slate-100 flex items-center justify-center">
+              <img 
+                src="./brands/banner-pneumatics-partners.png" 
+                alt="Pneumatics OEM Partners: SMC, FESTO, AirTAC, Mindman, CKD, Parker, Camozzi, RG SS, Metal Work, Janatics, Yuken" 
+                className="max-h-20 w-auto object-contain"
+              />
+            </div>
+            <p className="text-[11px] text-slate-500 mt-2 text-center">
+              SMC • FESTO • AirTAC • Mindman • CKD • Parker Legris • Camozzi • RG SS • Metal Work • Janatics • Yuken
+            </p>
+          </div>
+        </div>
+
         {/* Featured Brand Logo Strip / Wall */}
         <div className="mb-12 p-4 rounded-2xl bg-slate-50 border border-slate-200 shadow-xs">
           <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-3 text-center">
