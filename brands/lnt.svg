@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 70" width="240" height="70">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" width="100%" height="100%">
     <rect width="100%" height="100%" fill="transparent"/>
-    <g transform="translate(15, 10)">
-      <circle cx="26" cy="25" r="24" fill="#002B49"/>
-      <circle cx="26" cy="25" r="21" fill="none" stroke="#FFFFFF" stroke-width="2"/>
-      <text x="26" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="900" fill="#FFFFFF" text-anchor="middle">L&amp;T</text>
-      <text x="60" y="25" font-family="Arial, sans-serif" font-size="15" font-weight="800" fill="#002B49">LARSEN &amp; TOUBRO</text>
-      <text x="60" y="40" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#C59B27" letter-spacing="0.5">Electrical &amp; Automation</text>
+    <g transform="translate(10, 8)">
+      <circle cx="32" cy="32" r="30" fill="#002B49"/>
+      <circle cx="32" cy="32" r="26" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+      <text x="32" y="41" font-family="Arial Black, sans-serif" font-size="20" font-weight="900" fill="#FFFFFF" text-anchor="middle">L&amp;T</text>
+      <text x="74" y="32" font-family="Arial Black, sans-serif" font-size="19" font-weight="900" fill="#002B49" letter-spacing="0.5">LARSEN &amp; TOUBRO</text>
+      <text x="74" y="52" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#C59B27" letter-spacing="1">Electrical &amp; Automation</text>
     </g>
   </svg>
