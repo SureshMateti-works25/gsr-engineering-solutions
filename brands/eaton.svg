@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 70" width="200" height="70">
+    <rect width="100%" height="100%" fill="transparent"/>
+    <g transform="translate(10, 10)">
+      <text x="90" y="40" font-family="Arial Black, sans-serif" font-size="36" font-weight="900" fill="#005EB8" text-anchor="middle" letter-spacing="1">FAT·N</text>
+      <path d="M 28 32 L 38 18" stroke="#005EB8" stroke-width="5" stroke-linecap="round"/>
+    </g>
+  </svg>

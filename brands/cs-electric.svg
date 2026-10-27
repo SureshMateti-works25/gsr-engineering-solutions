@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 70" width="230" height="70">
+    <rect width="100%" height="100%" fill="transparent"/>
+    <g transform="translate(10, 14)">
+      <rect x="5" y="5" width="34" height="34" rx="6" fill="#0D2240"/>
+      <text x="22" y="29" font-family="Arial Black, sans-serif" font-size="17" font-weight="900" fill="#FFFFFF" text-anchor="middle">C&amp;S</text>
+      <path d="M 33 8 L 41 8 L 41 16 Z" fill="#E31E24"/>
+      <text x="48" y="25" font-family="Arial, sans-serif" font-size="18" font-weight="900" fill="#0D2240">C&amp;S electric</text>
+      <text x="48" y="38" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#E31E24" letter-spacing="1">POWER &amp; CONTROL</text>
+    </g>
+  </svg>
