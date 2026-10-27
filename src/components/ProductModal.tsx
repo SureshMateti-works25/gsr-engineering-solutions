@@ -184,13 +184,13 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               <Building2 className="w-4 h-4 text-amber-600" />
               Available OEM Brands & Manufacturers
             </h4>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2.5">
               {product.brands.map((brand, idx) => (
                 <div
                   key={idx}
-                  className="px-3 py-1.5 rounded-lg bg-slate-50 text-xs font-bold text-slate-800 border border-slate-200 inline-flex items-center shadow-xs"
+                  className="px-4 py-2 rounded-xl bg-white text-xs font-bold text-slate-800 border-2 border-slate-200 inline-flex items-center shadow-xs"
                 >
-                  <BrandLogo name={brand} size="sm" showText={true} />
+                  <BrandLogo name={brand} size="md" showText={true} />
                 </div>
               ))}
             </div>

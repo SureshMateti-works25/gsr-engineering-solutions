@@ -258,7 +258,7 @@ export const Hero: React.FC<HeroProps> = ({
           <div className="text-[11px] font-bold uppercase tracking-widest text-slate-400 text-center mb-4">
             Authorized OEM Brands We Stock & Supply
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             {topBrandLogos.map((brandName) => (
               <div 
                 key={brandName}
@@ -266,10 +266,10 @@ export const Hero: React.FC<HeroProps> = ({
                   onSearchChange(brandName);
                   onNavigateToSection('catalog');
                 }}
-                className="px-3.5 py-1.5 rounded-xl bg-white border border-slate-200 shadow-2xs hover:shadow-xs hover:border-blue-400 transition-all cursor-pointer hover:scale-105"
+                className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl bg-white border-2 border-slate-200/90 shadow-2xs hover:shadow-sm hover:border-blue-500 transition-all cursor-pointer hover:scale-105 flex items-center justify-center min-w-[120px] sm:min-w-[140px]"
                 title={`Explore ${brandName} components`}
               >
-                <BrandLogo name={brandName} size="sm" showText={true} />
+                <BrandLogo name={brandName} size="md" showText={true} />
               </div>
             ))}
           </div>

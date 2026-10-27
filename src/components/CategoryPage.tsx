@@ -15,6 +15,7 @@ import {
 import type { ProductCategory, ProductItem, RfqItem } from '../types';
 import { productsData } from '../data/products';
 import { ProductCard } from './ProductCard';
+import { BrandLogo } from './BrandLogo';
 import { caseStudiesData } from '../data/projects';
 
 interface CategoryPageProps {
@@ -209,6 +210,42 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
             </div>
           </div>
         </div>
+
+        {/* Category OEM Brand Logos Showcase Bar */}
+        {availableBrands.length > 0 && (
+          <div className="mb-8 p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <div className="flex items-center justify-between mb-3.5">
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                <span>Authorized OEM Partner Brands for {categoryDetails.title}</span>
+              </div>
+              {selectedBrand !== 'all' && (
+                <button
+                  onClick={() => setSelectedBrand('all')}
+                  className="text-xs font-bold text-blue-600 hover:text-blue-800 hover:underline"
+                >
+                  Show All Brands
+                </button>
+              )}
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              {availableBrands.map((bName) => (
+                <button
+                  key={bName}
+                  onClick={() => setSelectedBrand(selectedBrand === bName ? 'all' : bName)}
+                  className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl border-2 transition-all flex items-center justify-center hover:scale-105 ${
+                    selectedBrand === bName
+                      ? 'bg-blue-50 border-blue-600 shadow-sm scale-105'
+                      : 'bg-slate-50 hover:bg-white border-slate-200/90 shadow-2xs'
+                  }`}
+                  title={`Filter products by ${bName}`}
+                >
+                  <BrandLogo name={bName} size="md" showText={true} />
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Filter Controls Bar */}
         <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 mb-8 shadow-sm">

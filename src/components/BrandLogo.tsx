@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 interface BrandLogoProps {
   name: string;
   logoUrl?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
   showText?: boolean;
 }
@@ -42,7 +42,14 @@ const LOCAL_OEM_LOGOS: Record<string, string> = {
   'tata steel': './brands/tata-steel.svg',
   'tata': './brands/tata-steel.svg',
   'jsw steel': './brands/jsw-steel.svg',
-  'jsw': './brands/jsw-steel.svg'
+  'jsw': './brands/jsw-steel.svg',
+  'jindal steel & power': './brands/jindal-steel.svg',
+  'jindal steel': './brands/jindal-steel.svg',
+  'jindal': './brands/jindal-steel.svg',
+  'skf bearings': './brands/skf.svg',
+  'skf': './brands/skf.svg',
+  'fenner': './brands/fenner.svg',
+  'elecon': './brands/elecon.svg'
 };
 
 export const BrandLogo: React.FC<BrandLogoProps> = ({
@@ -57,11 +64,13 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   // Normalize brand name for matching
   const cleanName = name.toLowerCase().trim();
 
-  // Size styling
+  // Size styling - generous heights for prominent OEM brand presence
   const sizeClasses = {
-    sm: 'h-7 text-xs',
-    md: 'h-11 text-sm',
-    lg: 'h-16 text-base'
+    xs: 'h-6 text-[10px]',
+    sm: 'h-9 sm:h-10 text-xs',
+    md: 'h-14 sm:h-16 text-sm',
+    lg: 'h-20 sm:h-24 text-base',
+    xl: 'h-28 sm:h-32 text-lg'
   }[size];
 
   // 1. Direct local original OEM logo check
@@ -70,12 +79,12 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
 
   if (localLogo && !imgFailed) {
     return (
-      <div className={`inline-flex items-center justify-center p-1 bg-white rounded-lg border border-slate-200/90 shadow-2xs hover:border-blue-400 transition-all ${sizeClasses} ${className}`}>
+      <div className={`inline-flex items-center justify-center ${sizeClasses} ${className}`}>
         <img
           src={localLogo}
           alt={`${name} Original OEM Logo`}
           onError={() => setImgFailed(true)}
-          className="max-h-full max-w-full object-contain"
+          className="h-full w-auto max-w-full object-contain filter contrast-105 drop-shadow-2xs"
           loading="lazy"
         />
       </div>
@@ -85,12 +94,12 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   // If an external logoUrl is provided and hasn't failed, attempt to render it
   if (logoUrl && !imgFailed) {
     return (
-      <div className={`flex items-center justify-center p-1.5 ${sizeClasses} ${className}`}>
+      <div className={`inline-flex items-center justify-center ${sizeClasses} ${className}`}>
         <img
           src={logoUrl}
           alt={`${name} logo`}
           onError={() => setImgFailed(true)}
-          className="max-h-full max-w-full object-contain filter contrast-105"
+          className="h-full w-auto max-w-full object-contain filter contrast-105 drop-shadow-2xs"
           loading="lazy"
         />
       </div>

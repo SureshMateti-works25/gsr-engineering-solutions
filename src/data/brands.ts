@@ -202,7 +202,7 @@ export const brandPartnersData: BrandPartner[] = [
     description: 'World-class industrial steel, structural sections, and precision seamless pipes.',
     popular: true,
     accentColor: '#003366',
-    logoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Tata_Steel_Logo.svg/320px-Tata_Steel_Logo.svg.svg'
+    logoUrl: './brands/tata-steel.svg'
   },
   {
     name: 'Jindal Steel & Power',
@@ -211,7 +211,7 @@ export const brandPartnersData: BrandPartner[] = [
     description: 'High tensile steel plates, ERW and seamless pipes for heavy process engineering.',
     popular: true,
     accentColor: '#004080',
-    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Jindal_Steel_and_Power_Logo.svg/320px-Jindal_Steel_and_Power_Logo.svg.svg'
+    logoUrl: './brands/jindal-steel.svg'
   },
   {
     name: 'JSW Steel',
@@ -220,7 +220,7 @@ export const brandPartnersData: BrandPartner[] = [
     description: 'Leading producer of coated steel, sheets, wire rods, and alloy steels.',
     popular: true,
     accentColor: '#d32f2f',
-    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/JSW_Group_logo.svg/320px-JSW_Group_logo.svg.svg'
+    logoUrl: './brands/jsw-steel.svg'
   },
   {
     name: 'SKF Bearings',
@@ -229,7 +229,7 @@ export const brandPartnersData: BrandPartner[] = [
     description: 'Global benchmark in deep groove ball bearings, spherical roller bearings & housing units.',
     popular: true,
     accentColor: '#005bac',
-    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/SKF_logo.svg/320px-SKF_logo.svg.svg'
+    logoUrl: './brands/skf.svg'
   },
   {
     name: 'Fenner',
@@ -237,7 +237,8 @@ export const brandPartnersData: BrandPartner[] = [
     type: 'Power Transmission & Couplings',
     description: 'Industrial belts, taper-lock pulleys, couplings, and power transmission drives.',
     popular: true,
-    accentColor: '#d97706'
+    accentColor: '#d97706',
+    logoUrl: './brands/fenner.svg'
   },
   {
     name: 'Elecon',
@@ -245,6 +246,7 @@ export const brandPartnersData: BrandPartner[] = [
     type: 'Industrial Gearboxes & Drives',
     description: 'Heavy helical, bevel-helical, and worm speed reduction gearboxes for continuous duty.',
     popular: true,
-    accentColor: '#b45309'
+    accentColor: '#b45309',
+    logoUrl: './brands/elecon.svg'
   }
 ];

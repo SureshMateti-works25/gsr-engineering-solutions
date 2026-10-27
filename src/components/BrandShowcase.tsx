@@ -56,56 +56,56 @@ export const BrandShowcase: React.FC<BrandShowcaseProps> = ({ onSelectBrandForSe
         </div>
 
         {/* Official OEM Partners Banner Strips from Master Poster */}
-        <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center justify-between">
-            <div className="text-xs font-bold uppercase tracking-wider text-blue-700 mb-2 flex items-center gap-1.5">
+        <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center justify-between">
+            <div className="text-xs font-bold uppercase tracking-wider text-blue-700 mb-3 flex items-center gap-1.5">
               <Zap className="w-4 h-4 text-blue-600" />
-              Electrical & Automation OEM Brands
+              Electrical & Automation OEM Brand Lineup
             </div>
-            <div className="w-full bg-slate-50 rounded-xl p-2 border border-slate-100 flex items-center justify-center">
+            <div className="w-full bg-slate-50/80 rounded-2xl p-4 border border-slate-100 flex items-center justify-center">
               <img 
                 src="./brands/banner-electrical-partners.png" 
                 alt="Electrical OEM Partners: Schneider, Siemens, ABB, Eaton, L&T, Havells, Legrand, CHNT, C&S, Panasonic" 
-                className="max-h-20 w-auto object-contain"
+                className="max-h-32 sm:max-h-40 w-auto object-contain drop-shadow-xs"
               />
             </div>
-            <p className="text-[11px] text-slate-500 mt-2 text-center">
+            <p className="text-[11px] text-slate-500 mt-3 text-center font-medium">
               Schneider Electric • Siemens • ABB • Eaton • L&T • Havells • Legrand • CHNT • C&S • Panasonic
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center justify-between">
-            <div className="text-xs font-bold uppercase tracking-wider text-cyan-700 mb-2 flex items-center gap-1.5">
+          <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center justify-between">
+            <div className="text-xs font-bold uppercase tracking-wider text-cyan-700 mb-3 flex items-center gap-1.5">
               <Wind className="w-4 h-4 text-cyan-600" />
-              Pneumatics & Fluid Power OEM Brands
+              Pneumatics & Fluid Power OEM Brand Lineup
             </div>
-            <div className="w-full bg-slate-50 rounded-xl p-2 border border-slate-100 flex items-center justify-center">
+            <div className="w-full bg-slate-50/80 rounded-2xl p-4 border border-slate-100 flex items-center justify-center">
               <img 
                 src="./brands/banner-pneumatics-partners.png" 
                 alt="Pneumatics OEM Partners: SMC, FESTO, AirTAC, Mindman, CKD, Parker, Camozzi, RG SS, Metal Work, Janatics, Yuken" 
-                className="max-h-20 w-auto object-contain"
+                className="max-h-32 sm:max-h-40 w-auto object-contain drop-shadow-xs"
               />
             </div>
-            <p className="text-[11px] text-slate-500 mt-2 text-center">
+            <p className="text-[11px] text-slate-500 mt-3 text-center font-medium">
               SMC • FESTO • AirTAC • Mindman • CKD • Parker Legris • Camozzi • RG SS • Metal Work • Janatics • Yuken
             </p>
           </div>
         </div>
 
         {/* Featured Brand Logo Strip / Wall */}
-        <div className="mb-12 p-4 rounded-2xl bg-slate-50 border border-slate-200 shadow-xs">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-3 text-center">
-            Top Industrial Brand Portfolio
+        <div className="mb-12 p-6 rounded-3xl bg-slate-50 border border-slate-200 shadow-xs">
+          <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 text-center">
+            Prominent Industrial OEM Partner Portfolio
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             {featuredMarqueeBrands.map((bName) => (
               <button
                 key={bName}
                 onClick={() => onSelectBrandForSearch(bName)}
-                className="p-2 sm:px-4 sm:py-2 bg-white rounded-xl border border-slate-200 hover:border-blue-400 shadow-2xs hover:shadow-sm transition-all hover:scale-105"
+                className="px-5 py-3 sm:px-6 sm:py-3.5 bg-white rounded-2xl border-2 border-slate-200 hover:border-blue-500 shadow-2xs hover:shadow-md transition-all hover:scale-105 flex items-center justify-center min-w-[130px] sm:min-w-[160px]"
                 title={`Filter products by ${bName}`}
               >
-                <BrandLogo name={bName} size="sm" showText={true} />
+                <BrandLogo name={bName} size="md" showText={true} />
               </button>
             ))}
           </div>
@@ -167,11 +167,11 @@ export const BrandShowcase: React.FC<BrandShowcaseProps> = ({ onSelectBrandForSe
             >
               <div>
                 {/* Brand Logo Container */}
-                <div className="w-full h-16 bg-white rounded-xl border border-slate-200/90 p-2.5 flex items-center justify-center mb-3.5 shadow-2xs group-hover:border-blue-300 transition-colors">
+                <div className="w-full h-24 sm:h-28 bg-white rounded-2xl border-2 border-slate-200/90 p-3 sm:p-4 flex items-center justify-center mb-4 shadow-2xs group-hover:border-blue-500 group-hover:shadow-md transition-all">
                   <BrandLogo 
                     name={brand.name} 
                     logoUrl={brand.logoUrl} 
-                    size="md" 
+                    size="lg" 
                     showText={true} 
                   />
                 </div>
