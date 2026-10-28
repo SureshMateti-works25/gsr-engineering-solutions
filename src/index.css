@@ -27,3 +27,34 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* GSTIN Active Verified Blinking Pulse Animations */
+@keyframes gst-pulse-blink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.96);
+  }
+}
+
+.gst-active-blink {
+  animation: gst-pulse-blink 1.2s ease-in-out infinite;
+}
+
+@keyframes gst-dot-blink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(0.7);
+  }
+}
+
+.gst-dot-blink {
+  animation: gst-dot-blink 1.2s ease-in-out infinite;
+}

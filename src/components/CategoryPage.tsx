@@ -94,9 +94,9 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
       default:
         return {
           title: 'Industrial Products Catalog',
-          headline: '62 Industrial Supplies Across 4 Specialized Divisions',
+          headline: 'Comprehensive Industrial Supplies Across 4 Specialized Divisions',
           sub: 'Browse complete catalog backed by verified GST invoicing and manufacturer test certificates.',
-          badge: 'All 62 Products',
+          badge: 'All Industrial Products',
           icon: Sparkles,
           bannerBg: 'from-[#0a2569] via-blue-900 to-indigo-950',
           accentText: 'text-blue-600',
@@ -197,7 +197,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                 className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm border border-white/20 transition-all flex items-center gap-2 shadow-sm"
               >
                 <FileText className="w-4 h-4 text-amber-300" />
-                <span>View Official 62-Product Poster</span>
+                <span>View Official Product Poster</span>
               </button>
 
               <button

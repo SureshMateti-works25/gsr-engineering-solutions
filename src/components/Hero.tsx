@@ -31,7 +31,7 @@ export const Hero: React.FC<HeroProps> = ({
   onNavigateToSection,
   onOpenFlyer
 }) => {
-  // 4 exact divisions from official GSR catalogue poster (62 products)
+  // 4 exact divisions from official GSR catalogue poster
   const quickCategories = [
     { 
       id: 'mechanical-items' as ProductCategory, 
@@ -124,9 +124,16 @@ export const Hero: React.FC<HeroProps> = ({
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-800 text-xs font-bold shadow-xs">
               Proprietor: <span className="text-[#0a2569]">G Sandeep Kumar</span>
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold shadow-xs">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-bold shadow-xs">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+              </span>
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              GSTIN: 36CTUPG6618J11Z9
+              <span>GSTIN: <strong className="font-mono text-slate-900 font-extrabold">36CTUPG6618J11Z9</strong></span>
+              <span className="px-2 py-0.5 rounded bg-emerald-600 text-white font-black text-[9px] uppercase tracking-wider gst-active-blink flex items-center gap-1">
+                ● ACTIVE VERIFIED
+              </span>
             </span>
           </div>
         </div>
@@ -140,7 +147,7 @@ export const Hero: React.FC<HeroProps> = ({
             </span>
           </h1>
           <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            One-stop supplier of SS & Pharma materials, electrical switchgear, mechanical power transmission, industrial pumps & tools with guaranteed Mill Test Certificates (MTC) across <strong className="text-slate-900 font-bold">Telangana & Andhra Pradesh</strong>.
+            One-stop supplier of SS & Pharma materials, electrical switchgear, mechanical power transmission, industrial pumps & tools with guaranteed Mill Test Certificates (MTC) across <strong className="text-slate-900 font-bold">Telangana, Andhra Pradesh, Tamil Nadu & Maharashtra</strong>.
           </p>
         </div>
 
@@ -154,7 +161,7 @@ export const Hero: React.FC<HeroProps> = ({
               type="text"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              placeholder="Search 62 industrial items: SS Pipes, MCCB, PLC, VFD, Solenoid Valves, SMC Cylinders..."
+              placeholder="Search industrial items: SS Pipes, MCCB, PLC, VFD, Solenoid Valves, SMC Cylinders..."
               className="w-full pl-12 pr-32 py-4 rounded-2xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0a2569] focus:border-transparent text-sm sm:text-base shadow-sm"
             />
             <button
@@ -167,14 +174,14 @@ export const Hero: React.FC<HeroProps> = ({
           </form>
           <div className="flex items-center justify-between mt-2.5 px-3 text-xs text-slate-500">
             <span>Popular: <span className="text-slate-800 font-medium">SS Pipes, MCCB Breakers, PLC / HMI, VFD Drives, Pneumatic Cylinders</span></span>
-            <span className="hidden sm:inline text-emerald-700 font-bold">✓ 62 Genuine Products • 21 OEM Brands</span>
+            <span className="hidden sm:inline text-emerald-700 font-bold">✓ Genuine Industrial Products • Leading OEM Brands</span>
           </div>
         </div>
 
         {/* 4 Bright, Colorful Category Pillars Matching Poster */}
         <div className="mb-10">
           <div className="text-xs font-bold uppercase tracking-wider text-slate-500 text-center mb-3">
-            Explore 62 Products Across 4 Official Divisions
+            Explore Products Across 4 Official Divisions
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 max-w-6xl mx-auto">
             {quickCategories.map((cat) => {
@@ -300,7 +307,7 @@ export const Hero: React.FC<HeroProps> = ({
           <div className="col-span-2 sm:col-span-1 p-3.5 rounded-xl bg-white border border-slate-200 text-center shadow-xs">
             <div className="text-xl sm:text-2xl font-black text-rose-600">24/7 SUPPORT</div>
             <div className="text-xs text-slate-700 mt-0.5 font-bold">Timely Dispatch</div>
-            <div className="text-[10px] text-slate-400">Telangana & Andhra Pradesh</div>
+            <div className="text-[10px] text-slate-400">Telangana, AP, Tamil Nadu & Maharashtra</div>
           </div>
         </div>
 

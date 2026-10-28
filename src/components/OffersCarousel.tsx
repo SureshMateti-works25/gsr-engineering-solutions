@@ -234,7 +234,7 @@ export const OffersCarousel: React.FC<OffersCarouselProps> = ({
                   GSR ENGINEERING SOLUTION'S
                 </div>
                 <div className="text-[11px] text-slate-500 mt-1">
-                  Proprietor: G Sandeep Kumar • GST Verified
+                  Proprietor: G Sandeep Kumar • <span className="inline-flex items-center gap-1 text-emerald-600 font-bold"><span className="relative flex h-1.5 w-1.5"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span></span><span className="gst-active-blink">● Active Verified GST</span></span>
                 </div>
               </div>
             </div>
@@ -244,7 +244,7 @@ export const OffersCarousel: React.FC<OffersCarouselProps> = ({
           {/* Dots Navigation Bar */}
           <div className="px-6 py-3 bg-black/20 border-t border-white/10 flex items-center justify-between">
             <span className="text-xs text-blue-200">
-              *Offers applicable on commercial, contractor & project inquiries across AP & Telangana.
+              *Offers applicable on commercial, contractor & project inquiries across Telangana, Andhra Pradesh, Tamil Nadu & Maharashtra.
             </span>
             <div className="flex items-center gap-1.5">
               {offersData.map((_, idx) => (

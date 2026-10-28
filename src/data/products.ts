@@ -1829,7 +1829,7 @@ export const productCategoriesList = [
   {
     "id": "all",
     "label": "All Products",
-    "count": 62,
+    "count": "All",
     "color": "blue",
     "flyerHeader": "COMPLETE INDUSTRIAL PORTFOLIO"
   },

@@ -201,7 +201,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <ShieldCheck className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-xs uppercase text-slate-500 font-bold">Registered GSTIN (Govt. Verified)</div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs uppercase text-slate-500 font-bold">Registered GSTIN</span>
+                    <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-[9px] uppercase tracking-wider">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-600"></span>
+                      </span>
+                      <span className="gst-active-blink">● Active Verified</span>
+                    </span>
+                  </div>
                   <div className="font-mono font-black text-slate-900 text-sm sm:text-base tracking-wider mt-0.5">
                     36CTUPG6618J11Z9
                   </div>
@@ -225,7 +234,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               <div className="text-slate-600 pl-6 space-y-1">
                 <div>• Monday – Saturday: <span className="text-slate-900 font-bold">9:00 AM – 8:00 PM</span></div>
                 <div>• Critical Breakdown Hotline: <span className="text-emerald-600 font-bold">24/7 Available</span></div>
-                <div>• Dispatch Coverage: <span className="text-slate-900 font-semibold">All industrial areas in Telangana & AP</span></div>
+                <div>• Dispatch Coverage: <span className="text-slate-900 font-semibold">All industrial areas in Telangana, AP, Tamil Nadu & Maharashtra</span></div>
               </div>
             </div>
 
@@ -242,7 +251,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
                 <div>
                   <span className="font-semibold text-slate-900">Coverage & Delivery Hubs:</span>
-                  <div className="text-slate-700">Hyderabad & Secunderabad (Telangana), Vizag, Vijayawada & Guntur (Andhra Pradesh)</div>
+                  <div className="text-slate-700">Telangana, Andhra Pradesh, Tamil Nadu & Maharashtra (Hyderabad, Vizag, Chennai, Mumbai, Pune, Vijayawada)</div>
                 </div>
               </div>
             </div>
@@ -411,7 +420,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         onChange={handleChange}
                         className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-sm text-slate-800 font-medium focus:outline-none focus:bg-white focus:border-blue-600"
                       >
-                        <option value="all">Multiple / General Inquiry (All 62 Products)</option>
+                        <option value="all">Multiple / General Inquiry (All Products)</option>
                         <option value="mechanical-items">Mechanical Items (18 Items: Pipes, Flanges, Valves, Fasteners)</option>
                         <option value="electrical-items">Electrical Items (18 Items: Switchgear, Breakers, Cables)</option>
                         <option value="automation-electronics">Electronics & Automation (15 Items: Sensors, PLC, VFD, HMI)</option>

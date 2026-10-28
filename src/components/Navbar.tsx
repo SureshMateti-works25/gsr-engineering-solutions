@@ -46,11 +46,19 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center space-x-3 sm:space-x-5">
             <span className="flex items-center gap-1.5 text-blue-200 font-medium text-[11px] sm:text-xs">
               <MapPin className="w-3.5 h-3.5 text-amber-400" />
-              Serving: <strong className="text-white">Telangana & Andhra Pradesh</strong>
+              Serving: <strong className="text-white">Telangana, Andhra Pradesh, Tamil Nadu & Maharashtra</strong>
             </span>
-            <span className="hidden md:inline-flex items-center gap-1.5 text-blue-200 text-xs">
+            <span className="inline-flex items-center gap-1.5 bg-emerald-950/70 border border-emerald-500/50 px-2.5 py-0.5 rounded-full text-emerald-300 text-[11px] sm:text-xs font-semibold shadow-xs">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              GSTIN: <span className="font-mono text-white font-bold">36CTUPG6618J11Z9</span>
+              <span>GSTIN:</span>
+              <span className="font-mono text-white font-bold tracking-wider">36CTUPG6618J11Z9</span>
+              <span className="px-2 py-0.5 rounded bg-emerald-500 text-slate-950 font-black text-[9px] uppercase tracking-wider gst-active-blink flex items-center gap-1">
+                ● ACTIVE VERIFIED
+              </span>
             </span>
           </div>
 

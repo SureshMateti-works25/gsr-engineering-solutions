@@ -164,7 +164,7 @@ export function App() {
               onNavigateToSection={handleNavigateToSection}
             />
 
-            {/* Product Catalog Section with 62 Products across 4 Poster Divisions */}
+            {/* Product Catalog Section across 4 Poster Divisions */}
             <ProductCatalog
               searchQuery={searchQuery}
               onSearchChange={setSearchQuery}

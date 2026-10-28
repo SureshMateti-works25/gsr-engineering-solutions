@@ -29,7 +29,7 @@ export const CatalogueModal: React.FC<CatalogueModalProps> = ({
 
   const currentImageSrc = activeFlyer === 'poster' ? './gsr-poster.png' : './gsr-catalogue-banner.jpg';
   const currentFileName = activeFlyer === 'poster' 
-    ? 'GSR-Engineering-Solutions-Master-Product-Poster-62Items.png' 
+    ? 'GSR-Engineering-Solutions-Master-Product-Poster.png' 
     : 'GSR-Engineering-Solutions-Catalogue-Flyer.jpg';
 
   const handleDownload = () => {
@@ -78,7 +78,7 @@ export const CatalogueModal: React.FC<CatalogueModalProps> = ({
                   activeFlyer === 'poster' ? 'bg-amber-400 text-slate-950 shadow-xs' : 'text-white hover:text-amber-300'
                 }`}
               >
-                62-Product Poster
+                Official Product Poster
               </button>
               <button
                 onClick={() => { setActiveFlyer('original'); resetZoom(); }}
@@ -156,7 +156,14 @@ export const CatalogueModal: React.FC<CatalogueModalProps> = ({
         {/* Modal Footer Actions */}
         <div className="p-3.5 sm:p-4 bg-white border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 shrink-0 shadow-lg">
           <div className="text-xs text-slate-600 flex items-center gap-2">
-            <span className="font-bold text-slate-900">GSTIN:</span> 36CTUPG6618J11Z9
+            <span className="inline-flex items-center gap-1.5 font-bold text-slate-900">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span>GSTIN: 36CTUPG6618J11Z9</span>
+              <span className="px-2 py-0.5 rounded bg-emerald-600 text-white font-black text-[9px] uppercase tracking-wider gst-active-blink flex items-center gap-1">● ACTIVE VERIFIED</span>
+            </span>
             <span className="text-slate-300">•</span>
             <span className="hidden sm:inline">Ambedkar Veedhi, Tadepalligudem, AP</span>
           </div>

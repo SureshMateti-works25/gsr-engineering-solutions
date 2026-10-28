@@ -75,7 +75,7 @@ export const VisitorCounterWidget: React.FC<VisitorCounterWidgetProps> = ({
             {visitorCount.toLocaleString()}
           </div>
           <div className="text-[10px] text-blue-300 mt-0.5 font-medium">
-            Across AP & Telangana
+            Across Telangana, AP, Tamil Nadu & Maharashtra
           </div>
         </div>
 

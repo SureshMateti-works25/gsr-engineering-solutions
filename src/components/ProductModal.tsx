@@ -219,7 +219,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
           <div className="p-3.5 rounded-xl bg-blue-50 border border-blue-200 flex items-center gap-3">
             <ShieldCheck className="w-6 h-6 text-blue-600 shrink-0" />
             <div className="text-xs text-slate-700">
-              <span className="font-bold text-slate-900">Genuine Material Assurance:</span> Supplied with Original Manufacturer Test Certificate (MTC), GST Invoice, and express dispatch across Telangana & AP.
+              <span className="font-bold text-slate-900">Genuine Material Assurance:</span> Supplied with Original Manufacturer Test Certificate (MTC), GST Invoice, and express dispatch across Telangana, Andhra Pradesh, Tamil Nadu & Maharashtra.
             </div>
           </div>
         </div>

@@ -38,7 +38,7 @@ export const WhyChooseUs: React.FC = () => {
     {
       icon: Truck,
       title: 'Timely Express Delivery',
-      desc: 'Strategic stocking and express dispatch across Telangana & Andhra Pradesh industrial belts to eliminate plant downtime.',
+      desc: 'Strategic stocking and express dispatch across Telangana, Andhra Pradesh, Tamil Nadu & Maharashtra industrial belts to eliminate plant downtime.',
       badge: 'Express Dispatch'
     },
     {
@@ -120,7 +120,7 @@ export const WhyChooseUs: React.FC = () => {
                 Strategic Regional Footprint
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-                Comprehensive Coverage Across Telangana & Andhra Pradesh
+                Comprehensive Coverage Across Telangana, Andhra Pradesh, Tamil Nadu & Maharashtra
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 With centralized logistics in Hyderabad and rapid freight transit routes, we serve major industrial parks, pharmaceuticals hubs, thermal plants, and heavy fabrication yards.

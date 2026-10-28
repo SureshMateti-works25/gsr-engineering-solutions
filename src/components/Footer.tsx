@@ -59,14 +59,21 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
-            <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
-              <ShieldCheck className="w-4 h-4" />
-              GSTIN: 36CTUPG6618J11Z9
+            <span className="inline-flex items-center gap-1.5 text-emerald-400 font-bold">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <span>GSTIN: 36CTUPG6618J11Z9</span>
+              <span className="px-2 py-0.5 rounded bg-emerald-500 text-slate-950 font-black text-[9px] uppercase tracking-wider gst-active-blink flex items-center gap-1">
+                ● ACTIVE VERIFIED
+              </span>
             </span>
             <span className="text-slate-600">|</span>
             <span className="flex items-center gap-1.5 text-sky-400 font-medium">
               <MapPin className="w-4 h-4" />
-              Telangana & Andhra Pradesh
+              Telangana, Andhra Pradesh, Tamil Nadu & Maharashtra
             </span>
             <span className="text-slate-600">|</span>
             <a 
@@ -87,7 +94,7 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="lg:col-span-2 space-y-4">
             <h4 className="text-white font-bold text-base">About GSR Engineering Solutions</h4>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              We are a premier industrial supply and field engineering enterprise based in Andhra Pradesh and serving all industrial zones across Telangana and AP. Supplying authentic materials with Mill Test Certificates (MTC) and reliable turnkey maintenance.
+              We are a premier industrial supply and field engineering enterprise based in Andhra Pradesh and serving all industrial zones across Telangana, Andhra Pradesh, Tamil Nadu & Maharashtra. Supplying authentic materials with Mill Test Certificates (MTC) and reliable turnkey maintenance.
             </p>
             <div className="pt-2 text-xs text-slate-300 space-y-1.5">
               <div><strong>Proprietor:</strong> G Sandeep Kumar</div>
@@ -102,7 +109,7 @@ export const Footer: React.FC<FooterProps> = ({
                   className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-blue-900/60 hover:bg-blue-800 text-white text-xs font-bold border border-blue-700 transition-colors"
                 >
                   <FileText className="w-4 h-4 text-amber-400" />
-                  <span>View Official Product Poster (62 Items)</span>
+                  <span>View Official Product Poster</span>
                 </button>
               </div>
             )}
@@ -156,7 +163,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => handleCategoryClick('all')} 
                   className="hover:text-white transition-colors text-left text-amber-400 font-bold"
                 >
-                  View All 62 Products & Offers →
+                  View All Products & Offers →
                 </button>
               </li>
             </ul>
@@ -246,7 +253,7 @@ export const Footer: React.FC<FooterProps> = ({
                     Ambedkar Veedhi, Tadepalligudem, Andhra Pradesh - 534176, India
                   </p>
                   <p className="text-slate-500 text-[10px] mt-0.5">
-                    Service Areas: Telangana & Andhra Pradesh
+                    Service Areas: Telangana, Andhra Pradesh, Tamil Nadu & Maharashtra
                   </p>
                 </div>
               </div>

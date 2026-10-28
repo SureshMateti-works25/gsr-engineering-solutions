@@ -198,11 +198,11 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
         return {
           number: 'ALL',
           name: 'FULL INDUSTRIAL INVENTORY',
-          headline: '62 Specialized Industrial Products Across 4 Official Poster Divisions',
+          headline: 'Specialized Industrial Products Across 4 Official Divisions',
           description: 'Browse complete catalog or use quick filters above to narrow by category, sub-category, or OEM manufacturer. All materials backed by verified GST invoicing and manufacturer test certificates.',
           gradient: 'from-[#0a2569] via-blue-900 to-indigo-950',
           border: 'border-blue-400/30',
-          features: ['4 Specialized Categories', '62 Item Inventory', 'Official OEM Brands', '24/7 Field Maintenance'],
+          features: ['4 Specialized Categories', 'Comprehensive Inventory', 'Official OEM Brands', '24/7 Field Maintenance'],
           icon: Sparkles
         };
     }
@@ -222,7 +222,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
             High Precision Components & OEM Supplies
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600">
-            Organized across our 4 flagship divisions from our official poster: Mechanical Items (18), Electrical Items (18), Electronics & Industrial Automation (15), and Pneumatics Items OEM Make (11).
+            Organized across our 4 flagship divisions from our official poster: Mechanical Items, Electrical Items, Electronics & Industrial Automation, and Pneumatics Items OEM Make.
           </p>
         </div>
 
@@ -246,7 +246,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 <span className={`px-1.5 py-0.5 rounded-md text-[10px] font-extrabold ${
                   isActive ? 'bg-black/20 text-white' : 'bg-slate-100 text-slate-600'
                 }`}>
-                  {cat.count}
+                  {cat.id === 'all' ? 'All' : cat.count}
                 </span>
               </button>
             );

@@ -56,7 +56,7 @@ export const servicesData: ServiceItem[] = [
     description: 'Immediate technical field support across Hyderabad, Secunderabad, Medchal, Patancheru, Vizag, Vijayawada, and the entire Telugu states. Our engineers diagnose and resolve tricky machine faults on-site.',
     iconName: 'Headphones',
     features: [
-      'Rapid field dispatch across all major industrial corridors in Telangana & AP',
+      'Rapid field dispatch across all major industrial corridors in Telangana, Andhra Pradesh, Tamil Nadu & Maharashtra',
       'On-site root-cause failure analysis (RCFA) for repeat breakdowns',
       'Retrofitting modern electrical switchgear & automation into legacy panels',
       'Pneumatic circuit troubleshooting & air leakage optimization audits',

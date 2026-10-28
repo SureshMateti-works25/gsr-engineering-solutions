@@ -64,7 +64,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onInquireProje
             </span>
           </h2>
           <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
-            Unlike pure trading middlemen, GSR Engineering Solutions provides turnkey execution: genuine material procurement, precision on-site orbital welding, switchgear retrofitting, pneumatic automation overhauls, and comprehensive 24/7 AMC plant support across Telangana and Andhra Pradesh.
+            Unlike pure trading middlemen, GSR Engineering Solutions provides turnkey execution: genuine material procurement, precision on-site orbital welding, switchgear retrofitting, pneumatic automation overhauls, and comprehensive 24/7 AMC plant support across Telangana, Andhra Pradesh, Tamil Nadu and Maharashtra.
           </p>
         </div>
 
