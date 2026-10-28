@@ -232,7 +232,7 @@ export const BrandShowcase: React.FC<BrandShowcaseProps> = ({ onSelectBrandForSe
           </div>
 
           <a
-            href="https://wa.me/918712444439?text=Hello%20GSR%20Engineering%20Solutions,%20I%20have%20a%20BOM%20/%20list%20of%20OEM%20part%20numbers%20I%20would%20like%20to%20get%20quoted."
+            href="https://wa.me/918712344439?text=Hello%20GSR%20Engineering%20Solutions,%20I%20have%20a%20BOM%20/%20list%20of%20OEM%20part%20numbers%20I%20would%20like%20to%20get%20quoted."
             target="_blank"
             rel="noopener noreferrer"
             className="whitespace-nowrap px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs sm:text-sm shadow-sm transition-all shrink-0"

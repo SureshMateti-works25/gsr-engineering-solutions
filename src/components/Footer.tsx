@@ -70,10 +70,10 @@ export const Footer: React.FC<FooterProps> = ({
             </span>
             <span className="text-slate-600">|</span>
             <a 
-              href="tel:+918712444439" 
+              href="tel:+918712344439" 
               className="text-white font-bold hover:text-amber-400 transition-colors"
             >
-              Hotline: +91 8712444439
+              Hotline: +91 8712344439
             </a>
           </div>
         </div>
@@ -218,11 +218,11 @@ export const Footer: React.FC<FooterProps> = ({
             </h4>
             <div className="space-y-2.5 text-xs">
               <a 
-                href="tel:+918712444439" 
+                href="tel:+918712344439" 
                 className="flex items-center gap-2 hover:text-white transition-colors font-bold text-white"
               >
                 <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <span>+91 8712444439</span>
+                <span>+91 8712344439</span>
               </a>
               <a 
                 href="mailto:sales@gsrengineeringsolutions.com" 

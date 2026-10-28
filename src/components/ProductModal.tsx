@@ -97,7 +97,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
     const text = encodeURIComponent(
       `Hello GSR Engineering Solutions, I need technical details and a quote for: "${prodName}". Please connect with me.`
     );
-    return `https://wa.me/918712444439?text=${text}`;
+    return `https://wa.me/918712344439?text=${text}`;
   };
 
   return (

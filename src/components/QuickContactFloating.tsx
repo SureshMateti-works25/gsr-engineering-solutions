@@ -26,20 +26,20 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({ rfqL
 
       {/* Floating Call Button */}
       <a
-        href="tel:+918712444439"
+        href="tel:+918712344439"
         className="w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center shadow-lg shadow-blue-600/30 transition-all hover:scale-110 active:scale-95 border-2 border-white"
-        title="Call G Sandeep Kumar: +91 8712444439"
+        title="Call G Sandeep Kumar: +91 8712344439"
       >
         <Phone className="w-5 h-5" />
       </a>
 
       {/* Floating WhatsApp Quick Chat Button */}
       <a
-        href="https://wa.me/918712444439?text=Hello%20GSR%20Engineering%20Solutions,%20I%20am%20looking%20for%20industrial%20products/services.%20Please%20assist%20me."
+        href="https://wa.me/918712344439?text=Hello%20GSR%20Engineering%20Solutions,%20I%20am%20looking%20for%20industrial%20products/services.%20Please%20assist%20me."
         target="_blank"
         rel="noopener noreferrer"
         className="relative w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center shadow-2xl shadow-emerald-500/30 transition-all hover:scale-110 active:scale-95 border-2 border-white group"
-        title="Chat on WhatsApp (+91 8712444439)"
+        title="Chat on WhatsApp (+91 8712344439)"
       >
         <span className="absolute -top-1 -right-1 flex h-4 w-4">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>

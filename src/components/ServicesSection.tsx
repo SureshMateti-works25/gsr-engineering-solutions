@@ -159,11 +159,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onInquireServi
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <a
-              href="tel:+918712444439"
+              href="tel:+918712344439"
               className="px-6 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-sm shadow-md transition-all flex items-center gap-2"
             >
               <PhoneCall className="w-4 h-4 text-slate-950" />
-              <span>Call +91 8712444439</span>
+              <span>Call +91 8712344439</span>
             </a>
           </div>
         </div>

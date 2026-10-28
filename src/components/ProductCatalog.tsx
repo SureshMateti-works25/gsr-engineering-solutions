@@ -408,7 +408,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                     </button>
                   )}
                   <span className="text-[10px] text-white/80 font-medium hidden sm:block text-right">
-                    Proprietor: G Sandeep Kumar (+91 8712444439)
+                    Proprietor: G Sandeep Kumar (+91 8712344439)
                   </span>
                 </div>
               </div>

@@ -61,11 +61,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             <a 
-              href="tel:+918712444439" 
+              href="tel:+918712344439" 
               className="flex items-center gap-1.5 hover:text-amber-300 transition-colors font-bold text-white"
             >
               <Phone className="w-3.5 h-3.5 text-amber-400" />
-              <span>+91 8712444439</span>
+              <span>+91 8712344439</span>
             </a>
             <a 
               href="mailto:sales@gsrengineeringsolutions.com" 
@@ -264,11 +264,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               <VisitorCounterWidget variant="badge" />
             </div>
             <a
-              href="tel:+918712444439"
+              href="tel:+918712344439"
               className="w-full py-2.5 px-4 rounded-xl text-center font-semibold text-slate-800 bg-slate-100 hover:bg-slate-200 flex items-center justify-center gap-2 text-sm border border-slate-200"
             >
               <Phone className="w-4 h-4 text-blue-600" />
-              Call G Sandeep Kumar: +91 8712444439
+              Call G Sandeep Kumar: +91 8712344439
             </a>
             <button
               onClick={() => handleNavClick('contact')}

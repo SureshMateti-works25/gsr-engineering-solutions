@@ -202,7 +202,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onInquireProje
 
                   <div className="flex items-center gap-2">
                     <a
-                      href={`https://wa.me/918712444439?text=${encodeURIComponent(`Hello GSR Engineering Solutions, I am interested in discussing a project similar to: "${project.title}". Please connect with me.`)}`}
+                      href={`https://wa.me/918712344439?text=${encodeURIComponent(`Hello GSR Engineering Solutions, I am interested in discussing a project similar to: "${project.title}". Please connect with me.`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-300 transition-colors shadow-2xs"
@@ -242,10 +242,10 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onInquireProje
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <a
-              href="tel:+918712444439"
+              href="tel:+918712344439"
               className="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs sm:text-sm shadow-md transition-all flex items-center gap-2"
             >
-              <span>Call Engineer: +91 8712444439</span>
+              <span>Call Engineer: +91 8712344439</span>
             </a>
           </div>
         </div>
@@ -340,7 +340,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onInquireProje
 
             {/* Modal Footer */}
             <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-3 shrink-0">
-              <span className="text-xs text-slate-500">Contact: G Sandeep Kumar (+91 8712444439)</span>
+              <span className="text-xs text-slate-500">Contact: G Sandeep Kumar (+91 8712344439)</span>
               <button
                 onClick={() => {
                   const title = selectedStudyModal.title;

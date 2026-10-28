@@ -235,7 +235,7 @@ export const Hero: React.FC<HeroProps> = ({
           </button>
 
           <a
-            href="https://wa.me/918712444439?text=Hello%20GSR%20Engineering%20Solutions,%20I%20would%20like%20to%20enquire%20about%20industrial%20products%20and%20services."
+            href="https://wa.me/918712344439?text=Hello%20GSR%20Engineering%20Solutions,%20I%20would%20like%20to%20enquire%20about%20industrial%20products%20and%20services."
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-sm sm:text-base font-extrabold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 shadow-md shadow-emerald-500/10 transition-all"
@@ -245,11 +245,11 @@ export const Hero: React.FC<HeroProps> = ({
           </a>
 
           <a
-            href="tel:+918712444439"
+            href="tel:+918712344439"
             className="flex items-center gap-2 px-5 py-3.5 rounded-xl text-sm font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-sm transition-all"
           >
             <PhoneCall className="w-4 h-4 text-blue-600" />
-            <span>+91 8712444439</span>
+            <span>+91 8712344439</span>
           </a>
         </div>
 

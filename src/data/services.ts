@@ -62,7 +62,7 @@ export const servicesData: ServiceItem[] = [
       'Pneumatic circuit troubleshooting & air leakage optimization audits',
       'Hands-on technical guidance for plant maintenance teams'
     ],
-    sla: 'Direct mobile hotline: +91 8712444439 for rapid engineer dispatch',
+    sla: 'Direct mobile hotline: +91 8712344439 for rapid engineer dispatch',
     imageUrl: 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80'
   },
   {

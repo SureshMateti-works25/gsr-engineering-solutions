@@ -94,7 +94,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
     msg += `Please revert with price quote and terms.\nGSTIN: 36CTUPG6618J11Z9`;
 
-    return `https://wa.me/918712444439?text=${encodeURIComponent(msg)}`;
+    return `https://wa.me/918712344439?text=${encodeURIComponent(msg)}`;
   };
 
   return (
@@ -135,7 +135,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
               <div className="space-y-3 text-xs sm:text-sm">
                 <a
-                  href="tel:+918712444439"
+                  href="tel:+918712344439"
                   className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 transition-colors group"
                 >
                   <div className="p-2 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-100">
@@ -143,12 +143,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
                   <div>
                     <div className="text-[10px] uppercase font-bold text-slate-400">Direct Mobile / Call</div>
-                    <div className="font-bold text-slate-900 group-hover:text-blue-600">+91 8712444439</div>
+                    <div className="font-bold text-slate-900 group-hover:text-blue-600">+91 8712344439</div>
                   </div>
                 </a>
 
                 <a
-                  href="https://wa.me/918712444439"
+                  href="https://wa.me/918712344439"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 p-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-slate-700 border border-emerald-200 transition-colors group"
@@ -158,7 +158,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </div>
                   <div>
                     <div className="text-[10px] uppercase font-bold text-emerald-700">WhatsApp Instant Chat</div>
-                    <div className="font-bold text-slate-900 group-hover:text-emerald-700">+91 8712444439</div>
+                    <div className="font-bold text-slate-900 group-hover:text-emerald-700">+91 8712344439</div>
                   </div>
                 </a>
 

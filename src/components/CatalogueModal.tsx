@@ -63,7 +63,7 @@ export const CatalogueModal: React.FC<CatalogueModalProps> = ({
                 </span>
               </h3>
               <p className="text-[11px] text-blue-200 hidden sm:block">
-                Building Trust, Delivering Quality • Proprietor: G Sandeep Kumar (+91 8712444439)
+                Building Trust, Delivering Quality • Proprietor: G Sandeep Kumar (+91 8712344439)
               </p>
             </div>
           </div>
@@ -171,7 +171,7 @@ export const CatalogueModal: React.FC<CatalogueModalProps> = ({
             </button>
 
             <a
-              href="https://wa.me/918712444439?text=Hello%20GSR%20Engineering%20Solutions,%20I%20reviewed%20your%20master%20product%20catalogue%20and%20would%20like%20to%20request%20a%20quotation."
+              href="https://wa.me/918712344439?text=Hello%20GSR%20Engineering%20Solutions,%20I%20reviewed%20your%20master%20product%20catalogue%20and%20would%20like%20to%20request%20a%20quotation."
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition-colors"

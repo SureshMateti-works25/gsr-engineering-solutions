@@ -71,7 +71,7 @@ export const RfqDrawer: React.FC<RfqDrawerProps> = ({
     msg += `Please reply with best prices, lead time, and GST terms.\n`;
     msg += `Thank you!`;
 
-    return `https://wa.me/918712444439?text=${encodeURIComponent(msg)}`;
+    return `https://wa.me/918712344439?text=${encodeURIComponent(msg)}`;
   };
 
   return (

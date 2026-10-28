@@ -68,7 +68,7 @@ export const OffersCarousel: React.FC<OffersCarouselProps> = ({
     const text = encodeURIComponent(
       `Hello GSR Engineering Solutions, I would like to claim the special offer "${offer.title}" (Coupon Code: ${offer.couponCode}). Please provide discounted pricing and availability.`
     );
-    return `https://wa.me/918712444439?text=${text}`;
+    return `https://wa.me/918712344439?text=${text}`;
   };
 
   return (
@@ -195,7 +195,7 @@ export const OffersCarousel: React.FC<OffersCarouselProps> = ({
                   className="flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs sm:text-sm shadow-lg shadow-emerald-500/25 transition-all hover:scale-105 active:scale-95"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  <span>Claim via WhatsApp (+91 8712444439)</span>
+                  <span>Claim via WhatsApp (+91 8712344439)</span>
                 </a>
 
                 <button

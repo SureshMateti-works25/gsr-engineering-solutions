@@ -121,7 +121,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     const text = encodeURIComponent(
       `Hello GSR Engineering Solutions, I am interested in inquiring about "${prodName}". Please provide availability and a price quotation.`
     );
-    return `https://wa.me/918712444439?text=${text}`;
+    return `https://wa.me/918712344439?text=${text}`;
   };
 
   return (
