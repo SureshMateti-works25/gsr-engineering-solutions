@@ -155,30 +155,31 @@ export const productsData: ProductItem[] = [
   },
   {
     "id": "couplings",
-    "name": "Couplings",
+    "name": "Couplings (SS & Mechanical)",
     "category": "mechanical-items",
-    "subCategory": "Power Transmission",
-    "tagline": "Tyre, Pin-Bush, Gear, Jaw, Grid & Fluid mechanical couplings",
-    "description": "High-performance mechanical shaft couplings engineered to absorb angular, parallel, and axial misalignments while damping torsional shock and vibration between motors and driven machines.",
+    "subCategory": "Piping & Connectors",
+    "tagline": "Full, half, threaded SS pipe socket couplings & flexible transmission couplings",
+    "description": "High-grade stainless steel forged and machined threaded socket couplings (Full Couplings, Half Couplings, Reducing Sockets) and heavy-duty mechanical flexible couplings engineered for leak-proof fluid joints, instrument ports, and torque transmission.",
     "specifications": [
-      "Types: Flexible Pin Bush, Gear Couplings, Tyre Couplings, Jaw/Lovejoy, Grid Couplings",
-      "Torque Capacity: Up to 500,000 Nm",
-      "Bore Sizes: 10 mm to 450 mm with precision keyways",
-      "MOC: Graded Cast Iron (CI), Forged Carbon Steel, Polyurethane inserts",
-      "Standards: AGMA, DIN, ISO balancing standards"
+      "Types: SS 304/316 Full Couplings, Half Couplings, Reducing Sockets, Threaded & Socket Weld, Flexible Couplings",
+      "Pressure Ratings: Class 150, 3000 PSI, 6000 PSI forged standards",
+      "Thread Standards: BSPT, NPT, BSP precision CNC internal threads",
+      "MOC: SS 304, SS 304L, SS 316, SS 316L, Forged Carbon Steel (A105)",
+      "Sizes: 1/8\" NB to 4\" NB (Piping), Bore sizes 10 mm to 100 mm"
     ],
     "brands": [
-      "Fenner",
-      "Elecon",
-      "Lovejoy"
+      "Tata Steel",
+      "Jindal Steel & Power",
+      "Fenner"
     ],
     "popular": true,
     "applications": [
-      "Motor-Pump Sets",
-      "Compressor Drives",
-      "Turbine Drives",
-      "Rolling Mill Lines"
+      "Chemical & Pharma Process Piping",
+      "High Pressure Hydraulic & Steam Lines",
+      "Pump & Motor Instrumentation Ports",
+      "Fluid Distribution Manifolds"
     ],
+    "badge": "In Stock",
     "discountBadge": "10% OFF",
     "imageUrl": "./products/couplings.png"
   },
