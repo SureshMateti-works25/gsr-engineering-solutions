@@ -5,6 +5,31 @@ export type ProductCategory =
   | 'automation-electronics'
   | 'pneumatics-items';
 
+export type IndustryDomainId = 
+  | 'all'
+  | 'pharma-biotech'
+  | 'chemical-petrochem'
+  | 'food-dairy-beverage'
+  | 'steel-heavy-engineering'
+  | 'automation-oem'
+  | 'water-etp-utilities';
+
+export interface IndustryDomain {
+  id: IndustryDomainId;
+  name: string;
+  badge: string;
+  iconName: string;
+  tagline: string;
+  description: string;
+  color: string;
+  gradient: string;
+  borderHover: string;
+  keyStandards: string[];
+  hubAreas: string[];
+  specificProductIds: string[];
+  commonProductIds: string[];
+}
+
 export interface ProductItem {
   id: string;
   name: string;
@@ -63,7 +88,6 @@ export interface OfferItem {
   imageUrl: string;
   targetCategoryLabel: string;
 }
-
 
 export interface InquiryFormData {
   fullName: string;

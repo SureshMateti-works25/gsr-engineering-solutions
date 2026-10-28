@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import type { ProductCategory, ProductItem, RfqItem } from './types';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { DomainSolutionsSection } from './components/DomainSolutionsSection';
 import { OffersCarousel } from './components/OffersCarousel';
 import { ProductCatalog } from './components/ProductCatalog';
 import { ProjectsSection } from './components/ProjectsSection';
@@ -15,6 +16,7 @@ import { RfqDrawer } from './components/RfqDrawer';
 import { QuickContactFloating } from './components/QuickContactFloating';
 import { CatalogueModal } from './components/CatalogueModal';
 import { CategoryPage } from './components/CategoryPage';
+import { industryDomainsData } from './data/domains';
 
 export function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -25,6 +27,10 @@ export function App() {
   const [isFlyerModalOpen, setIsFlyerModalOpen] = useState(false);
   const [prefilledService, setPrefilledService] = useState<string>('');
   const [activeCategoryPage, setActiveCategoryPage] = useState<ProductCategory | null>(null);
+
+  // Industry Domain Filter state
+  const [domainFilterIds, setDomainFilterIds] = useState<string[]>([]);
+  const [activeDomainName, setActiveDomainName] = useState<string | null>(null);
 
   // Sync with URL Hash for Deep Linking and Category Pages
   useEffect(() => {
@@ -116,6 +122,29 @@ export function App() {
     handleNavigateToSection('contact');
   };
 
+  // Domain filtering handlers
+  const handleFilterCatalogByDomain = (productIds: string[], domainName: string) => {
+    setDomainFilterIds(productIds);
+    setActiveDomainName(domainName);
+    setSelectedCategory('all');
+    handleNavigateToSection('catalog');
+  };
+
+  const handleClearDomainFilter = () => {
+    setDomainFilterIds([]);
+    setActiveDomainName(null);
+  };
+
+  const handleSelectDomainFilterById = (domainId: string) => {
+    const dom = industryDomainsData.find(d => d.id === domainId);
+    if (dom) {
+      const allIds = [...dom.specificProductIds, ...dom.commonProductIds];
+      handleFilterCatalogByDomain(allIds, dom.name);
+    } else {
+      handleClearDomainFilter();
+    }
+  };
+
   const isCurrentProductInRfq = selectedProductModal 
     ? rfqList.some(item => item.product.id === selectedProductModal.id)
     : false;
@@ -158,6 +187,13 @@ export function App() {
               onOpenFlyer={() => setIsFlyerModalOpen(true)}
             />
 
+            {/* TOP SECTION: Domain-Specific Solutions & Common Plant Supplies */}
+            <DomainSolutionsSection
+              onSelectProduct={setSelectedProductModal}
+              onFilterCatalogByDomain={handleFilterCatalogByDomain}
+              onNavigateToSection={handleNavigateToSection}
+            />
+
             {/* Special Discounts & Product Offers Image Carousel */}
             <OffersCarousel
               onSelectCategory={setSelectedCategory}
@@ -174,6 +210,10 @@ export function App() {
               onToggleRfq={handleToggleRfq}
               onSelectProduct={setSelectedProductModal}
               onOpenFlyer={() => setIsFlyerModalOpen(true)}
+              domainFilterIds={domainFilterIds}
+              activeDomainName={activeDomainName}
+              onClearDomainFilter={handleClearDomainFilter}
+              onSelectDomainFilter={handleSelectDomainFilterById}
             />
 
             {/* Turnkey Case Studies & Completed Projects (Supply + Installation + AMC) */}

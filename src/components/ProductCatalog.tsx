@@ -4,20 +4,21 @@ import {
   X, 
   Layers, 
   SlidersHorizontal, 
-  RotateCcw,
-  ShieldCheck,
-  Zap,
-  Cog,
-  Wrench,
-  Sparkles,
-  FileText,
-  CheckCircle2,
-  Eye,
-  Cpu,
+  RotateCcw, 
+  ShieldCheck, 
+  Zap, 
+  Cog, 
+  Wrench, 
+  Sparkles, 
+  FileText, 
+  CheckCircle2, 
+  Eye, 
+  Cpu, 
   Wind
 } from 'lucide-react';
 import type { ProductItem, ProductCategory, RfqItem } from '../types';
 import { productsData, productCategoriesList } from '../data/products';
+import { industryDomainsData } from '../data/domains';
 import { ProductCard } from './ProductCard';
 
 interface ProductCatalogProps {
@@ -29,6 +30,10 @@ interface ProductCatalogProps {
   onToggleRfq: (product: ProductItem) => void;
   onSelectProduct: (product: ProductItem) => void;
   onOpenFlyer?: () => void;
+  domainFilterIds?: string[];
+  activeDomainName?: string | null;
+  onClearDomainFilter?: () => void;
+  onSelectDomainFilter?: (domainId: string) => void;
 }
 
 export const ProductCatalog: React.FC<ProductCatalogProps> = ({
@@ -39,7 +44,11 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
   rfqList,
   onToggleRfq,
   onSelectProduct,
-  onOpenFlyer
+  onOpenFlyer,
+  domainFilterIds = [],
+  activeDomainName = null,
+  onClearDomainFilter,
+  onSelectDomainFilter
 }) => {
   const [selectedBrand, setSelectedBrand] = useState<string>('all');
   const [selectedSubCategory, setSelectedSubCategory] = useState<string>('all');
@@ -65,9 +74,16 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
     return Array.from(subSet).sort();
   }, [selectedCategory]);
 
-  // Filter products by category, search query, brand, and subcategory
+  // Filter products by domain, category, search query, brand, and subcategory
   const filteredProducts = useMemo(() => {
     return productsData.filter(p => {
+      // Domain filter (if active from the top DomainSolutionsSection or dropdown)
+      if (domainFilterIds && domainFilterIds.length > 0) {
+        if (!domainFilterIds.includes(p.id)) {
+          return false;
+        }
+      }
+
       // Category filter
       if (selectedCategory !== 'all' && p.category !== selectedCategory) {
         return false;
@@ -101,13 +117,16 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
 
       return true;
     });
-  }, [selectedCategory, selectedBrand, selectedSubCategory, searchQuery]);
+  }, [domainFilterIds, selectedCategory, selectedBrand, selectedSubCategory, searchQuery]);
 
   const resetFilters = () => {
     setSelectedBrand('all');
     setSelectedSubCategory('all');
     onSearchChange('');
     onSelectCategory('all');
+    if (onClearDomainFilter) {
+      onClearDomainFilter();
+    }
   };
 
   const getCategoryIcon = (id: string) => {
@@ -139,95 +158,95 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
           : 'bg-white text-slate-700 hover:text-purple-700 hover:bg-purple-50 border border-slate-200';
       case 'pneumatics-items':
         return isActive 
-          ? 'bg-gradient-to-r from-cyan-600 to-teal-700 text-white shadow-md shadow-cyan-500/25 ring-2 ring-cyan-400' 
-          : 'bg-white text-slate-700 hover:text-cyan-800 hover:bg-cyan-50 border border-slate-200';
+          ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/25 ring-2 ring-emerald-400' 
+          : 'bg-white text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 border border-slate-200';
       default:
         return isActive 
-          ? 'bg-gradient-to-r from-slate-900 via-blue-950 to-blue-900 text-white shadow-md shadow-slate-900/25 ring-2 ring-blue-500' 
-          : 'bg-white text-slate-700 hover:text-blue-700 hover:bg-blue-50 border border-slate-200';
+          ? 'bg-[#0a2569] text-white shadow-md shadow-blue-900/25 ring-2 ring-blue-500' 
+          : 'bg-white text-slate-700 hover:text-[#0a2569] hover:bg-blue-50 border border-slate-200';
     }
   };
 
-  const getCategoryBannerData = (cat: ProductCategory) => {
-    switch (cat) {
+  const getCategoryBannerData = (catId: ProductCategory) => {
+    switch (catId) {
       case 'mechanical-items':
         return {
           number: '01',
-          name: 'MECHANICAL ITEMS (18 PRODUCTS)',
-          headline: 'SS & ERW Pipes, Flanges, Industrial Valves, Fasteners, Tools & Spares',
-          description: 'Supplying ASTM A312/A269 seamless and ERW pipes, forged flanges (Class 150-2500#), butt-weld & threaded fittings, ball/butterfly/gate valves, gaskets, high-tensile fasteners, certified safety gear, hand tools, bearings, couplings, and reduction gearboxes with 100% Original Mill Test Certificates.',
-          gradient: 'from-amber-500 via-orange-600 to-amber-700',
+          name: 'MECHANICAL ITEMS',
+          headline: 'Precision Stainless Steel, Flanges, Heavy Gearing & Power Transmission',
+          gradient: 'from-amber-600 via-orange-600 to-red-700',
           border: 'border-amber-400/40',
-          features: ['ASTM A312 / A269', 'Grades 304, 316, 316L, MS', 'Flanges & Butt-Weld Fittings', 'High-Tensile 8.8 / 10.9 & Bearings'],
-          icon: Cog
+          icon: Cog,
+          description: 'Supplying ASTM A312 SS pipes, forged Class 150-6000# fittings, industrial reduction gearboxes, hardened gears, flexible couplings, and high-tensile hardware with MTC 3.1 certification.',
+          features: ['SS 304 / 316 / 316L', '58-62 HRC Gears', 'Class 150 - 6000# Flanges', 'Express Dispatch']
         };
       case 'electrical-items':
         return {
           number: '02',
-          name: 'ELECTRICAL ITEMS (18 PRODUCTS)',
-          headline: 'MCCB, MCB, ACB, Switch Disconnectors, Contactors & Armoured Power Cables',
-          description: 'Tier-1 electrical switchgear and motor control products from Schneider Electric, Siemens, ABB, L&T, Havells, Legrand, CHNT, C&S, and Panasonic. Breakers up to 6300A, thermal overload relays, industrial plugs, energy meters, push buttons, terminal blocks, panel cooling fans, and XLPE cables.',
-          gradient: 'from-blue-600 via-indigo-600 to-blue-850',
+          name: 'ELECTRICAL ITEMS',
+          headline: 'LV/MV Switchgear, Air & Vacuum Circuit Breakers, Panels & Industrial Cables',
+          gradient: 'from-blue-700 via-indigo-700 to-slate-900',
           border: 'border-blue-400/40',
-          features: ['Schneider / Siemens / ABB / L&T', 'Up to 100kA Breaking (Icu)', 'IEC 60947 Certified Switchgear', '1.1 kV XLPE Armoured Cables'],
-          icon: Zap
+          icon: Zap,
+          description: 'Authorized distribution of Schneider, Siemens, ABB, L&T, Legrand & Havells ACB/VCB breakers, power contactors, motor protection, and heavy electrolytic copper busbars.',
+          features: ['IEC 61439 Certified', 'ACB up to 6300A', 'Type-Tested Switchgear', 'Original OEM Spares']
         };
       case 'automation-electronics':
         return {
           number: '03',
-          name: 'ELECTRONICS & INDUSTRIAL AUTOMATION (15 PRODUCTS)',
-          headline: 'Sensors, Controllers, PLC, HMI, VFD Drives, Servo Systems & SMPS',
-          description: 'Turnkey industrial automation components: inductive/capacitive proximity sensors, photoelectric sensors, rotary encoders, PID temperature controllers, PLC modular controllers, touchscreen HMIs, Variable Frequency Drives (VFD), servo motors, DIN-rail SMPS, and safety light curtains.',
-          gradient: 'from-purple-600 via-indigo-700 to-violet-850',
+          name: 'ELECTRONICS & INDUSTRIAL AUTOMATION',
+          headline: 'Micro & Modular PLCs, Touch HMIs, VFD Inverter Drives & Industrial Sensors',
+          gradient: 'from-purple-700 via-violet-800 to-slate-900',
           border: 'border-purple-400/40',
-          features: ['Omron / Siemens / Schneider', '0-10V & 4-20mA Signals', 'VFD & Servo Motion Control', 'IP67 Sealed Rugged Sensors'],
-          icon: Cpu
+          icon: Cpu,
+          description: 'Factory automation controllers, servo drives, digital touch panels, DIN rail SMPS power supplies, and photoelectric sensors for machine builders (OEMs) and process lines.',
+          features: ['Industry 4.0 Ready', 'Modbus / PROFINET', 'VFDs 0.37kW to 500kW', 'High-Speed IO Slices']
         };
       case 'pneumatics-items':
         return {
           number: '04',
-          name: 'PNEUMATICS ITEMS (OEM MAKE - 11 PRODUCTS)',
-          headline: 'Pneumatic Cylinders, Solenoid Valves, FRL Air Prep, Push-In Fittings & Tubing',
-          description: 'Genuine OEM pneumatic automation equipment from SMC, FESTO, AirTAC, Mindman, CKD, Parker Legris, Camozzi, RG SS, Metal Work, Janatics, and Yuken. Standard and compact ISO cylinders, 5/2 & 5/3-way solenoid valves, precision FRL modular units, PU tubing, and quick couplings.',
-          gradient: 'from-cyan-600 via-teal-600 to-blue-800',
-          border: 'border-cyan-400/40',
-          features: ['SMC / FESTO / AirTAC / Parker', 'ISO 15552 & ISO 21287 Cylinders', 'High-Flow 24VDC/230VAC Solenoids', 'Polyurethane PU & Coiled Hoses'],
-          icon: Wind
+          name: 'PNEUMATICS ITEMS OEM MAKE',
+          headline: 'SMC, FESTO, AirTAC & Parker Legris Pneumatic Automation Components',
+          gradient: 'from-emerald-700 via-teal-700 to-cyan-900',
+          border: 'border-emerald-400/40',
+          icon: Wind,
+          description: 'Genuine OEM pneumatic cylinders, 5/2 & 5/3 solenoid valves, modular FRL air preparation units, PU tubes, and quick-connect push-in fittings for automated manufacturing.',
+          features: ['SMC & FESTO Genuine', 'Oil-Free FRL Units', 'High-Flex PU Tubing', '100% Tested Manifolds']
         };
       default:
         return {
           number: 'ALL',
-          name: 'FULL INDUSTRIAL INVENTORY',
+          name: 'COMPLETE INDUSTRIAL PORTFOLIO',
           headline: 'Specialized Industrial Products Across 4 Official Divisions',
-          description: 'Browse complete catalog or use quick filters above to narrow by category, sub-category, or OEM manufacturer. All materials backed by verified GST invoicing and manufacturer test certificates.',
-          gradient: 'from-[#0a2569] via-blue-900 to-indigo-950',
-          border: 'border-blue-400/30',
-          features: ['4 Specialized Categories', 'Comprehensive Inventory', 'Official OEM Brands', '24/7 Field Maintenance'],
-          icon: Sparkles
+          gradient: 'from-[#0a2569] via-blue-900 to-slate-900',
+          border: 'border-blue-500/40',
+          icon: Sparkles,
+          description: 'Unified single-source procurement for industrial mechanical items, electrical switchgear, automation electronics, and OEM pneumatics backed by engineering installation and AMC maintenance.',
+          features: ['4 Specialized Categories', 'Comprehensive Inventory', 'Official OEM Brands', '24/7 Field Maintenance']
         };
     }
   };
 
   return (
-    <section id="catalog" className="py-16 sm:py-24 bg-slate-50 border-t border-b border-slate-200">
+    <section id="catalog" className="py-12 sm:py-16 bg-slate-50 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
-            <Sparkles className="w-3.5 h-3.5" />
-            Official GSR Product Catalogue
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-[#0a2569] text-xs font-bold uppercase tracking-wider mb-3">
+            <Layers className="w-3.5 h-3.5" />
+            <span>Industrial Engineering Supplies Catalogue</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            High Precision Components & OEM Supplies
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
+            Explore Products by <span className="text-[#0a2569]">Category or Industry Domain</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-600">
+          <p className="mt-2 text-sm sm:text-base text-slate-600">
             Organized across our 4 flagship divisions from our official poster: Mechanical Items, Electrical Items, Electronics & Industrial Automation, and Pneumatics Items OEM Make.
           </p>
         </div>
 
         {/* Category Tabs - Bright & Colorful Matching Flyer */}
-        <div className="flex items-center justify-start sm:justify-center overflow-x-auto pb-4 mb-8 gap-2.5 scrollbar-none">
+        <div className="flex items-center justify-start sm:justify-center overflow-x-auto pb-4 mb-6 gap-2.5 scrollbar-none">
           {productCategoriesList.map((cat) => {
             const Icon = getCategoryIcon(cat.id);
             const isActive = selectedCategory === cat.id;
@@ -253,6 +272,42 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
           })}
         </div>
 
+        {/* Active Industry Domain Filter Alert Banner */}
+        {activeDomainName && (
+          <div className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-[#0a2569] via-indigo-900 to-slate-900 text-white flex flex-wrap items-center justify-between gap-3 shadow-md border border-blue-400/30">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-xl bg-amber-400 text-slate-950 font-black">
+                <Sparkles className="w-4 h-4" />
+              </div>
+              <div>
+                <div className="text-[11px] uppercase font-bold text-amber-300 tracking-wider">
+                  Industry Domain Filter Active:
+                </div>
+                <div className="text-sm sm:text-base font-black text-white">
+                  {activeDomainName}
+                </div>
+                <div className="text-xs text-blue-200">
+                  Showing specialized process items + common plant maintenance spares
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-blue-200 hidden sm:inline">
+                {filteredProducts.length} items matched
+              </span>
+              {onClearDomainFilter && (
+                <button
+                  onClick={onClearDomainFilter}
+                  className="px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 text-xs font-bold text-white transition-all flex items-center gap-1.5 border border-white/30 hover:scale-102"
+                >
+                  <X className="w-3.5 h-3.5" />
+                  <span>Clear Domain Filter</span>
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Filter Controls Bar */}
         <div className="p-4 rounded-2xl bg-white border border-slate-200 mb-8 shadow-sm">
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
@@ -277,8 +332,37 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
               )}
             </div>
 
-            {/* Sub-category dropdown */}
+            {/* Filter dropdowns */}
             <div className="flex flex-wrap items-center gap-2">
+              
+              {/* Industry Domain Selector */}
+              <div className="relative">
+                <select
+                  value={
+                    activeDomainName 
+                      ? industryDomainsData.find(d => d.name === activeDomainName)?.id || 'all' 
+                      : 'all'
+                  }
+                  onChange={(e) => {
+                    const domId = e.target.value;
+                    if (domId === 'all') {
+                      if (onClearDomainFilter) onClearDomainFilter();
+                    } else {
+                      if (onSelectDomainFilter) onSelectDomainFilter(domId);
+                    }
+                  }}
+                  className="py-2.5 px-3 rounded-xl bg-blue-50/80 border border-blue-300 text-xs text-[#0a2569] font-bold focus:outline-none focus:bg-white focus:border-blue-600 shadow-2xs"
+                >
+                  <option value="all">🏢 All Industry Domains</option>
+                  {industryDomainsData.map(d => (
+                    <option key={d.id} value={d.id}>
+                      {d.name.split(',')[0]}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Sub-category dropdown */}
               <select
                 value={selectedSubCategory}
                 onChange={(e) => setSelectedSubCategory(e.target.value)}
@@ -303,7 +387,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
               </select>
 
               {/* Active filters reset */}
-              {(selectedBrand !== 'all' || selectedSubCategory !== 'all' || searchQuery !== '' || selectedCategory !== 'all') && (
+              {(selectedBrand !== 'all' || selectedSubCategory !== 'all' || searchQuery !== '' || selectedCategory !== 'all' || activeDomainName) && (
                 <button
                   onClick={resetFilters}
                   className="p-2.5 rounded-xl text-slate-500 hover:text-rose-600 hover:bg-rose-50 border border-slate-200 transition-colors"
@@ -324,6 +408,11 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
               {selectedCategory !== 'all' && (
                 <span className="font-semibold text-blue-600">
                   in {productCategoriesList.find(c => c.id === selectedCategory)?.label}
+                </span>
+              )}
+              {activeDomainName && (
+                <span className="font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                  Domain: {activeDomainName.split(',')[0]}
                 </span>
               )}
             </div>

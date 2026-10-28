@@ -160,6 +160,14 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li>
                 <button 
+                  onClick={() => onNavigateToSection('domains')} 
+                  className="hover:text-white transition-colors text-left text-sky-300 font-semibold flex items-center gap-1"
+                >
+                  <span>Industry Domain Solutions →</span>
+                </button>
+              </li>
+              <li>
+                <button 
                   onClick={() => handleCategoryClick('all')} 
                   className="hover:text-white transition-colors text-left text-amber-400 font-bold"
                 >

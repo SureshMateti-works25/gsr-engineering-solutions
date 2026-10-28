@@ -117,6 +117,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center space-x-1">
             <button
+              onClick={() => handleNavClick('domains')}
+              className="px-3 py-2 rounded-lg text-sm font-bold text-[#0a2569] bg-blue-50/80 hover:bg-blue-100 border border-blue-200/80 transition-colors flex items-center gap-1.5"
+            >
+              <Layers className="w-3.5 h-3.5 text-blue-700" />
+              <span>By Industry</span>
+            </button>
+            <button
               onClick={() => handleNavClick('catalog')}
               className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors"
             >
@@ -224,6 +231,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>View Official Product Flyer</span>
             </button>
           )}
+          <button
+            onClick={() => handleNavClick('domains')}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-bold text-[#0a2569] bg-blue-50 hover:bg-blue-100 border border-blue-200"
+          >
+            <Layers className="w-5 h-5 text-blue-700" />
+            By Industry Domain
+          </button>
           <button
             onClick={() => handleNavClick('catalog')}
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-100"
