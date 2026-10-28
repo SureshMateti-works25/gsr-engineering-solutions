@@ -102,7 +102,7 @@ export const BrandShowcase: React.FC<BrandShowcaseProps> = ({ onSelectBrandForSe
               <button
                 key={bName}
                 onClick={() => onSelectBrandForSearch(bName)}
-                className="px-5 py-3 sm:px-6 sm:py-3.5 bg-white rounded-2xl border-2 border-slate-200 hover:border-blue-500 shadow-2xs hover:shadow-md transition-all hover:scale-105 flex items-center justify-center min-w-[130px] sm:min-w-[160px]"
+                className="px-4 py-2 bg-white rounded-2xl border-2 border-slate-200 hover:border-blue-500 shadow-2xs hover:shadow-md transition-all hover:scale-105 flex items-center justify-center min-w-[140px] sm:min-w-[160px] h-16 sm:h-18"
                 title={`Filter products by ${bName}`}
               >
                 <BrandLogo name={bName} size="md" showText={true} />
@@ -167,7 +167,7 @@ export const BrandShowcase: React.FC<BrandShowcaseProps> = ({ onSelectBrandForSe
             >
               <div>
                 {/* Brand Logo Container */}
-                <div className="w-full h-24 sm:h-28 bg-white rounded-2xl border-2 border-slate-200/90 p-3 sm:p-4 flex items-center justify-center mb-4 shadow-2xs group-hover:border-blue-500 group-hover:shadow-md transition-all">
+                <div className="w-full h-22 sm:h-24 bg-white rounded-2xl border-2 border-slate-200/90 p-2 sm:p-3 flex items-center justify-center mb-4 shadow-2xs group-hover:border-blue-500 group-hover:shadow-md transition-all">
                   <BrandLogo 
                     name={brand.name} 
                     logoUrl={brand.logoUrl} 

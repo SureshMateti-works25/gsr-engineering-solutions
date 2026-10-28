@@ -222,7 +222,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               {product.brands.slice(0, 3).map((b, idx) => (
                 <div
                   key={idx}
-                  className="inline-flex items-center px-2 py-0.5 rounded-lg bg-slate-50 border border-slate-200 shadow-2xs"
+                  className="inline-flex items-center justify-center px-2 py-0.5 rounded-lg bg-slate-50 border border-slate-200 shadow-2xs h-8 min-w-[80px]"
                 >
                   <BrandLogo name={b} size="sm" showText={true} />
                 </div>

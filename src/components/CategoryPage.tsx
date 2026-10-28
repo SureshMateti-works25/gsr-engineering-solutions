@@ -235,8 +235,8 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                   onClick={() => setSelectedBrand(selectedBrand === bName ? 'all' : bName)}
                   className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl border-2 transition-all flex items-center justify-center hover:scale-105 ${
                     selectedBrand === bName
-                      ? 'bg-blue-50 border-blue-600 shadow-sm scale-105'
-                      : 'bg-slate-50 hover:bg-white border-slate-200/90 shadow-2xs'
+                      ? 'bg-blue-50 border-blue-600 shadow-sm scale-105 h-14 sm:h-16 min-w-[130px] sm:min-w-[150px]'
+                      : 'bg-slate-50 hover:bg-white border-slate-200/90 shadow-2xs h-14 sm:h-16 min-w-[130px] sm:min-w-[150px]'
                   }`}
                   title={`Filter products by ${bName}`}
                 >

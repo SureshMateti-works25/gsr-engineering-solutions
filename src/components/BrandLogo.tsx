@@ -64,13 +64,14 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   // Normalize brand name for matching
   const cleanName = name.toLowerCase().trim();
 
-  // Size styling - generous heights for prominent OEM brand presence
+  // Uniform bounding boxes across all size tiers
+  // All 27 OEM brand SVGs are normalized to standard canvas viewBox="0 0 240 70" (3.43:1)
   const sizeClasses = {
-    xs: 'h-6 text-[10px]',
-    sm: 'h-9 sm:h-10 text-xs',
-    md: 'h-14 sm:h-16 text-sm',
-    lg: 'h-20 sm:h-24 text-base',
-    xl: 'h-28 sm:h-32 text-lg'
+    xs: 'h-5 w-16 text-[10px]',
+    sm: 'h-7 w-20 sm:w-24 text-xs',
+    md: 'h-10 sm:h-11 w-32 sm:w-36 text-sm',
+    lg: 'h-14 sm:h-16 w-full max-w-[210px] text-base',
+    xl: 'h-20 sm:h-22 w-full max-w-[260px] text-lg'
   }[size];
 
   // 1. Direct local original OEM logo check
@@ -84,7 +85,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
           src={localLogo}
           alt={`${name} Original OEM Logo`}
           onError={() => setImgFailed(true)}
-          className="h-full w-auto max-w-full object-contain filter contrast-105 drop-shadow-2xs"
+          className="h-full w-full object-contain filter contrast-105 drop-shadow-2xs"
           loading="lazy"
         />
       </div>
@@ -99,7 +100,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
           src={logoUrl}
           alt={`${name} logo`}
           onError={() => setImgFailed(true)}
-          className="h-full w-auto max-w-full object-contain filter contrast-105 drop-shadow-2xs"
+          className="h-full w-full object-contain filter contrast-105 drop-shadow-2xs"
           loading="lazy"
         />
       </div>

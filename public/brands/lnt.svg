@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 70" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="transparent"/>
+  <svg x="12" y="6" width="216" height="58" viewBox="0 0 280 80" preserveAspectRatio="xMidYMid meet">
     <rect width="100%" height="100%" fill="transparent"/>
     <g transform="translate(10, 8)">
       <circle cx="32" cy="32" r="30" fill="#002B49"/>
@@ -8,3 +10,4 @@
       <text x="74" y="52" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#C59B27" letter-spacing="1">Electrical &amp; Automation</text>
     </g>
   </svg>
+</svg>

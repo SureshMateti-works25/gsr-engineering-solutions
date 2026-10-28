@@ -273,7 +273,7 @@ export const Hero: React.FC<HeroProps> = ({
                   onSearchChange(brandName);
                   onNavigateToSection('catalog');
                 }}
-                className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl bg-white border-2 border-slate-200/90 shadow-2xs hover:shadow-sm hover:border-blue-500 transition-all cursor-pointer hover:scale-105 flex items-center justify-center min-w-[120px] sm:min-w-[140px]"
+                className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl bg-white border-2 border-slate-200/90 shadow-2xs hover:shadow-sm hover:border-blue-500 transition-all cursor-pointer hover:scale-105 flex items-center justify-center min-w-[130px] sm:min-w-[150px] h-14 sm:h-16"
                 title={`Explore ${brandName} components`}
               >
                 <BrandLogo name={brandName} size="md" showText={true} />

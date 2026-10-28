@@ -188,7 +188,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               {product.brands.map((brand, idx) => (
                 <div
                   key={idx}
-                  className="px-4 py-2 rounded-xl bg-white text-xs font-bold text-slate-800 border-2 border-slate-200 inline-flex items-center shadow-xs"
+                  className="px-4 py-2 rounded-xl bg-white text-xs font-bold text-slate-800 border-2 border-slate-200 inline-flex items-center justify-center shadow-xs h-14 min-w-[140px]"
                 >
                   <BrandLogo name={brand} size="md" showText={true} />
                 </div>
