@@ -498,7 +498,7 @@ export const productsData: ProductItem[] = [
       "Food Handling"
     ],
     "discountBadge": "15% OFF Bulk",
-    "imageUrl": "./products/ss-sheets-plates.jpg"
+    "imageUrl": "./products/ss-sheets-plates.png?v=20261123-final"
   },
   {
     "id": "industrial-casters-wheels",
@@ -589,7 +589,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "High Voltage",
     "discountBadge": "OEM Contractor Rate",
-    "imageUrl": "./products/vcb.jpg"
+    "imageUrl": "./products/vcb.png?v=20261123-final"
   },
   {
     "id": "ac-switches",
@@ -651,7 +651,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "Heavy Industrial",
     "discountBadge": "Special Project Price",
-    "imageUrl": "./products/acb.jpg"
+    "imageUrl": "./products/acb.png?v=20261123-final"
   },
   {
     "id": "switchgear-panels",
@@ -801,7 +801,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "Industrial Grade",
     "discountBadge": "12% OFF",
-    "imageUrl": "./products/power-contactors.jpg"
+    "imageUrl": "./products/power-contactors.png?v=20261123-final"
   },
   {
     "id": "push-buttons-indicators",
@@ -916,7 +916,7 @@ export const productsData: ProductItem[] = [
       "Motor Junction Terminals"
     ],
     "discountBadge": "Bulk Pack",
-    "imageUrl": "./products/lugs-terminals.jpg"
+    "imageUrl": "./products/lugs-terminals.png?v=20261123-final"
   },
   {
     "id": "cable-glands-accessories",
@@ -943,7 +943,7 @@ export const productsData: ProductItem[] = [
       "Motor Terminal Boxes"
     ],
     "discountBadge": "10% OFF",
-    "imageUrl": "./products/cable-glands-accessories.jpg"
+    "imageUrl": "./products/cable-glands-accessories.png?v=20261123-final"
   },
   {
     "id": "fuses-fuse-holders",
