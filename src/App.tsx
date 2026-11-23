@@ -9,15 +9,12 @@ import { ProjectsPage } from './components/ProjectsPage';
 import { ContactPage } from './components/ContactPage';
 import { FlyerPage } from './components/FlyerPage';
 import { CategoryPage } from './components/CategoryPage';
-import { OffersCarousel } from './components/OffersCarousel';
 import { BrandShowcase } from './components/BrandShowcase';
-import { WhyChooseUs } from './components/WhyChooseUs';
 import { Footer } from './components/Footer';
 import { ProductModal } from './components/ProductModal';
 import { RfqDrawer } from './components/RfqDrawer';
 import { QuickContactFloating } from './components/QuickContactFloating';
 import { CatalogueModal } from './components/CatalogueModal';
-import { Wrench, Briefcase, ArrowRight, ShieldCheck } from 'lucide-react';
 
 export function App() {
   const [, setSelectedCategory] = useState<ProductCategory>('all');
@@ -50,7 +47,7 @@ export function App() {
         setActiveRoute('projects');
         setRouteParam('');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#/contact' || hash === '#contact') {
+      } else if (hash === '#/contact' || hash === '#contact' || hash === '#contact-us' || hash === '#rfq' || hash === '#quote') {
         setActiveRoute('contact');
         setRouteParam('');
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -204,102 +201,15 @@ export function App() {
             onNavigateToContact={() => handleNavigateToPage('contact')}
           />
         ) : (
-          /* Home Landing Page (Compact & Focused) */
+          /* Home Landing Page (Domain-First, Ultra Clean & Streamlined) */
           <>
-            {/* Domain-First Landing Hero (Compact Title + 6 Domain Cards) */}
+            {/* Domain-First Landing Hero (Simpler Top Title + 6 Sector Selector Cards) */}
             <Hero
               onSelectDomain={(domainId) => handleNavigateToPage(`domain/${domainId}`)}
             />
 
-            {/* Turnkey Services Overview Highlight */}
-            <section className="py-12 bg-white border-b border-slate-200">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-2xs">
-                  <div className="space-y-2 max-w-2xl">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-[#0a2569] text-xs font-bold uppercase tracking-wider">
-                      <Wrench className="w-3.5 h-3.5 text-blue-700" />
-                      <span>More Than Equipment Supply</span>
-                    </div>
-                    <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                      Turnkey Supply, On-Site Installation & Plant Maintenance (AMC)
-                    </h2>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      ASME IX certified orbital welding, 3200A substation retrofits, pneumatic automation, and 24/7 critical breakdown response across TS, AP, TN & Maharashtra.
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => handleNavigateToPage('services')}
-                    className="shrink-0 px-5 py-3 rounded-xl bg-[#0a2569] hover:bg-blue-800 text-white font-extrabold text-xs sm:text-sm shadow-md flex items-center gap-2 transition-all hover:scale-102"
-                  >
-                    <span>View All Services</span>
-                    <ArrowRight className="w-4 h-4 text-amber-300" />
-                  </button>
-                </div>
-              </div>
-            </section>
-
-            {/* Executed Projects Case Studies Highlight */}
-            <section className="py-12 bg-slate-50 border-b border-slate-200">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-2xs">
-                  <div className="space-y-2 max-w-2xl">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider">
-                      <Briefcase className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Proven Site Execution</span>
-                    </div>
-                    <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                      Executed Case Studies: Pharma WFI, Steel Substations & Plant AMCs
-                    </h2>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      Review verified case studies demonstrating how our engineering crew solved complex installation challenges with zero downtime and strict cGMP / IS compliance.
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => handleNavigateToPage('projects')}
-                    className="shrink-0 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm shadow-md flex items-center gap-2 transition-all hover:scale-102"
-                  >
-                    <span>Explore Case Studies</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            </section>
-
-            {/* Special Offers & Volume Discounts */}
-            <OffersCarousel
-              onSelectCategory={setSelectedCategory}
-              onNavigateToSection={() => handleNavigateToPage('contact')}
-            />
-
-            {/* Authorized OEM Brand Partner Logos (Clean Logo Wall at Bottom) */}
+            {/* Authorized OEM Brand Partner Logos (Uniform Logo Grid at Bottom) */}
             <BrandShowcase />
-
-            {/* Why Choose GSR Engineering Solutions */}
-            <WhyChooseUs />
-
-            {/* Contact & RFQ Teaser Strip */}
-            <section className="py-12 bg-[#0a2569] text-white">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-                <div className="space-y-1">
-                  <div className="text-xs font-bold uppercase tracking-wider text-amber-300 flex items-center justify-center md:justify-start gap-1.5">
-                    <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                    <span>Fast Commercial RFQs & Dedicated Estimators</span>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-black">
-                    Ready to Source Engineering Spares for Your Plant?
-                  </h3>
-                  <p className="text-xs sm:text-sm text-blue-100">
-                    Proprietor G Sandeep Kumar and technical estimators respond within 2 hours with genuine MTC 3.1 proposals.
-                  </p>
-                </div>
-                <button
-                  onClick={() => handleNavigateToPage('contact')}
-                  className="shrink-0 px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs sm:text-sm shadow-lg transition-all hover:scale-105 active:scale-95"
-                >
-                  Go to Contact Page
-                </button>
-              </div>
-            </section>
           </>
         )}
       </main>

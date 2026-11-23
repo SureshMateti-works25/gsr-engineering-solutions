@@ -15,6 +15,7 @@ import {
   MessageCircle
 } from 'lucide-react';
 import { servicesData } from '../data/services';
+import { WhyChooseUs } from './WhyChooseUs';
 
 interface ServicesPageProps {
   onBackToHome: () => void;
@@ -228,6 +229,11 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
             <div className="font-black text-lg text-slate-900">Comprehensive Safety Compliance</div>
             <p className="text-xs text-slate-500">Full adherence to plant safety work permits, PPE protocols, hot work regulations, and cleanroom gowning.</p>
           </div>
+        </div>
+
+        {/* Why Plant Engineers Choose GSR & Regional Coverage */}
+        <div className="pt-4">
+          <WhyChooseUs />
         </div>
 
       </div>

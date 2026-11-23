@@ -5,7 +5,9 @@ import {
   MapPin, 
   ShieldCheck, 
   ArrowUp,
-  FileText
+  FileText,
+  Send,
+  ArrowRight
 } from 'lucide-react';
 import type { ProductCategory } from '../types';
 import { VisitorCounterWidget } from './VisitorCounterWidget';
@@ -263,6 +265,17 @@ export const Footer: React.FC<FooterProps> = ({
                     Service Areas: Telangana, Andhra Pradesh, Tamil Nadu & Maharashtra
                   </p>
                 </div>
+              </div>
+
+              <div className="pt-2">
+                <button
+                  onClick={() => onNavigateToSection('contact')}
+                  className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow-md transition-all hover:scale-102"
+                >
+                  <Send className="w-3.5 h-3.5 text-slate-950" />
+                  <span>Contact & Submit RFQ</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
               </div>
             </div>
           </div>
