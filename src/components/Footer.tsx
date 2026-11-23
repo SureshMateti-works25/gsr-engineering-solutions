@@ -27,9 +27,8 @@ export const Footer: React.FC<FooterProps> = ({
 
   const handleCategoryClick = (cat: ProductCategory) => {
     if (cat === 'all') {
-      window.location.hash = '';
+      window.location.hash = '#/domains';
       onSelectCategory('all');
-      onNavigateToSection('catalog');
     } else {
       window.location.hash = `#/category/${cat}`;
     }

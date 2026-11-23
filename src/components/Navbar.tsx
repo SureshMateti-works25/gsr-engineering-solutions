@@ -27,15 +27,15 @@ import { industryDomainsData } from '../data/domains';
 interface NavbarProps {
   rfqList: RfqItem[];
   onOpenRfq: () => void;
-  onNavigateToSection: (sectionId: string) => void;
-  onOpenFlyer?: () => void;
+  onNavigateToPage: (page: string) => void;
+  activePage?: string;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ 
   rfqList, 
   onOpenRfq, 
-  onNavigateToSection,
-  onOpenFlyer
+  onNavigateToPage,
+  activePage = 'home'
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [domainsDropdownOpen, setDomainsDropdownOpen] = useState(false);
@@ -43,17 +43,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const totalRfqCount = rfqList.reduce((acc, item) => acc + (item.quantity || 1), 0);
 
-  const handleNavClick = (id: string) => {
-    onNavigateToSection(id);
+  const handlePageClick = (pageRoute: string) => {
+    onNavigateToPage(pageRoute);
     setMobileMenuOpen(false);
     setDomainsDropdownOpen(false);
-  };
-
-  const handleSelectDomainFromMenu = (domainId: string) => {
-    window.location.hash = `#/domain/${domainId}`;
-    setDomainsDropdownOpen(false);
-    setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const getDomainIcon = (iconName: string) => {
@@ -79,10 +72,16 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const isDomainsActive = activePage === 'domains' || activePage === 'domain';
+  const isServicesActive = activePage === 'services';
+  const isProjectsActive = activePage === 'projects';
+  const isContactActive = activePage === 'contact';
+  const isFlyerActive = activePage === 'flyer';
+
   return (
     <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs font-sans">
       
-      {/* Top Industrial Credentials Bar (HYTORC-inspired utility strip) */}
+      {/* Top Credentials Bar (HYTORC-inspired utility strip) */}
       <div className="bg-[#0a2569] text-white text-xs py-1.5 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
           {/* Left: Operational Coverage & GSTIN */}
@@ -129,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           
           {/* Logo & Company Name */}
           <button 
-            onClick={() => handleNavClick('hero')} 
+            onClick={() => handlePageClick('home')} 
             className="flex items-center space-x-3 text-left focus:outline-none group shrink-0"
           >
             <div className="h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center p-1 bg-white rounded-xl border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform">
@@ -149,10 +148,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </button>
 
-          {/* FOCUSED NAVIGATION LINKS (HYTORC-Style: Domain, Services, Projects, Contact, Flyer) */}
+          {/* FOCUSED INDIVIDUAL PAGE LINKS (HYTORC-Style: Domain, Services, Projects, Contact, Flyer) */}
           <nav className="hidden lg:flex items-center space-x-1 font-semibold text-sm">
             
-            {/* 1. DOMAIN (With interactive sector flyout dropdown) */}
+            {/* 1. DOMAIN (With interactive sector flyout dropdown + Direct Domains Page) */}
             <div 
               ref={dropdownRef}
               className="relative"
@@ -160,15 +159,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               onMouseLeave={() => setDomainsDropdownOpen(false)}
             >
               <button
-                onClick={() => handleNavClick('domains')}
-                className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 font-bold ${
-                  domainsDropdownOpen 
-                    ? 'text-[#0a2569] bg-blue-50/90' 
+                onClick={() => handlePageClick('domains')}
+                className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 font-bold ${
+                  isDomainsActive
+                    ? 'text-[#0a2569] bg-blue-50 border border-blue-200/80 shadow-2xs'
                     : 'text-slate-700 hover:text-[#0a2569] hover:bg-slate-100'
                 }`}
                 aria-expanded={domainsDropdownOpen}
               >
-                <Layers className="w-4 h-4 text-blue-700" />
+                <Layers className={`w-4 h-4 ${isDomainsActive ? 'text-[#0a2569]' : 'text-slate-500'}`} />
                 <span>Domain</span>
                 <ChevronDown className={`w-3.5 h-3.5 text-slate-500 transition-transform ${domainsDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -176,8 +175,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               {/* Domains Dropdown Flyout */}
               {domainsDropdownOpen && (
                 <div className="absolute top-full left-0 w-84 bg-white rounded-2xl shadow-xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-2 pb-2 border-b border-slate-100">
-                    Select Your Industry Sector:
+                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-2 pb-2 border-b border-slate-100 flex items-center justify-between">
+                    <span>Individual Domain Pages:</span>
+                    <button 
+                      onClick={() => handlePageClick('domains')}
+                      className="text-blue-700 hover:underline"
+                    >
+                      All Domains →
+                    </button>
                   </div>
                   <div className="py-1 space-y-1">
                     {industryDomainsData.map((d) => {
@@ -185,7 +190,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       return (
                         <button
                           key={d.id}
-                          onClick={() => handleSelectDomainFromMenu(d.id)}
+                          onClick={() => handlePageClick(`domain/${d.id}`)}
                           className="w-full text-left p-2 rounded-xl hover:bg-blue-50/80 transition-colors flex items-center gap-2.5 group"
                         >
                           <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${d.gradient} text-white flex items-center justify-center shrink-0 shadow-2xs`}>
@@ -205,10 +210,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </div>
                   <div className="pt-2 border-t border-slate-100">
                     <button
-                      onClick={() => handleNavClick('domains')}
+                      onClick={() => handlePageClick('domains')}
                       className="w-full text-center py-1.5 text-xs font-extrabold text-[#0a2569] hover:text-blue-800 hover:underline flex items-center justify-center gap-1"
                     >
-                      <span>View All Domains on Home</span>
+                      <span>Open Full Domains Hub Page</span>
                       <ArrowRight className="w-3 h-3" />
                     </button>
                   </div>
@@ -216,48 +221,62 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </div>
 
-            {/* 2. SERVICES */}
+            {/* 2. SERVICES PAGE */}
             <button
-              onClick={() => handleNavClick('services')}
-              className="px-3.5 py-2 rounded-lg text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors flex items-center gap-1.5"
+              onClick={() => handlePageClick('services')}
+              className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
+                isServicesActive
+                  ? 'text-[#0a2569] bg-blue-50 border border-blue-200/80 font-bold shadow-2xs'
+                  : 'text-slate-700 hover:text-[#0a2569] hover:bg-slate-100'
+              }`}
             >
-              <Settings className="w-4 h-4 text-slate-500" />
+              <Settings className={`w-4 h-4 ${isServicesActive ? 'text-[#0a2569]' : 'text-slate-500'}`} />
               <span>Services</span>
             </button>
 
-            {/* 3. PROJECTS */}
+            {/* 3. PROJECTS PAGE */}
             <button
-              onClick={() => handleNavClick('projects')}
-              className="px-3.5 py-2 rounded-lg text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors flex items-center gap-1.5"
+              onClick={() => handlePageClick('projects')}
+              className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
+                isProjectsActive
+                  ? 'text-[#0a2569] bg-blue-50 border border-blue-200/80 font-bold shadow-2xs'
+                  : 'text-slate-700 hover:text-[#0a2569] hover:bg-slate-100'
+              }`}
             >
-              <Briefcase className="w-4 h-4 text-slate-500" />
+              <Briefcase className={`w-4 h-4 ${isProjectsActive ? 'text-[#0a2569]' : 'text-slate-500'}`} />
               <span>Projects</span>
             </button>
 
-            {/* 4. CONTACT */}
+            {/* 4. CONTACT PAGE */}
             <button
-              onClick={() => handleNavClick('contact')}
-              className="px-3.5 py-2 rounded-lg text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors flex items-center gap-1.5"
+              onClick={() => handlePageClick('contact')}
+              className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
+                isContactActive
+                  ? 'text-[#0a2569] bg-blue-50 border border-blue-200/80 font-bold shadow-2xs'
+                  : 'text-slate-700 hover:text-[#0a2569] hover:bg-slate-100'
+              }`}
             >
-              <Send className="w-4 h-4 text-slate-500" />
+              <Send className={`w-4 h-4 ${isContactActive ? 'text-[#0a2569]' : 'text-slate-500'}`} />
               <span>Contact</span>
             </button>
 
-            {/* 5. FLYER */}
-            {onOpenFlyer && (
-              <button
-                onClick={onOpenFlyer}
-                className="px-3.5 py-2 rounded-lg text-[#0a2569] bg-amber-50 hover:bg-amber-100/80 border border-amber-200/80 transition-colors flex items-center gap-1.5 font-bold"
-                title="View Official Master Product Catalogue Flyer"
-              >
-                <FileText className="w-4 h-4 text-amber-600" />
-                <span>Flyer</span>
-              </button>
-            )}
+            {/* 5. FLYER PAGE */}
+            <button
+              onClick={() => handlePageClick('flyer')}
+              className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 font-bold ${
+                isFlyerActive
+                  ? 'text-[#0a2569] bg-amber-100 border border-amber-300 shadow-2xs'
+                  : 'text-[#0a2569] bg-amber-50 hover:bg-amber-100/80 border border-amber-200/80'
+              }`}
+              title="Open Official Product Catalogue Flyer Page"
+            >
+              <FileText className="w-4 h-4 text-amber-600" />
+              <span>Flyer</span>
+            </button>
 
           </nav>
 
-          {/* Action CTAs: RFQ Cart + Request a Quote (HYTORC-Style High-Impact Button) */}
+          {/* Action CTAs: RFQ Cart + Request a Quote */}
           <div className="flex items-center space-x-2.5">
             {/* RFQ Cart Button */}
             <button
@@ -277,9 +296,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </button>
 
-            {/* Request a Quote Button (HYTORC-Style Bold High-Contrast CTA) */}
+            {/* Request a Quote Button */}
             <button
-              onClick={() => handleNavClick('contact')}
+              onClick={() => handlePageClick('contact')}
               className="hidden sm:inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wide text-white bg-[#0a2569] hover:bg-blue-800 shadow-md shadow-blue-900/20 transition-all hover:scale-102 active:scale-98"
             >
               <span>Request a Quote</span>
@@ -299,21 +318,21 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Mobile Drawer Menu (Focused 5 items: Domain, Services, Projects, Contact, Flyer) */}
+      {/* Mobile Drawer Menu (Focused individual page links) */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2 shadow-lg">
           <button
-            onClick={() => handleNavClick('domains')}
+            onClick={() => handlePageClick('domains')}
             className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold text-[#0a2569] bg-blue-50 border border-blue-200"
           >
             <Layers className="w-4 h-4 text-blue-700" />
-            <span>Domain (Industry Sectors)</span>
+            <span>Domains Hub Page</span>
           </button>
           <div className="pl-4 pr-1 py-1 grid grid-cols-2 gap-1.5">
             {industryDomainsData.map((d) => (
               <button
                 key={d.id}
-                onClick={() => handleSelectDomainFromMenu(d.id)}
+                onClick={() => handlePageClick(`domain/${d.id}`)}
                 className="text-left py-1.5 px-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100 truncate"
               >
                 • {d.name.split(',')[0]}
@@ -321,37 +340,32 @@ export const Navbar: React.FC<NavbarProps> = ({
             ))}
           </div>
           <button
-            onClick={() => handleNavClick('services')}
+            onClick={() => handlePageClick('services')}
             className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
           >
             <Settings className="w-4 h-4 text-slate-500" />
-            <span>Services (Supply, Erection & AMC)</span>
+            <span>Services (Installation & AMC Page)</span>
           </button>
           <button
-            onClick={() => handleNavClick('projects')}
+            onClick={() => handlePageClick('projects')}
             className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
           >
             <Briefcase className="w-4 h-4 text-slate-500" />
-            <span>Projects (Case Studies)</span>
+            <span>Projects & Case Studies Page</span>
           </button>
-          {onOpenFlyer && (
-            <button
-              onClick={() => {
-                onOpenFlyer();
-                setMobileMenuOpen(false);
-              }}
-              className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-bold text-[#0a2569] bg-amber-50 border border-amber-200"
-            >
-              <FileText className="w-4 h-4 text-amber-600" />
-              <span>Flyer (Official Catalogue)</span>
-            </button>
-          )}
           <button
-            onClick={() => handleNavClick('contact')}
+            onClick={() => handlePageClick('flyer')}
+            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-bold text-[#0a2569] bg-amber-50 border border-amber-200"
+          >
+            <FileText className="w-4 h-4 text-amber-600" />
+            <span>Flyer (Catalogue Page)</span>
+          </button>
+          <button
+            onClick={() => handlePageClick('contact')}
             className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
           >
             <Send className="w-4 h-4 text-slate-500" />
-            <span>Contact & RFQ</span>
+            <span>Contact & RFQ Page</span>
           </button>
 
           <div className="pt-3 border-t border-slate-200 flex flex-col gap-2">
@@ -363,7 +377,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>Call: +91 8712344439</span>
             </a>
             <button
-              onClick={() => handleNavClick('contact')}
+              onClick={() => handlePageClick('contact')}
               className="w-full py-2.5 px-4 rounded-xl text-center font-extrabold uppercase text-white bg-[#0a2569] hover:bg-blue-800 text-xs shadow-sm"
             >
               Request a Quote
