@@ -177,13 +177,6 @@ export function App() {
               }}
             />
 
-            {/* Authorized OEM Brand Partner Showcase */}
-            <BrandShowcase
-              onSelectBrandForSearch={() => {
-                handleNavigateToSection('domains');
-              }}
-            />
-
             {/* Industrial Turnkey Services (Supply + Erection + AMC) */}
             <ServicesSection
               onInquireService={handleInquireService}
@@ -199,6 +192,9 @@ export function App() {
               onSelectCategory={setSelectedCategory}
               onNavigateToSection={handleNavigateToSection}
             />
+
+            {/* Authorized OEM Brand Partner Logos (Clean Logo Wall at Bottom) */}
+            <BrandShowcase />
 
             {/* Why Choose GSR Engineering Solutions */}
             <WhyChooseUs />
