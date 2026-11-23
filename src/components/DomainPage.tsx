@@ -413,7 +413,7 @@ export const DomainPage: React.FC<DomainPageProps> = ({
         {/* SWITCH TO OTHER DOMAINS */}
         <div className="pt-4 border-t border-slate-200">
           <h3 className="text-sm font-extrabold uppercase tracking-wider text-slate-700 mb-4">
-            Explore Other Industry Domains:
+            Explore Other Industries:
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
             {otherDomains.map((od) => {

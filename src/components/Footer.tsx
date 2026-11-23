@@ -164,7 +164,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigateToSection('domains')} 
                   className="hover:text-white transition-colors text-left text-sky-300 font-semibold flex items-center gap-1"
                 >
-                  <span>Industry Domain Solutions →</span>
+                  <span>Industry Solutions →</span>
                 </button>
               </li>
               <li>

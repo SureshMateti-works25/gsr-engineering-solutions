@@ -43,15 +43,15 @@ export const Hero: React.FC<HeroProps> = ({
         <div className="text-center max-w-2xl mx-auto space-y-2 mb-8 sm:mb-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100/80 text-[#0a2569] text-xs font-bold tracking-wider uppercase">
             <Layers className="w-3.5 h-3.5 text-blue-700" />
-            <span>Industrial Spares by Industry Sector</span>
+            <span>Industrial Spares by Industry</span>
           </div>
 
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Select Your <span className="text-[#0a2569]">Industry Domain</span>
+            Select Your <span className="text-[#0a2569]">Industry</span>
           </h1>
 
           <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto">
-            Choose your sector to explore certified process components, high-torque machinery spares, and plant maintenance consumables.
+            Choose your industry to explore certified process components, high-torque machinery spares, and plant maintenance consumables.
           </p>
         </div>
 
@@ -125,8 +125,8 @@ export const Hero: React.FC<HeroProps> = ({
         {/* Clean Trust Pillars Bar */}
         <div className="mt-8 pt-6 border-t border-slate-200 grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
           <div className="p-3 bg-white/70 rounded-xl border border-slate-200/60 shadow-2xs">
-            <div className="font-extrabold text-sm sm:text-base text-[#0a2569]">6 Core Sectors</div>
-            <div className="text-[11px] text-slate-500">Domain-Tailored Spares</div>
+            <div className="font-extrabold text-sm sm:text-base text-[#0a2569]">6 Core Industries</div>
+            <div className="text-[11px] text-slate-500">Industry-Tailored Spares</div>
           </div>
           <div className="p-3 bg-white/70 rounded-xl border border-slate-200/60 shadow-2xs">
             <div className="font-extrabold text-sm sm:text-base text-[#0a2569]">60+ Product Lines</div>

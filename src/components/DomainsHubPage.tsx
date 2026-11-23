@@ -76,10 +76,10 @@ export const DomainsHubPage: React.FC<DomainsHubPageProps> = ({
               <span>Industry-Specific Procurement & Spares</span>
             </div>
             <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-white">
-              Industrial Supplies by Industry Domain
+              Industrial Supplies by Industry
             </h1>
             <p className="text-sm sm:text-base text-blue-100 leading-relaxed font-normal">
-              Procuring for a specific process or manufacturing facility? Choose your sector below to explore certified material grades, process-critical components, and universal plant maintenance consumables under a single consolidated GST invoice.
+              Procuring for a specific process or manufacturing facility? Choose your industry below to explore certified material grades, process-critical components, and universal plant maintenance consumables under a single consolidated GST invoice.
             </p>
             <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-semibold text-blue-200">
               <span className="flex items-center gap-1.5 text-emerald-300">
@@ -98,10 +98,10 @@ export const DomainsHubPage: React.FC<DomainsHubPageProps> = ({
         <div>
           <div className="flex items-center justify-between mb-4 px-1">
             <h2 className="text-base sm:text-lg font-black text-slate-900">
-              Select Your Manufacturing Sector:
+              Select Your Industry:
             </h2>
             <span className="text-xs text-slate-500 hidden sm:inline">
-              Click any sector to view its dedicated catalogue and items
+              Click any industry to view its dedicated catalogue and items
             </span>
           </div>
 

@@ -166,7 +166,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
               </span>
             ) : (
               <span>
-                Browse Products by <span className="text-[#0a2569]">Industry Domain or Division</span>
+                Browse Products by <span className="text-[#0a2569]">Industry or Division</span>
               </span>
             )}
           </h2>
