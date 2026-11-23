@@ -860,7 +860,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "ISI Certified",
     "discountBadge": "15% OFF Bulk",
-    "imageUrl": "./products/wires-cables.png"
+    "imageUrl": "./products/wires-cables.png?v=20261124-v3"
   },
   {
     "id": "terminal-blocks-connectors",
