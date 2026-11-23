@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import type { ProductCategory, ProductItem, RfqItem } from './types';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { ProductCatalog } from './components/ProductCatalog';
+import { DomainPage } from './components/DomainPage';
 import { OffersCarousel } from './components/OffersCarousel';
 import { ProjectsSection } from './components/ProjectsSection';
 import { BrandShowcase } from './components/BrandShowcase';
@@ -17,25 +17,31 @@ import { CatalogueModal } from './components/CatalogueModal';
 import { CategoryPage } from './components/CategoryPage';
 
 export function App() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<ProductCategory>('all');
-  const [activeDomainId, setActiveDomainId] = useState<string | null>(null);
+  const [, setSelectedCategory] = useState<ProductCategory>('all');
+  const [activeDomainPage, setActiveDomainPage] = useState<string | null>(null);
+  const [activeCategoryPage, setActiveCategoryPage] = useState<ProductCategory | null>(null);
   const [rfqList, setRfqList] = useState<RfqItem[]>([]);
   const [selectedProductModal, setSelectedProductModal] = useState<ProductItem | null>(null);
   const [isRfqDrawerOpen, setIsRfqDrawerOpen] = useState(false);
   const [isFlyerModalOpen, setIsFlyerModalOpen] = useState(false);
   const [prefilledService, setPrefilledService] = useState<string>('');
-  const [activeCategoryPage, setActiveCategoryPage] = useState<ProductCategory | null>(null);
 
-  // Sync with URL Hash for Deep Linking and Category Pages
+  // Sync with URL Hash for Deep Linking, Domain Pages and Category Pages
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash;
-      if (hash.startsWith('#/category/')) {
+      if (hash.startsWith('#/domain/')) {
+        const domId = hash.replace('#/domain/', '');
+        setActiveDomainPage(domId);
+        setActiveCategoryPage(null);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash.startsWith('#/category/')) {
         const cat = hash.replace('#/category/', '') as ProductCategory;
         setActiveCategoryPage(cat);
+        setActiveDomainPage(null);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
+        setActiveDomainPage(null);
         setActiveCategoryPage(null);
         if (hash && hash !== '#') {
           const sectionId = hash.replace('#/', '').replace('#', '');
@@ -81,8 +87,9 @@ export function App() {
   };
 
   const handleNavigateToSection = (sectionId: string) => {
-    if (activeCategoryPage) {
+    if (activeDomainPage || activeCategoryPage) {
       window.location.hash = `#${sectionId}`;
+      setActiveDomainPage(null);
       setActiveCategoryPage(null);
     } else {
       const el = document.getElementById(sectionId);
@@ -92,17 +99,9 @@ export function App() {
     }
   };
 
-  const handleSelectBrandForSearch = (brandName: string) => {
-    if (activeCategoryPage) {
-      setActiveCategoryPage(null);
-      window.location.hash = '';
-    }
-    setSearchQuery(brandName);
-    handleNavigateToSection('catalog');
-  };
-
   const handleInquireService = (serviceTitle: string) => {
-    if (activeCategoryPage) {
+    if (activeDomainPage || activeCategoryPage) {
+      setActiveDomainPage(null);
       setActiveCategoryPage(null);
       window.location.hash = '';
     }
@@ -117,14 +116,6 @@ export function App() {
     handleNavigateToSection('contact');
   };
 
-  const handleSelectDomain = (domainId: string | null) => {
-    setActiveDomainId(domainId);
-    setSelectedCategory('all');
-    if (domainId) {
-      handleNavigateToSection('catalog');
-    }
-  };
-
   const isCurrentProductInRfq = selectedProductModal 
     ? rfqList.some(item => item.product.id === selectedProductModal.id)
     : false;
@@ -136,18 +127,37 @@ export function App() {
         rfqList={rfqList}
         onOpenRfq={() => setIsRfqDrawerOpen(true)}
         onNavigateToSection={handleNavigateToSection}
-        onOpenFlyer={() => setIsFlyerModalOpen(true)}
       />
 
       {/* Main Content Sections */}
       <main className="flex-1">
-        {activeCategoryPage ? (
-          /* Dedicated Full Category Page View */
+        {activeDomainPage ? (
+          /* Dedicated Individual Domain Page View */
+          <DomainPage
+            domainId={activeDomainPage}
+            onBackToHome={() => {
+              window.location.hash = '';
+              setActiveDomainPage(null);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onSelectOtherDomain={(otherId) => {
+              window.location.hash = `#/domain/${otherId}`;
+              setActiveDomainPage(otherId);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            rfqList={rfqList}
+            onToggleRfq={handleToggleRfq}
+            onSelectProduct={setSelectedProductModal}
+            onNavigateToContact={() => handleNavigateToSection('contact')}
+          />
+        ) : activeCategoryPage ? (
+          /* Dedicated Category Page View */
           <CategoryPage
             categoryId={activeCategoryPage}
             onBackToHome={() => {
               window.location.hash = '';
               setActiveCategoryPage(null);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             rfqList={rfqList}
             onToggleRfq={handleToggleRfq}
@@ -156,33 +166,22 @@ export function App() {
             onNavigateToContact={() => handleNavigateToSection('contact')}
           />
         ) : (
-          /* Domain-First Landing Page Flow */
+          /* Clean, Uncluttered Domain-First Landing Page (No Catalogue Clutter on Home) */
           <>
-            {/* Domain-First Landing Hero */}
+            {/* Domain-First Landing Hero (Compact Title + 6 Domain Cards) */}
             <Hero
-              searchQuery={searchQuery}
-              onSearchChange={setSearchQuery}
-              onSelectDomain={handleSelectDomain}
-              onNavigateToSection={handleNavigateToSection}
-            />
-
-            {/* Domain-Curated & Master Product Catalog */}
-            <ProductCatalog
-              searchQuery={searchQuery}
-              onSearchChange={setSearchQuery}
-              selectedCategory={selectedCategory}
-              onSelectCategory={setSelectedCategory}
-              rfqList={rfqList}
-              onToggleRfq={handleToggleRfq}
-              onSelectProduct={setSelectedProductModal}
-              onOpenFlyer={() => setIsFlyerModalOpen(true)}
-              activeDomainId={activeDomainId}
-              onSelectDomain={handleSelectDomain}
+              onSelectDomain={(domainId) => {
+                window.location.hash = `#/domain/${domainId}`;
+                setActiveDomainPage(domainId);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
             />
 
             {/* Authorized OEM Brand Partner Showcase */}
             <BrandShowcase
-              onSelectBrandForSearch={handleSelectBrandForSearch}
+              onSelectBrandForSearch={() => {
+                handleNavigateToSection('domains');
+              }}
             />
 
             {/* Industrial Turnkey Services (Supply + Erection + AMC) */}

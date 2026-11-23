@@ -10,7 +10,9 @@ import {
   Layers, 
   Settings, 
   Briefcase,
-  Send
+  Send,
+  Award,
+  Gift
 } from 'lucide-react';
 import type { RfqItem } from '../types';
 
@@ -18,7 +20,6 @@ interface NavbarProps {
   rfqList: RfqItem[];
   onOpenRfq: () => void;
   onNavigateToSection: (sectionId: string) => void;
-  onOpenFlyer?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ 
@@ -104,7 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </button>
 
-          {/* Clean Desktop Navigation (5 focused links) */}
+          {/* Clean Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1 font-semibold text-sm">
             <button
               onClick={() => handleNavClick('domains')}
@@ -114,10 +115,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>Industry Domains</span>
             </button>
             <button
-              onClick={() => handleNavClick('catalog')}
-              className="px-3 py-2 rounded-lg text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors"
+              onClick={() => handleNavClick('brands')}
+              className="px-3 py-2 rounded-lg text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors flex items-center gap-1.5"
             >
-              Product Catalog
+              <Award className="w-3.5 h-3.5 text-slate-500" />
+              <span>OEM Brands</span>
             </button>
             <button
               onClick={() => handleNavClick('services')}
@@ -132,6 +134,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <Briefcase className="w-3.5 h-3.5 text-slate-500" />
               <span>Projects</span>
+            </button>
+            <button
+              onClick={() => handleNavClick('offers')}
+              className="px-3 py-2 rounded-lg text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors flex items-center gap-1.5"
+            >
+              <Gift className="w-3.5 h-3.5 text-slate-500" />
+              <span>Special Offers</span>
             </button>
             <button
               onClick={() => handleNavClick('contact')}
@@ -194,10 +203,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>Select by Industry Domain</span>
           </button>
           <button
-            onClick={() => handleNavClick('catalog')}
+            onClick={() => handleNavClick('brands')}
             className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
           >
-            <span>Full Product Catalog</span>
+            <Award className="w-4 h-4 text-slate-500" />
+            <span>OEM Brand Partners</span>
           </button>
           <button
             onClick={() => handleNavClick('services')}
@@ -212,6 +222,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Briefcase className="w-4 h-4 text-slate-500" />
             <span>Executed Projects & Case Studies</span>
+          </button>
+          <button
+            onClick={() => handleNavClick('offers')}
+            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
+          >
+            <Gift className="w-4 h-4 text-slate-500" />
+            <span>Special Offers & Deals</span>
           </button>
           <button
             onClick={() => handleNavClick('contact')}
