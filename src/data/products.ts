@@ -269,7 +269,7 @@ export const productsData: ProductItem[] = [
       "Boiler Headers"
     ],
     "discountBadge": "10% OFF",
-    "imageUrl": "./products/industrial-valves.png"
+    "imageUrl": "./products/industrial-valves.png?v=20261124-v2"
   },
   {
     "id": "bearings",
@@ -385,7 +385,7 @@ export const productsData: ProductItem[] = [
       "Plant Maintenance"
     ],
     "discountBadge": "15% OFF Bulk",
-    "imageUrl": "./products/industrial-fasteners.png"
+    "imageUrl": "./products/industrial-fasteners.png?v=20261124-v2"
   },
   {
     "id": "u-bolts-clamps",
@@ -413,7 +413,7 @@ export const productsData: ProductItem[] = [
       "Offshore Structures"
     ],
     "discountBadge": "Special Price",
-    "imageUrl": "./products/u-bolts-clamps.png"
+    "imageUrl": "./products/u-bolts-clamps.png?v=20261124-v2"
   },
   {
     "id": "rubber-ptfe-gaskets",
@@ -442,7 +442,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "Essential",
     "discountBadge": "10% OFF",
-    "imageUrl": "./products/rubber-ptfe-gaskets.png"
+    "imageUrl": "./products/rubber-ptfe-gaskets.png?v=20261124-v2"
   },
   {
     "id": "hose-pipes-clamps",
@@ -469,7 +469,7 @@ export const productsData: ProductItem[] = [
       "Chemical Unloading Skids"
     ],
     "discountBadge": "12% OFF",
-    "imageUrl": "./products/hose-pipes-clamps.png"
+    "imageUrl": "./products/hose-pipes-clamps.png?v=20261124-v2"
   },
   {
     "id": "ss-sheets-plates",
@@ -498,7 +498,7 @@ export const productsData: ProductItem[] = [
       "Food Handling"
     ],
     "discountBadge": "15% OFF Bulk",
-    "imageUrl": "./products/ss-sheets-plates.png?v=20261123-final"
+    "imageUrl": "./products/ss-sheets-plates.png?v=20261124-v2"
   },
   {
     "id": "industrial-casters-wheels",
@@ -558,7 +558,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "Tier-1 Stock",
     "discountBadge": "12% OFF",
-    "imageUrl": "./products/mccb.png"
+    "imageUrl": "./products/mccb.png?v=20261124-v2"
   },
   {
     "id": "vcb",
@@ -589,7 +589,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "High Voltage",
     "discountBadge": "OEM Contractor Rate",
-    "imageUrl": "./products/vcb.png?v=20261123-final"
+    "imageUrl": "./products/vcb.png?v=20261124-v2"
   },
   {
     "id": "ac-switches",
@@ -651,7 +651,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "Heavy Industrial",
     "discountBadge": "Special Project Price",
-    "imageUrl": "./products/acb.png?v=20261123-final"
+    "imageUrl": "./products/acb.png?v=20261124-v2"
   },
   {
     "id": "switchgear-panels",
@@ -681,7 +681,7 @@ export const productsData: ProductItem[] = [
       "Substations"
     ],
     "discountBadge": "Turnkey Quote",
-    "imageUrl": "./products/switchgear-panels.png"
+    "imageUrl": "./products/switchgear-panels.png?v=20261124-v2"
   },
   {
     "id": "distribution-boards",
@@ -801,7 +801,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "Industrial Grade",
     "discountBadge": "12% OFF",
-    "imageUrl": "./products/power-contactors.png?v=20261123-final"
+    "imageUrl": "./products/power-contactors.png?v=20261124-v2"
   },
   {
     "id": "push-buttons-indicators",
@@ -830,7 +830,7 @@ export const productsData: ProductItem[] = [
       "Crane Pendants"
     ],
     "discountBadge": "Special Bundle",
-    "imageUrl": "./products/push-buttons-indicators.png"
+    "imageUrl": "./products/push-buttons-indicators.png?v=20261124-v2"
   },
   {
     "id": "wires-cables",
@@ -889,7 +889,7 @@ export const productsData: ProductItem[] = [
       "Motor Terminal Cabinets"
     ],
     "discountBadge": "10% OFF",
-    "imageUrl": "./products/terminal-blocks-connectors.png"
+    "imageUrl": "./products/terminal-blocks-connectors.png?v=20261124-v2"
   },
   {
     "id": "lugs-terminals",
@@ -916,7 +916,7 @@ export const productsData: ProductItem[] = [
       "Motor Junction Terminals"
     ],
     "discountBadge": "Bulk Pack",
-    "imageUrl": "./products/lugs-terminals.png?v=20261123-final"
+    "imageUrl": "./products/lugs-terminals.png?v=20261124-v2"
   },
   {
     "id": "cable-glands-accessories",
@@ -943,7 +943,7 @@ export const productsData: ProductItem[] = [
       "Motor Terminal Boxes"
     ],
     "discountBadge": "10% OFF",
-    "imageUrl": "./products/cable-glands-accessories.png?v=20261123-final"
+    "imageUrl": "./products/cable-glands-accessories.png?v=20261124-v2"
   },
   {
     "id": "fuses-fuse-holders",
@@ -973,7 +973,7 @@ export const productsData: ProductItem[] = [
       "UPS Battery Lines"
     ],
     "discountBadge": "Special Price",
-    "imageUrl": "./products/fuses-fuse-holders.png"
+    "imageUrl": "./products/fuses-fuse-holders.png?v=20261124-v2"
   },
   {
     "id": "control-switches",
@@ -1035,7 +1035,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "Safety Critical",
     "discountBadge": "12% OFF",
-    "imageUrl": "./products/mcb-rccb-elcb.png"
+    "imageUrl": "./products/mcb-rccb-elcb.png?v=20261124-v2"
   },
   {
     "id": "busbars-copper-aluminium",
@@ -1093,7 +1093,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "Automation Core",
     "discountBadge": "10% OFF",
-    "imageUrl": "./products/proximity-sensors.png"
+    "imageUrl": "./products/proximity-sensors.png?v=20261124-v2"
   },
   {
     "id": "photoelectric-sensors",
@@ -1122,7 +1122,7 @@ export const productsData: ProductItem[] = [
       "Sorting Chutes"
     ],
     "discountBadge": "10% OFF",
-    "imageUrl": "./products/photoelectric-sensors.png"
+    "imageUrl": "./products/photoelectric-sensors.png?v=20261124-v2"
   },
   {
     "id": "pressure-sensors",
@@ -1151,7 +1151,7 @@ export const productsData: ProductItem[] = [
       "Pump Discharge Control"
     ],
     "discountBadge": "Special Price",
-    "imageUrl": "./products/pressure-sensors.png"
+    "imageUrl": "./products/pressure-sensors.png?v=20261124-v2"
   },
   {
     "id": "temperature-sensors",
@@ -1180,7 +1180,7 @@ export const productsData: ProductItem[] = [
       "Cold Storage Monitoring"
     ],
     "discountBadge": "Calibrated",
-    "imageUrl": "./products/temperature-sensors.png"
+    "imageUrl": "./products/temperature-sensors.png?v=20261124-v2"
   },
   {
     "id": "vfd-ac-drives",
@@ -1212,7 +1212,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "High Efficiency",
     "discountBadge": "Save ₹15,000",
-    "imageUrl": "./products/vfd-ac-drives.png"
+    "imageUrl": "./products/vfd-ac-drives.png?v=20261124-v2"
   },
   {
     "id": "servo-drives",
@@ -1587,7 +1587,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "High Demand",
     "discountBadge": "12% OFF",
-    "imageUrl": "./products/solenoid-valves.png"
+    "imageUrl": "./products/solenoid-valves.png?v=20261124-v2"
   },
   {
     "id": "pneumatic-fittings",
@@ -1618,7 +1618,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "Essential",
     "discountBadge": "Bulk Pack Discount",
-    "imageUrl": "./products/pneumatic-fittings.png"
+    "imageUrl": "./products/pneumatic-fittings.png?v=20261124-v2"
   },
   {
     "id": "speed-controllers",
@@ -1705,7 +1705,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "Best Seller",
     "discountBadge": "Free on Big Orders",
-    "imageUrl": "./products/pu-tubes.png"
+    "imageUrl": "./products/pu-tubes.png?v=20261124-v2"
   },
   {
     "id": "frl-units",
@@ -1735,7 +1735,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "Core Air Unit",
     "discountBadge": "10% OFF Bundle",
-    "imageUrl": "./products/frl-units.png"
+    "imageUrl": "./products/frl-units.png?v=20261124-v2"
   },
   {
     "id": "direction-control-valves",
@@ -1792,7 +1792,7 @@ export const productsData: ProductItem[] = [
       "Automated Paint Spraying"
     ],
     "discountBadge": "Turnkey Solution",
-    "imageUrl": "./products/air-preparation-units.png"
+    "imageUrl": "./products/air-preparation-units.png?v=20261124-v2"
   },
   {
     "id": "pneumatic-actuators",
@@ -1822,7 +1822,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "Valve Automation",
     "discountBadge": "12% OFF",
-    "imageUrl": "./products/pneumatic-actuators.png"
+    "imageUrl": "./products/pneumatic-actuators.png?v=20261124-v2"
   }
 ];
 
