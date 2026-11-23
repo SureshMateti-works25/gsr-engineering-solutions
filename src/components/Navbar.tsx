@@ -168,7 +168,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 aria-expanded={domainsDropdownOpen}
               >
                 <Layers className={`w-4 h-4 ${isDomainsActive ? 'text-[#0a2569]' : 'text-slate-500'}`} />
-                <span>Domain</span>
+                <span>Industry</span>
                 <ChevronDown className={`w-3.5 h-3.5 text-slate-500 transition-transform ${domainsDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
@@ -176,12 +176,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               {domainsDropdownOpen && (
                 <div className="absolute top-full left-0 w-84 bg-white rounded-2xl shadow-xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
                   <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-2 pb-2 border-b border-slate-100 flex items-center justify-between">
-                    <span>Individual Domain Pages:</span>
+                    <span>Industry Pages:</span>
                     <button 
                       onClick={() => handlePageClick('domains')}
                       className="text-blue-700 hover:underline"
                     >
-                      All Domains →
+                      All Industries →
                     </button>
                   </div>
                   <div className="py-1 space-y-1">
@@ -213,7 +213,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onClick={() => handlePageClick('domains')}
                       className="w-full text-center py-1.5 text-xs font-extrabold text-[#0a2569] hover:text-blue-800 hover:underline flex items-center justify-center gap-1"
                     >
-                      <span>Open Full Domains Hub Page</span>
+                      <span>Explore All Industries</span>
                       <ArrowRight className="w-3 h-3" />
                     </button>
                   </div>
@@ -326,7 +326,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold text-[#0a2569] bg-blue-50 border border-blue-200"
           >
             <Layers className="w-4 h-4 text-blue-700" />
-            <span>Domains Hub Page</span>
+            <span>Industries Hub Page</span>
           </button>
           <div className="pl-4 pr-1 py-1 grid grid-cols-2 gap-1.5">
             {industryDomainsData.map((d) => (
