@@ -127,6 +127,7 @@ export function App() {
         rfqList={rfqList}
         onOpenRfq={() => setIsRfqDrawerOpen(true)}
         onNavigateToSection={handleNavigateToSection}
+        onOpenFlyer={() => setIsFlyerModalOpen(true)}
       />
 
       {/* Main Content Sections */}
