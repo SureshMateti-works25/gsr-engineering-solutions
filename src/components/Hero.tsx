@@ -1,94 +1,46 @@
 import React from 'react';
 import { 
   ArrowRight, 
-  ShieldCheck, 
-  Sparkles, 
-  Zap, 
-  Cog, 
-  PhoneCall, 
-  MessageCircle,
-  Search,
-  FileText,
-  Eye,
-  Cpu,
-  Wind
+  Search, 
+  Layers, 
+  Pill, 
+  FlaskConical, 
+  Utensils, 
+  Factory, 
+  Cpu, 
+  Droplets,
+  CheckCircle2
 } from 'lucide-react';
-import type { ProductCategory } from '../types';
-import { BrandLogo } from './BrandLogo';
+import { industryDomainsData } from '../data/domains';
 
 interface HeroProps {
   onSearchChange: (query: string) => void;
   searchQuery: string;
-  onSelectCategory: (catId: ProductCategory) => void;
+  onSelectDomain: (domainId: string) => void;
   onNavigateToSection: (sectionId: string) => void;
-  onOpenFlyer?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ 
   onSearchChange, 
   searchQuery, 
-  onSelectCategory,
+  onSelectDomain,
   onNavigateToSection,
-  onOpenFlyer
 }) => {
-  // 4 exact divisions from official GSR catalogue poster
-  const quickCategories = [
-    { 
-      id: 'mechanical-items' as ProductCategory, 
-      label: 'Mechanical Items', 
-      sub: 'SS & MS Pipes, Flanges, Valves, Fasteners, Tools, Bearings',
-      icon: Cog, 
-      bg: 'bg-amber-50 text-amber-900 border-amber-300 hover:border-amber-500 hover:shadow-amber-500/20',
-      iconBg: 'bg-amber-500 text-white',
-      badge: '18 Products'
-    },
-    { 
-      id: 'electrical-items' as ProductCategory, 
-      label: 'Electrical Items', 
-      sub: 'MCCB, MCB, ACB, Contactors, Cables, Panel Enclosures',
-      icon: Zap, 
-      bg: 'bg-blue-50 text-blue-900 border-blue-300 hover:border-blue-500 hover:shadow-blue-500/20',
-      iconBg: 'bg-blue-600 text-white',
-      badge: '18 Products'
-    },
-    { 
-      id: 'automation-electronics' as ProductCategory, 
-      label: 'Automation & Electronics', 
-      sub: 'Sensors, Drives, PLC, HMI, VFD, Encoders, SMPS',
-      icon: Cpu, 
-      bg: 'bg-purple-50 text-purple-900 border-purple-300 hover:border-purple-500 hover:shadow-purple-500/20',
-      iconBg: 'bg-purple-600 text-white',
-      badge: '15 Products'
-    },
-    { 
-      id: 'pneumatics-items' as ProductCategory, 
-      label: 'Pneumatics Items (OEM)', 
-      sub: 'Cylinders, FRL, Solenoid Valves, Push-In Fittings, PU Tubing',
-      icon: Wind, 
-      bg: 'bg-cyan-50 text-cyan-900 border-cyan-300 hover:border-cyan-500 hover:shadow-cyan-500/20',
-      iconBg: 'bg-cyan-600 text-white',
-      badge: '11 Products'
+  const getDomainIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Pill': return Pill;
+      case 'FlaskConical': return FlaskConical;
+      case 'Utensils': return Utensils;
+      case 'Factory': return Factory;
+      case 'Cpu': return Cpu;
+      case 'Droplets': return Droplets;
+      default: return Factory;
     }
-  ];
+  };
 
-  const topBrandLogos = [
-    'Schneider Electric',
-    'Siemens',
-    'ABB',
-    'Eaton',
-    'L&T Electrical & Automation',
-    'Havells',
-    'SMC',
-    'FESTO',
-    'AirTAC',
-    'Parker Legris',
-    'Legrand',
-    'CKD'
-  ];
-
-  const handleQuickCategory = (catId: ProductCategory) => {
-    onSelectCategory(catId);
-    window.location.hash = `#/category/${catId}`;
+  const handleDomainCardClick = (domainId: string) => {
+    onSelectDomain(domainId);
+    onNavigateToSection('catalog');
   };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -97,217 +49,159 @@ export const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <section id="hero" className="relative overflow-hidden pt-8 pb-16 sm:pb-20 lg:pt-12 lg:pb-24 bg-gradient-to-b from-blue-50/70 via-white to-slate-50 border-b border-slate-200">
+    <section id="hero" className="relative pt-8 pb-14 sm:pt-12 sm:pb-20 bg-gradient-to-b from-blue-50/70 via-white to-slate-50 border-b border-slate-200">
       
-      {/* Decorative Soft Blurs */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[480px] pointer-events-none overflow-hidden opacity-60">
-        <div className="absolute -top-32 left-1/4 w-96 h-96 bg-blue-300/30 rounded-full blur-3xl" />
-        <div className="absolute top-12 right-1/4 w-96 h-96 bg-amber-300/25 rounded-full blur-3xl" />
-      </div>
+      {/* Subtle Ambient Glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-5xl h-64 bg-gradient-to-r from-blue-200/40 via-cyan-100/30 to-amber-100/40 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Official GSR Logo & Verified Banner Header */}
-        <div className="flex flex-col items-center justify-center text-center mb-6">
-          <div className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 shadow-md shadow-slate-200/50 mb-3 max-w-xs transition-transform hover:scale-105 duration-300">
-            <img 
-              src="./gsr-logo.png" 
-              alt="GSR Engineering Solutions Official Logo" 
-              className="h-14 sm:h-16 w-auto object-contain mx-auto"
-            />
-          </div>
+        {/* Main Header / Value Proposition */}
+        <div className="text-center max-w-3xl mx-auto space-y-4">
           
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#0a2569] text-white text-xs font-black tracking-wider uppercase shadow-xs">
-              Building Trust, Delivering Quality
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-800 text-xs font-bold shadow-xs">
-              Proprietor: <span className="text-[#0a2569]">G Sandeep Kumar</span>
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-bold shadow-xs">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
-              </span>
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              <span>GSTIN: <strong className="font-mono text-slate-900 font-extrabold">36CTUPG6618J11Z9</strong></span>
-              <span className="px-2 py-0.5 rounded bg-emerald-600 text-white font-black text-[9px] uppercase tracking-wider gst-active-blink flex items-center gap-1">
-                ● ACTIVE VERIFIED
-              </span>
-            </span>
+          {/* Executive Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/80 border border-blue-200/80 text-[#0a2569] text-xs font-bold tracking-wide shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>Industrial Distributor & Turnkey Erection Contractor</span>
+            <span className="hidden sm:inline text-blue-300">•</span>
+            <span className="hidden sm:inline text-slate-600 font-medium">Single-GST Consolidated Sourcing</span>
           </div>
-        </div>
 
-        {/* Main Headline */}
-        <div className="text-center max-w-4xl mx-auto mb-8">
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.18]">
-            Complete Industrial Supplies & Engineering Solutions for{' '}
-            <span className="bg-gradient-to-r from-[#0a2569] via-blue-700 to-amber-600 bg-clip-text text-transparent">
-              Mechanical, Electrical & Process Industries
+          {/* Impact Heading */}
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+            Find Industrial Spares & Equipment <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-r from-[#0a2569] via-blue-700 to-indigo-800 bg-clip-text text-transparent">
+              Tailored to Your Industry Sector
             </span>
           </h1>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            One-stop supplier of SS & Pharma materials, electrical switchgear, mechanical power transmission, industrial pumps & tools with guaranteed Mill Test Certificates (MTC) across <strong className="text-slate-900 font-bold">Telangana, Andhra Pradesh, Tamil Nadu & Maharashtra</strong>.
+
+          {/* Explanatory Subtitle */}
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
+            Select your plant domain below to explore certified process components, high-grade machinery spares, and universal maintenance consumables curated for your manufacturing environment.
           </p>
-        </div>
 
-        {/* Live Search Bar */}
-        <div className="max-w-2xl mx-auto mb-8">
-          <form onSubmit={handleSearchSubmit} className="relative flex items-center shadow-lg shadow-blue-500/5">
-            <div className="absolute left-4 pointer-events-none text-slate-400">
-              <Search className="w-5 h-5 text-[#0a2569]" />
+          {/* Quick Search Bar */}
+          <form onSubmit={handleSearchSubmit} className="pt-2 max-w-xl mx-auto">
+            <div className="relative flex items-center shadow-md rounded-2xl bg-white border border-slate-300 hover:border-blue-500 focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-500/20 transition-all p-1">
+              <Search className="w-5 h-5 text-slate-400 ml-3 shrink-0" />
+              <input
+                type="text"
+                placeholder="Search products, spares or OEM brands (e.g., SS 316 pipe, Helical Gearbox, VFD, Solenoid valve...)"
+                value={searchQuery}
+                onChange={(e) => onSearchChange(e.target.value)}
+                className="w-full px-3 py-2 text-xs sm:text-sm text-slate-800 placeholder-slate-400 bg-transparent focus:outline-none"
+              />
+              <button
+                type="submit"
+                className="px-4 py-2 rounded-xl bg-[#0a2569] hover:bg-blue-800 text-white font-bold text-xs sm:text-sm shrink-0 transition-all shadow-xs"
+              >
+                Search
+              </button>
             </div>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => onSearchChange(e.target.value)}
-              placeholder="Search industrial items: SS Pipes, MCCB, PLC, VFD, Solenoid Valves, SMC Cylinders..."
-              className="w-full pl-12 pr-32 py-4 rounded-2xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0a2569] focus:border-transparent text-sm sm:text-base shadow-sm"
-            />
-            <button
-              type="submit"
-              className="absolute right-2 px-5 py-2.5 rounded-xl bg-[#0a2569] hover:bg-blue-800 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-1.5"
-            >
-              <span>Explore</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
           </form>
-          <div className="flex items-center justify-between mt-2.5 px-3 text-xs text-slate-500">
-            <span>Popular: <span className="text-slate-800 font-medium">SS Pipes, MCCB Breakers, PLC / HMI, VFD Drives, Pneumatic Cylinders</span></span>
-            <span className="hidden sm:inline text-emerald-700 font-bold">✓ Genuine Industrial Products • Leading OEM Brands</span>
-          </div>
+
         </div>
 
-        {/* 4 Bright, Colorful Category Pillars Matching Poster */}
-        <div className="mb-10">
-          <div className="text-xs font-bold uppercase tracking-wider text-slate-500 text-center mb-3">
-            Explore Products Across 4 Official Divisions
+        {/* DOMAIN CARDS GRID - 6 Industry Verticals */}
+        <div id="domains" className="mt-10 sm:mt-12 scroll-mt-24">
+          
+          <div className="flex items-center justify-between mb-4 px-1">
+            <div className="flex items-center gap-2">
+              <Layers className="w-4 h-4 text-blue-700" />
+              <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-800">
+                Pick Your Industry Sector:
+              </span>
+            </div>
+            <span className="text-xs text-slate-500 hidden sm:inline">
+              Click a sector to view certified spares & common consumables
+            </span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 max-w-6xl mx-auto">
-            {quickCategories.map((cat) => {
-              const Icon = cat.icon;
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+            {industryDomainsData.map((domain) => {
+              const Icon = getDomainIcon(domain.iconName);
+              const totalItems = domain.specificProductIds.length + domain.commonProductIds.length;
+
               return (
-                <button
-                  key={cat.id}
-                  onClick={() => handleQuickCategory(cat.id)}
-                  className={`flex flex-col justify-between p-4 rounded-2xl ${cat.bg} border-2 hover:scale-[1.03] active:scale-[0.98] transition-all text-left shadow-sm group`}
+                <div
+                  key={domain.id}
+                  onClick={() => handleDomainCardClick(domain.id)}
+                  className="group relative bg-white rounded-2xl p-5 border border-slate-200/90 hover:border-blue-400 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer hover:-translate-y-1"
                 >
+                  {/* Top Header inside card */}
                   <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <div className={`w-9 h-9 rounded-xl ${cat.iconBg} flex items-center justify-center shadow-xs`}>
-                        <Icon className="w-5 h-5" />
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <div className="flex items-center gap-3">
+                        <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${domain.gradient} text-white flex items-center justify-center shadow-md group-hover:scale-105 transition-transform shrink-0`}>
+                          <Icon className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="font-extrabold text-base sm:text-lg text-slate-900 group-hover:text-blue-700 transition-colors line-clamp-1">
+                            {domain.name.split(',')[0]}
+                          </h3>
+                          <span className="text-[11px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-md inline-block">
+                            {domain.badge}
+                          </span>
+                        </div>
                       </div>
-                      <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-white/80 border border-black/5 text-slate-800">
-                        {cat.badge}
+                      <span className="text-[11px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-lg shrink-0">
+                        {totalItems} Items
                       </span>
                     </div>
-                    <div className="font-black text-sm text-slate-900 group-hover:text-[#0a2569] transition-colors">
-                      {cat.label}
-                    </div>
-                    <div className="text-[11px] text-slate-600 mt-1 line-clamp-2 leading-snug font-medium">
-                      {cat.sub}
+
+                    {/* Tagline / Key Spares */}
+                    <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed mb-3">
+                      {domain.tagline}
+                    </p>
+
+                    {/* Certified Standards Chips */}
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {domain.keyStandards.slice(0, 3).map((std, idx) => (
+                        <span 
+                          key={idx}
+                          className="text-[10px] font-medium text-slate-600 bg-slate-50 border border-slate-200 px-2 py-0.5 rounded"
+                        >
+                          ✓ {std}
+                        </span>
+                      ))}
                     </div>
                   </div>
 
-                  <div className="mt-3 pt-2.5 border-t border-black/5 flex items-center justify-between text-[11px] font-bold text-slate-800 group-hover:text-blue-800">
-                    <span>View Category</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  {/* Bottom Action CTA */}
+                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#0a2569] group-hover:text-blue-600 transition-colors">
+                    <span className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+                      <span>Process Spares + Common Consumables</span>
+                    </span>
+                    <span className="flex items-center gap-1 text-blue-700 font-extrabold group-hover:translate-x-1 transition-transform">
+                      <span>Explore</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
                   </div>
-                </button>
+                </div>
               );
             })}
           </div>
+
         </div>
 
-        {/* Action CTAs + View Official Flyer */}
-        <div className="flex flex-wrap items-center justify-center gap-3.5 mb-12">
-          {/* View Official Flyer Button */}
-          {onOpenFlyer && (
-            <button
-              onClick={onOpenFlyer}
-              className="flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-sm sm:text-base font-extrabold text-[#0a2569] bg-white hover:bg-blue-50 border-2 border-[#0a2569] shadow-md hover:shadow-lg transition-all scale-100 hover:scale-102"
-            >
-              <FileText className="w-5 h-5 text-[#0a2569]" />
-              <span>View Official Product Catalogue Flyer</span>
-              <Eye className="w-4 h-4 text-amber-500" />
-            </button>
-          )}
-
-          <button
-            onClick={() => onNavigateToSection('contact')}
-            className="flex items-center gap-2.5 px-7 py-3.5 rounded-xl text-sm sm:text-base font-extrabold text-white bg-amber-500 hover:bg-amber-600 shadow-xl shadow-amber-500/25 transition-all scale-100 hover:scale-105"
-          >
-            <Sparkles className="w-5 h-5 text-white" />
-            <span>Request Instant Quote</span>
-          </button>
-
-          <a
-            href="https://wa.me/918712344439?text=Hello%20GSR%20Engineering%20Solutions,%20I%20would%20like%20to%20enquire%20about%20industrial%20products%20and%20services."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-sm sm:text-base font-extrabold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 shadow-md shadow-emerald-500/10 transition-all"
-          >
-            <MessageCircle className="w-5 h-5 text-emerald-600" />
-            <span>WhatsApp Sandeep Kumar</span>
-          </a>
-
-          <a
-            href="tel:+918712344439"
-            className="flex items-center gap-2 px-5 py-3.5 rounded-xl text-sm font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-sm transition-all"
-          >
-            <PhoneCall className="w-4 h-4 text-blue-600" />
-            <span>+91 8712344439</span>
-          </a>
-        </div>
-
-        {/* Top Brand Logos Banner in Hero */}
-        <div className="mb-10 pt-6 border-t border-slate-200/80">
-          <div className="text-[11px] font-bold uppercase tracking-widest text-slate-400 text-center mb-4">
-            Authorized OEM Brands We Stock & Supply
+        {/* Clean Trust Pillars Bar */}
+        <div className="mt-10 pt-6 border-t border-slate-200 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+          <div className="p-3 bg-white/70 rounded-xl border border-slate-200/60 shadow-2xs">
+            <div className="font-extrabold text-base sm:text-lg text-[#0a2569]">6 Core Sectors</div>
+            <div className="text-[11px] text-slate-500 font-medium">Domain-Tailored Spares</div>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-            {topBrandLogos.map((brandName) => (
-              <div 
-                key={brandName}
-                onClick={() => {
-                  onSearchChange(brandName);
-                  onNavigateToSection('catalog');
-                }}
-                className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl bg-white border-2 border-slate-200/90 shadow-2xs hover:shadow-sm hover:border-blue-500 transition-all cursor-pointer hover:scale-105 flex items-center justify-center min-w-[130px] sm:min-w-[150px] h-14 sm:h-16"
-                title={`Explore ${brandName} components`}
-              >
-                <BrandLogo name={brandName} size="md" showText={true} />
-              </div>
-            ))}
+          <div className="p-3 bg-white/70 rounded-xl border border-slate-200/60 shadow-2xs">
+            <div className="font-extrabold text-base sm:text-lg text-[#0a2569]">60+ Product Lines</div>
+            <div className="text-[11px] text-slate-500 font-medium">Ready Stock & Custom Fab</div>
           </div>
-        </div>
-
-        {/* 5 Trust Commitments Matching Flyer Bottom Strip */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 max-w-6xl mx-auto border-t border-slate-200 pt-8">
-          <div className="p-3.5 rounded-xl bg-white border border-slate-200 text-center shadow-xs">
-            <div className="text-xl sm:text-2xl font-black text-blue-700">QUALITY</div>
-            <div className="text-xs text-slate-700 mt-0.5 font-bold">100% Genuine Materials</div>
-            <div className="text-[10px] text-slate-400">Mill Test Certified</div>
+          <div className="p-3 bg-white/70 rounded-xl border border-slate-200/60 shadow-2xs">
+            <div className="font-extrabold text-base sm:text-lg text-[#0a2569]">27 OEM Brands</div>
+            <div className="text-[11px] text-slate-500 font-medium">100% Genuine MTC 3.1</div>
           </div>
-          <div className="p-3.5 rounded-xl bg-white border border-slate-200 text-center shadow-xs">
-            <div className="text-xl sm:text-2xl font-black text-amber-600">RELIABLE</div>
-            <div className="text-xs text-slate-700 mt-0.5 font-bold">Proven Field Service</div>
-            <div className="text-[10px] text-slate-400">Expert Engineering Team</div>
-          </div>
-          <div className="p-3.5 rounded-xl bg-white border border-slate-200 text-center shadow-xs">
-            <div className="text-xl sm:text-2xl font-black text-emerald-600">COMPETITIVE</div>
-            <div className="text-xs text-slate-700 mt-0.5 font-bold">Direct Factory Prices</div>
-            <div className="text-[10px] text-slate-400">Bulk & ARC Contracts</div>
-          </div>
-          <div className="p-3.5 rounded-xl bg-white border border-slate-200 text-center shadow-xs">
-            <div className="text-xl sm:text-2xl font-black text-purple-600">SATISFACTION</div>
-            <div className="text-xs text-slate-700 mt-0.5 font-bold">Client-First Approach</div>
-            <div className="text-[10px] text-slate-400">Long-term Industrial Trust</div>
-          </div>
-          <div className="col-span-2 sm:col-span-1 p-3.5 rounded-xl bg-white border border-slate-200 text-center shadow-xs">
-            <div className="text-xl sm:text-2xl font-black text-rose-600">24/7 SUPPORT</div>
-            <div className="text-xs text-slate-700 mt-0.5 font-bold">Timely Dispatch</div>
-            <div className="text-[10px] text-slate-400">Telangana, AP, Tamil Nadu & Maharashtra</div>
+          <div className="p-3 bg-white/70 rounded-xl border border-slate-200/60 shadow-2xs">
+            <div className="font-extrabold text-base sm:text-lg text-emerald-700">Supply + Install + AMC</div>
+            <div className="text-[11px] text-slate-500 font-medium">Turnkey Plant Support</div>
           </div>
         </div>
 

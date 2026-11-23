@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react';
 import type { ProductCategory, ProductItem, RfqItem } from './types';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { DomainSolutionsSection } from './components/DomainSolutionsSection';
-import { OffersCarousel } from './components/OffersCarousel';
 import { ProductCatalog } from './components/ProductCatalog';
+import { OffersCarousel } from './components/OffersCarousel';
 import { ProjectsSection } from './components/ProjectsSection';
 import { BrandShowcase } from './components/BrandShowcase';
 import { ServicesSection } from './components/ServicesSection';
@@ -16,21 +15,17 @@ import { RfqDrawer } from './components/RfqDrawer';
 import { QuickContactFloating } from './components/QuickContactFloating';
 import { CatalogueModal } from './components/CatalogueModal';
 import { CategoryPage } from './components/CategoryPage';
-import { industryDomainsData } from './data/domains';
 
 export function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory>('all');
+  const [activeDomainId, setActiveDomainId] = useState<string | null>(null);
   const [rfqList, setRfqList] = useState<RfqItem[]>([]);
   const [selectedProductModal, setSelectedProductModal] = useState<ProductItem | null>(null);
   const [isRfqDrawerOpen, setIsRfqDrawerOpen] = useState(false);
   const [isFlyerModalOpen, setIsFlyerModalOpen] = useState(false);
   const [prefilledService, setPrefilledService] = useState<string>('');
   const [activeCategoryPage, setActiveCategoryPage] = useState<ProductCategory | null>(null);
-
-  // Industry Domain Filter state
-  const [domainFilterIds, setDomainFilterIds] = useState<string[]>([]);
-  const [activeDomainName, setActiveDomainName] = useState<string | null>(null);
 
   // Sync with URL Hash for Deep Linking and Category Pages
   useEffect(() => {
@@ -122,26 +117,11 @@ export function App() {
     handleNavigateToSection('contact');
   };
 
-  // Domain filtering handlers
-  const handleFilterCatalogByDomain = (productIds: string[], domainName: string) => {
-    setDomainFilterIds(productIds);
-    setActiveDomainName(domainName);
+  const handleSelectDomain = (domainId: string | null) => {
+    setActiveDomainId(domainId);
     setSelectedCategory('all');
-    handleNavigateToSection('catalog');
-  };
-
-  const handleClearDomainFilter = () => {
-    setDomainFilterIds([]);
-    setActiveDomainName(null);
-  };
-
-  const handleSelectDomainFilterById = (domainId: string) => {
-    const dom = industryDomainsData.find(d => d.id === domainId);
-    if (dom) {
-      const allIds = [...dom.specificProductIds, ...dom.commonProductIds];
-      handleFilterCatalogByDomain(allIds, dom.name);
-    } else {
-      handleClearDomainFilter();
+    if (domainId) {
+      handleNavigateToSection('catalog');
     }
   };
 
@@ -176,31 +156,17 @@ export function App() {
             onNavigateToContact={() => handleNavigateToSection('contact')}
           />
         ) : (
-          /* Home Overview with all sections */
+          /* Domain-First Landing Page Flow */
           <>
-            {/* Hero Section with Official GSR Logo and 4 Category Pillars */}
+            {/* Domain-First Landing Hero */}
             <Hero
               searchQuery={searchQuery}
               onSearchChange={setSearchQuery}
-              onSelectCategory={setSelectedCategory}
-              onNavigateToSection={handleNavigateToSection}
-              onOpenFlyer={() => setIsFlyerModalOpen(true)}
-            />
-
-            {/* TOP SECTION: Domain-Specific Solutions & Common Plant Supplies */}
-            <DomainSolutionsSection
-              onSelectProduct={setSelectedProductModal}
-              onFilterCatalogByDomain={handleFilterCatalogByDomain}
+              onSelectDomain={handleSelectDomain}
               onNavigateToSection={handleNavigateToSection}
             />
 
-            {/* Special Discounts & Product Offers Image Carousel */}
-            <OffersCarousel
-              onSelectCategory={setSelectedCategory}
-              onNavigateToSection={handleNavigateToSection}
-            />
-
-            {/* Product Catalog Section across 4 Poster Divisions */}
+            {/* Domain-Curated & Master Product Catalog */}
             <ProductCatalog
               searchQuery={searchQuery}
               onSearchChange={setSearchQuery}
@@ -210,25 +176,29 @@ export function App() {
               onToggleRfq={handleToggleRfq}
               onSelectProduct={setSelectedProductModal}
               onOpenFlyer={() => setIsFlyerModalOpen(true)}
-              domainFilterIds={domainFilterIds}
-              activeDomainName={activeDomainName}
-              onClearDomainFilter={handleClearDomainFilter}
-              onSelectDomainFilter={handleSelectDomainFilterById}
+              activeDomainId={activeDomainId}
+              onSelectDomain={handleSelectDomain}
             />
 
-            {/* Turnkey Case Studies & Completed Projects (Supply + Installation + AMC) */}
-            <ProjectsSection
-              onInquireProject={handleInquireService}
-            />
-
-            {/* OEM Brands Partner Showcase with 23 Official Vector Logos */}
+            {/* Authorized OEM Brand Partner Showcase */}
             <BrandShowcase
               onSelectBrandForSearch={handleSelectBrandForSearch}
             />
 
-            {/* Industrial Services Section (Supply + Installation + 24/7 Breakdown + AMC) */}
+            {/* Industrial Turnkey Services (Supply + Erection + AMC) */}
             <ServicesSection
               onInquireService={handleInquireService}
+            />
+
+            {/* Executed Projects & Case Studies */}
+            <ProjectsSection
+              onInquireProject={handleInquireService}
+            />
+
+            {/* Special Offers & Volume Discounts */}
+            <OffersCarousel
+              onSelectCategory={setSelectedCategory}
+              onNavigateToSection={handleNavigateToSection}
             />
 
             {/* Why Choose GSR Engineering Solutions */}
@@ -260,7 +230,7 @@ export function App() {
         onQuickInquire={handleQuickInquireProduct}
       />
 
-      {/* Official Master Product Catalogue & Document Modal */}
+      {/* Official Master Product Catalogue Modal */}
       <CatalogueModal
         isOpen={isFlyerModalOpen}
         onClose={() => setIsFlyerModalOpen(false)}

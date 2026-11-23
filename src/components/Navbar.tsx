@@ -9,12 +9,10 @@ import {
   ShieldCheck, 
   Layers, 
   Settings, 
-  FileText,
-  Sparkles,
-  Eye
+  Briefcase,
+  Send
 } from 'lucide-react';
 import type { RfqItem } from '../types';
-import { VisitorCounterWidget } from './VisitorCounterWidget';
 
 interface NavbarProps {
   rfqList: RfqItem[];
@@ -27,7 +25,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   rfqList, 
   onOpenRfq, 
   onNavigateToSection,
-  onOpenFlyer
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -39,45 +36,40 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
-      {/* Top Bar for Industrial Credentials & Emergency Contact */}
+    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
+      {/* Top Credentials & Contact Bar */}
       <div className="bg-[#0a2569] text-white text-xs py-1.5 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center space-x-3 sm:space-x-5">
-            <span className="flex items-center gap-1.5 text-blue-200 font-medium text-[11px] sm:text-xs">
-              <MapPin className="w-3.5 h-3.5 text-amber-400" />
-              Serving: <strong className="text-white">Telangana, Andhra Pradesh, Tamil Nadu & Maharashtra</strong>
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
+          {/* Left: Coverage & Verified GST */}
+          <div className="flex items-center space-x-3 text-[11px] sm:text-xs">
+            <span className="hidden sm:inline-flex items-center gap-1.5 text-blue-200">
+              <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>Serving: <strong className="text-white">TS, AP, TN & Maharashtra</strong></span>
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-emerald-950/70 border border-emerald-500/50 px-2.5 py-0.5 rounded-full text-emerald-300 text-[11px] sm:text-xs font-semibold shadow-xs">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              <span>GSTIN:</span>
+            <span className="hidden sm:inline text-blue-400">|</span>
+            <span className="inline-flex items-center gap-1.5 text-slate-200">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span className="text-slate-300">GSTIN:</span>
               <span className="font-mono text-white font-bold tracking-wider">36CTUPG6618J11Z9</span>
-              <span className="px-2 py-0.5 rounded bg-emerald-500 text-slate-950 font-black text-[9px] uppercase tracking-wider gst-active-blink flex items-center gap-1">
-                ● ACTIVE VERIFIED
+              <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                ACTIVE
               </span>
             </span>
           </div>
 
-          <div className="flex items-center space-x-3 sm:space-x-5 text-xs">
-            {/* Live Visitor Counter */}
-            <div className="hidden sm:block">
-              <VisitorCounterWidget variant="compact" />
-            </div>
-
+          {/* Right: Phone & Email */}
+          <div className="flex items-center space-x-4 text-xs font-semibold">
             <a 
               href="tel:+918712344439" 
-              className="flex items-center gap-1.5 hover:text-amber-300 transition-colors font-bold text-white"
+              className="flex items-center gap-1.5 text-white hover:text-amber-300 transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-amber-400" />
               <span>+91 8712344439</span>
             </a>
             <a 
               href="mailto:sales@gsrengineeringsolutions.com" 
-              className="hidden sm:flex items-center gap-1.5 hover:text-amber-300 transition-colors text-blue-100"
+              className="hidden md:flex items-center gap-1.5 text-blue-200 hover:text-white transition-colors text-[11px]"
             >
               <Mail className="w-3.5 h-3.5 text-amber-400" />
               <span>sales@gsrengineeringsolutions.com</span>
@@ -86,104 +78,79 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Main Navigation */}
+      {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-18 sm:h-20">
           
-          {/* Official Logo Branding */}
+          {/* Logo & Company Name */}
           <button 
             onClick={() => handleNavClick('hero')} 
-            className="flex items-center space-x-3 text-left focus:outline-none group"
+            className="flex items-center space-x-3 text-left focus:outline-none group shrink-0"
           >
-            <div className="h-12 w-auto flex items-center justify-center p-1 bg-white rounded-xl border border-slate-200/80 shadow-xs group-hover:scale-105 transition-transform">
+            <div className="h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center p-1 bg-white rounded-xl border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform">
               <img 
                 src="./gsr-logo.png" 
-                alt="GSR Engineering Solutions Official Logo" 
-                className="h-10 w-auto object-contain"
+                alt="GSR Engineering Solutions Logo" 
+                className="h-9 sm:h-10 w-auto object-contain"
               />
             </div>
             <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-black text-lg sm:text-xl tracking-tight text-[#0a2569] group-hover:text-blue-700 transition-colors">
-                  GSR ENGINEERING SOLUTION'S
-                </span>
+              <div className="font-black text-base sm:text-lg tracking-tight text-[#0a2569] group-hover:text-blue-700 transition-colors">
+                GSR ENGINEERING SOLUTIONS
               </div>
-              <p className="text-[10px] text-slate-500 hidden sm:block tracking-wider uppercase font-bold">
-                Building Trust, Delivering Quality <span className="text-amber-500">•</span> Proprietor: G Sandeep Kumar
+              <p className="text-[10px] text-slate-500 hidden sm:block tracking-wider uppercase font-semibold">
+                Industrial Supplies & Turnkey Engineering Services
               </p>
             </div>
           </button>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          {/* Clean Desktop Navigation (5 focused links) */}
+          <nav className="hidden lg:flex items-center space-x-1 font-semibold text-sm">
             <button
               onClick={() => handleNavClick('domains')}
-              className="px-3 py-2 rounded-lg text-sm font-bold text-[#0a2569] bg-blue-50/80 hover:bg-blue-100 border border-blue-200/80 transition-colors flex items-center gap-1.5"
+              className="px-3 py-2 rounded-lg text-[#0a2569] bg-blue-50/80 hover:bg-blue-100 border border-blue-200 transition-colors flex items-center gap-1.5 font-bold"
             >
-              <Layers className="w-3.5 h-3.5 text-blue-700" />
-              <span>By Industry</span>
+              <Layers className="w-4 h-4 text-blue-700" />
+              <span>Industry Domains</span>
             </button>
             <button
               onClick={() => handleNavClick('catalog')}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors"
+              className="px-3 py-2 rounded-lg text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors"
             >
-              Products Catalog
-            </button>
-            <button
-              onClick={() => handleNavClick('projects')}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-emerald-800 bg-emerald-50/70 hover:bg-emerald-100 border border-emerald-200 transition-colors flex items-center gap-1.5"
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Projects & Case Studies</span>
+              Product Catalog
             </button>
             <button
               onClick={() => handleNavClick('services')}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors"
+              className="px-3 py-2 rounded-lg text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors flex items-center gap-1.5"
             >
-              Installation & AMC
+              <Settings className="w-3.5 h-3.5 text-slate-500" />
+              <span>Installation & AMC</span>
             </button>
             <button
-              onClick={() => handleNavClick('brands')}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors"
+              onClick={() => handleNavClick('projects')}
+              className="px-3 py-2 rounded-lg text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors flex items-center gap-1.5"
             >
-              OEM Brands
-            </button>
-            <button
-              onClick={() => handleNavClick('why-us')}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors"
-            >
-              Why GSR
+              <Briefcase className="w-3.5 h-3.5 text-slate-500" />
+              <span>Projects</span>
             </button>
             <button
               onClick={() => handleNavClick('contact')}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors"
+              className="px-3 py-2 rounded-lg text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors"
             >
-              Contact Us
+              Contact
             </button>
           </nav>
 
           {/* Action CTAs */}
           <div className="flex items-center space-x-2.5">
-            {/* View Official Flyer Button */}
-            {onOpenFlyer && (
-              <button
-                onClick={onOpenFlyer}
-                className="hidden xl:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-[#0a2569] bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all shadow-xs"
-                title="View Official Product Catalogue Flyer"
-              >
-                <Eye className="w-3.5 h-3.5 text-amber-500" />
-                <span>View Flyer</span>
-              </button>
-            )}
-
-            {/* RFQ Drawer Trigger Button */}
+            {/* RFQ Cart Button */}
             <button
               onClick={onOpenRfq}
-              className="relative p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 transition-all flex items-center gap-2 group shadow-xs"
+              className="relative p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 transition-all flex items-center gap-2 group shadow-2xs"
               title="View Request For Quote List"
               aria-label="Request For Quote List"
             >
-              <ShoppingBag className="w-5 h-5 text-amber-600 group-hover:scale-110 transition-transform" />
+              <ShoppingBag className="w-4.5 h-4.5 text-amber-600 group-hover:scale-110 transition-transform" />
               <span className="hidden md:inline text-xs font-bold uppercase tracking-wider text-slate-700">
                 RFQ Cart
               </span>
@@ -197,9 +164,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Request Quote Button */}
             <button
               onClick={() => handleNavClick('contact')}
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-[#0a2569] hover:bg-blue-800 shadow-md shadow-blue-900/20 transition-all"
+              className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-[#0a2569] hover:bg-blue-800 shadow-sm shadow-blue-900/20 transition-all hover:scale-102 active:scale-98"
             >
-              <Sparkles className="w-4 h-4 text-amber-300" />
+              <Send className="w-3.5 h-3.5 text-amber-300" />
               <span>Get Quote</span>
             </button>
 
@@ -219,82 +186,52 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2 shadow-lg">
-          {onOpenFlyer && (
-            <button
-              onClick={() => {
-                onOpenFlyer();
-                setMobileMenuOpen(false);
-              }}
-              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-base font-bold text-[#0a2569] bg-blue-50 border border-blue-200"
-            >
-              <Eye className="w-5 h-5 text-amber-500" />
-              <span>View Official Product Flyer</span>
-            </button>
-          )}
           <button
             onClick={() => handleNavClick('domains')}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-bold text-[#0a2569] bg-blue-50 hover:bg-blue-100 border border-blue-200"
+            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold text-[#0a2569] bg-blue-50 border border-blue-200"
           >
-            <Layers className="w-5 h-5 text-blue-700" />
-            By Industry Domain
+            <Layers className="w-4 h-4 text-blue-700" />
+            <span>Select by Industry Domain</span>
           </button>
           <button
             onClick={() => handleNavClick('catalog')}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-100"
+            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
           >
-            <Layers className="w-5 h-5 text-blue-600" />
-            Products Catalog
-          </button>
-          <button
-            onClick={() => handleNavClick('projects')}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-semibold text-emerald-800 bg-emerald-50/70 hover:bg-emerald-100 border border-emerald-200"
-          >
-            <ShieldCheck className="w-5 h-5 text-emerald-600" />
-            Projects & Case Studies (Supply + Install)
+            <span>Full Product Catalog</span>
           </button>
           <button
             onClick={() => handleNavClick('services')}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-100"
+            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
           >
-            <Settings className="w-5 h-5 text-blue-600" />
-            Turnkey Services & AMC
+            <Settings className="w-4 h-4 text-slate-500" />
+            <span>Installation, Supply & AMC</span>
           </button>
           <button
-            onClick={() => handleNavClick('brands')}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-100"
+            onClick={() => handleNavClick('projects')}
+            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
           >
-            <Sparkles className="w-5 h-5 text-amber-600" />
-            OEM Brands & Partners
-          </button>
-          <button
-            onClick={() => handleNavClick('why-us')}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-100"
-          >
-            <Sparkles className="w-5 h-5 text-purple-600" />
-            Why Choose Us
+            <Briefcase className="w-4 h-4 text-slate-500" />
+            <span>Executed Projects & Case Studies</span>
           </button>
           <button
             onClick={() => handleNavClick('contact')}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-100"
+            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
           >
-            <FileText className="w-5 h-5 text-cyan-600" />
-            Contact & Quote Inquiry
+            <Send className="w-4 h-4 text-slate-500" />
+            <span>Contact & RFQ Submission</span>
           </button>
 
           <div className="pt-3 border-t border-slate-200 flex flex-col gap-2">
-            <div className="py-1 flex justify-center">
-              <VisitorCounterWidget variant="badge" />
-            </div>
             <a
               href="tel:+918712344439"
-              className="w-full py-2.5 px-4 rounded-xl text-center font-semibold text-slate-800 bg-slate-100 hover:bg-slate-200 flex items-center justify-center gap-2 text-sm border border-slate-200"
+              className="w-full py-2.5 px-4 rounded-xl text-center font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 flex items-center justify-center gap-2 text-xs border border-slate-200"
             >
-              <Phone className="w-4 h-4 text-blue-600" />
-              Call G Sandeep Kumar: +91 8712344439
+              <Phone className="w-3.5 h-3.5 text-blue-600" />
+              <span>Call: +91 8712344439</span>
             </a>
             <button
               onClick={() => handleNavClick('contact')}
-              className="w-full py-2.5 px-4 rounded-xl text-center font-bold text-white bg-[#0a2569] hover:bg-blue-800 text-sm shadow-md"
+              className="w-full py-2.5 px-4 rounded-xl text-center font-bold text-white bg-[#0a2569] hover:bg-blue-800 text-xs shadow-sm"
             >
               Request Price Quote
             </button>
