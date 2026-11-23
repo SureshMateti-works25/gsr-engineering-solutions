@@ -801,7 +801,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "Industrial Grade",
     "discountBadge": "12% OFF",
-    "imageUrl": "./products/power-contactors.png"
+    "imageUrl": "./products/power-contactors.jpg"
   },
   {
     "id": "push-buttons-indicators",
