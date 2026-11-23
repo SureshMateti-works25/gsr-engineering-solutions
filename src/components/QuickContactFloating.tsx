@@ -1,17 +1,62 @@
-import React from 'react';
-import { MessageCircle, Phone, ShoppingBag } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { 
+  MessageCircle, 
+  Phone, 
+  ShoppingBag, 
+  Menu, 
+  X, 
+  Layers, 
+  ChevronRight,
+  Pill,
+  FlaskConical,
+  Utensils,
+  Factory,
+  Cpu,
+  Droplets
+} from 'lucide-react';
 import type { RfqItem } from '../types';
+import { industryDomainsData } from '../data/domains';
 
 interface QuickContactFloatingProps {
   rfqList: RfqItem[];
   onOpenRfq: () => void;
+  onSelectDomain?: (domainId: string) => void;
 }
 
-export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({ rfqList, onOpenRfq }) => {
+export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({ 
+  rfqList, 
+  onOpenRfq,
+  onSelectDomain 
+}) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
   const totalRfqCount = rfqList.reduce((acc, item) => acc + (item.quantity || 1), 0);
 
+  const getDomainIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Pill': return Pill;
+      case 'FlaskConical': return FlaskConical;
+      case 'Utensils': return Utensils;
+      case 'Factory': return Factory;
+      case 'Cpu': return Cpu;
+      case 'Droplets': return Droplets;
+      default: return Factory;
+    }
+  };
+
+  // Close menu on click outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 pointer-events-auto">
+    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 pointer-events-auto font-sans">
       {/* Floating RFQ Cart trigger when items added */}
       {totalRfqCount > 0 && (
         <button
@@ -23,6 +68,110 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({ rfqL
           <span>RFQ Cart ({totalRfqCount})</span>
         </button>
       )}
+
+      {/* Floating Industries Menu & Blinking Hamburger Trigger */}
+      <div ref={menuRef} className="relative">
+        {/* Industries Popup Drawer */}
+        {isMenuOpen && (
+          <div className="absolute bottom-14 right-0 mb-2 w-72 sm:w-84 bg-white/98 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-200 p-3 space-y-2 z-50 animate-in fade-in slide-in-from-bottom-2 duration-150">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-100 px-1">
+              <div className="flex items-center gap-1.5">
+                <Layers className="w-4 h-4 text-blue-700" />
+                <span className="text-xs font-black uppercase tracking-wider text-[#0a2569]">
+                  Select Industry
+                </span>
+              </div>
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100"
+                aria-label="Close Industries Menu"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="space-y-1 max-h-[55vh] overflow-y-auto pr-0.5">
+              {industryDomainsData.map((d) => {
+                const Icon = getDomainIcon(d.iconName);
+                return (
+                  <button
+                    key={d.id}
+                    onClick={() => {
+                      onSelectDomain?.(d.id);
+                      setIsMenuOpen(false);
+                    }}
+                    className="w-full text-left p-2 rounded-xl hover:bg-blue-50/80 transition-all flex items-center justify-between group border border-transparent hover:border-blue-200"
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${d.gradient} text-white flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform`}>
+                        <Icon className="w-4 h-4 text-white" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-blue-700 truncate">
+                          {d.name.split(',')[0]}
+                        </div>
+                        <div className="text-[10px] text-slate-500 truncate">
+                          {d.badge}
+                        </div>
+                      </div>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all shrink-0 ml-1" />
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="pt-2 border-t border-slate-100">
+              <button
+                onClick={() => {
+                  onSelectDomain?.('domains');
+                  setIsMenuOpen(false);
+                }}
+                className="w-full py-1.5 text-center text-xs font-extrabold text-[#0a2569] hover:text-blue-800 hover:underline"
+              >
+                View All Industries Hub →
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Highlighting Blinks Always Hamburger Button */}
+        <div className="relative">
+          {/* Always-Blinking Animated Halo Ring */}
+          <span className="absolute -inset-1 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-amber-400 opacity-75 blur-xs animate-pulse pointer-events-none"></span>
+
+          {/* Persistent Blinking Beacon Dot */}
+          <span className="absolute -top-1 -right-1 flex h-4 w-4 z-20 pointer-events-none">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-90"></span>
+            <span className="relative inline-flex rounded-full h-4 w-4 bg-amber-500 border-2 border-white shadow-xs"></span>
+          </span>
+
+          {/* Quick Label Badge */}
+          {!isMenuOpen && (
+            <button
+              onClick={() => setIsMenuOpen(true)}
+              className="absolute right-14 top-1/2 -translate-y-1/2 bg-[#0a2569] text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-lg border border-amber-300 whitespace-nowrap flex items-center gap-1.5 hover:bg-blue-900 transition-colors cursor-pointer"
+            >
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+              <span>Industries</span>
+            </button>
+          )}
+
+          {/* Hamburger Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="relative w-12 h-12 rounded-full bg-[#0a2569] hover:bg-blue-800 text-white flex items-center justify-center shadow-xl shadow-blue-950/40 transition-all hover:scale-110 active:scale-95 border-2 border-amber-400 group z-10"
+            title="Browse Industries Menu"
+            aria-label="Browse Industries Menu"
+          >
+            {isMenuOpen ? (
+              <X className="w-5 h-5 text-amber-300 transition-transform rotate-90 duration-200" />
+            ) : (
+              <Menu className="w-5 h-5 text-amber-300 group-hover:scale-110 transition-transform" />
+            )}
+          </button>
+        </div>
+      </div>
 
       {/* Floating Call Button */}
       <a

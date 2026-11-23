@@ -1,7 +1,6 @@
 import React from 'react';
 import { 
   ArrowRight, 
-  Layers, 
   Pill, 
   FlaskConical, 
   Utensils, 
@@ -40,12 +39,7 @@ export const Hero: React.FC<HeroProps> = ({
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Simpler, Compact Top Title */}
-        <div className="text-center max-w-2xl mx-auto space-y-2 mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100/80 text-[#0a2569] text-xs font-bold tracking-wider uppercase">
-            <Layers className="w-3.5 h-3.5 text-blue-700" />
-            <span>Industrial Spares by Industry</span>
-          </div>
-
+        <div className="text-center max-w-2xl mx-auto space-y-2 mb-6 sm:mb-8">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
             Select Your <span className="text-[#0a2569]">Industry</span>
           </h1>
@@ -65,11 +59,11 @@ export const Hero: React.FC<HeroProps> = ({
               <div
                 key={domain.id}
                 onClick={() => onSelectDomain(domain.id)}
-                className="group relative bg-white rounded-2xl p-5 border border-slate-200 hover:border-blue-400 shadow-2xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer hover:-translate-y-1"
+                className="group relative bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 hover:border-blue-400 shadow-2xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer hover:-translate-y-1"
               >
                 <div>
                   {/* Top Header inside card */}
-                  <div className="flex items-start justify-between gap-3 mb-3">
+                  <div className="flex items-start justify-between gap-3 mb-2.5">
                     <div className="flex items-center gap-3">
                       <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${domain.gradient} text-white flex items-center justify-center shadow-md group-hover:scale-105 transition-transform shrink-0`}>
                         <Icon className="w-5 h-5 text-white" />
@@ -92,22 +86,10 @@ export const Hero: React.FC<HeroProps> = ({
                   <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed mb-3">
                     {domain.tagline}
                   </p>
-
-                  {/* Certified Standards Chips */}
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {domain.keyStandards.slice(0, 3).map((std, idx) => (
-                      <span 
-                        key={idx}
-                        className="text-[10px] font-medium text-slate-600 bg-slate-50 border border-slate-200 px-2 py-0.5 rounded"
-                      >
-                        ✓ {std}
-                      </span>
-                    ))}
-                  </div>
                 </div>
 
                 {/* Bottom Action CTA */}
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#0a2569] group-hover:text-blue-600 transition-colors">
+                <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#0a2569] group-hover:text-blue-600 transition-colors">
                   <span className="flex items-center gap-1.5 text-slate-500 font-medium">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
                     <span>Process + Common Spares</span>

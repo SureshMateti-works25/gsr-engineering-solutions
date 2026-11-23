@@ -1,12 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   Phone, 
-  Mail, 
-  MapPin, 
   ShoppingBag, 
   Menu, 
   X, 
-  ShieldCheck, 
   Layers, 
   Settings, 
   Briefcase, 
@@ -81,47 +78,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs font-sans">
       
-      {/* Top Credentials Bar (HYTORC-inspired utility strip) */}
-      <div className="bg-[#0a2569] text-white text-xs py-1.5 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
-          {/* Left: Operational Coverage & GSTIN */}
-          <div className="flex items-center space-x-3 text-[11px] sm:text-xs">
-            <span className="hidden sm:inline-flex items-center gap-1.5 text-blue-200">
-              <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span>Serving: <strong className="text-white">Telangana, AP, Tamil Nadu & Maharashtra</strong></span>
-            </span>
-            <span className="hidden sm:inline text-blue-400">|</span>
-            <span className="inline-flex items-center gap-1.5 text-slate-200">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-              <span className="text-slate-300">GSTIN:</span>
-              <span className="font-mono text-white font-bold tracking-wider">36CTUPG6618J11Z9</span>
-              <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                ACTIVE
-              </span>
-            </span>
-          </div>
-
-          {/* Right: Hotline Phone & Sales Email */}
-          <div className="flex items-center space-x-4 text-xs font-semibold">
-            <a 
-              href="tel:+918712344439" 
-              className="flex items-center gap-1.5 text-white hover:text-amber-300 transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5 text-amber-400" />
-              <span>+91 8712344439</span>
-            </a>
-            <a 
-              href="mailto:sales@gsrengineeringsolutions.com" 
-              className="hidden md:flex items-center gap-1.5 text-blue-200 hover:text-white transition-colors text-[11px]"
-            >
-              <Mail className="w-3.5 h-3.5 text-amber-400" />
-              <span>sales@gsrengineeringsolutions.com</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 sm:h-20">
@@ -276,8 +232,18 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           </nav>
 
-          {/* Action CTAs: RFQ Cart + Request a Quote */}
+          {/* Action CTAs: Phone + RFQ Cart + Request a Quote */}
           <div className="flex items-center space-x-2.5">
+            {/* Direct Phone Call Link */}
+            <a
+              href="tel:+918712344439"
+              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors"
+              title="Call Sales Hotline: +91 8712344439"
+            >
+              <Phone className="w-3.5 h-3.5 text-amber-500" />
+              <span>+91 8712344439</span>
+            </a>
+
             {/* RFQ Cart Button */}
             <button
               onClick={onOpenRfq}

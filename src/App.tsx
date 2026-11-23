@@ -252,6 +252,13 @@ export function App() {
       <QuickContactFloating
         rfqList={rfqList}
         onOpenRfq={() => setIsRfqDrawerOpen(true)}
+        onSelectDomain={(domId) => {
+          if (domId === 'domains') {
+            handleNavigateToPage('domains');
+          } else {
+            handleNavigateToPage(`domain/${domId}`);
+          }
+        }}
       />
     </div>
   );
