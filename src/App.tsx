@@ -9,7 +9,6 @@ import { ProjectsPage } from './components/ProjectsPage';
 import { ContactPage } from './components/ContactPage';
 import { FlyerPage } from './components/FlyerPage';
 import { CategoryPage } from './components/CategoryPage';
-import { BrandShowcase } from './components/BrandShowcase';
 import { Footer } from './components/Footer';
 import { ProductModal } from './components/ProductModal';
 import { RfqDrawer } from './components/RfqDrawer';
@@ -202,15 +201,9 @@ export function App() {
           />
         ) : (
           /* Home Landing Page (Domain-First, Ultra Clean & Streamlined) */
-          <>
-            {/* Domain-First Landing Hero (Simpler Top Title + 6 Sector Selector Cards) */}
-            <Hero
-              onSelectDomain={(domainId) => handleNavigateToPage(`domain/${domainId}`)}
-            />
-
-            {/* Authorized OEM Brand Partner Logos (Uniform Logo Grid at Bottom) */}
-            <BrandShowcase />
-          </>
+          <Hero
+            onSelectDomain={(domainId) => handleNavigateToPage(`domain/${domainId}`)}
+          />
         )}
       </main>
 

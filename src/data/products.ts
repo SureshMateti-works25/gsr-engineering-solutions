@@ -300,7 +300,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "100% Genuine",
     "discountBadge": "Special OEM Rate",
-    "imageUrl": "./products/bearings.png"
+    "imageUrl": "./products/bearings.png?v=20261124-v4"
   },
   {
     "id": "ss-rods-bars",
@@ -330,7 +330,7 @@ export const productsData: ProductItem[] = [
       "Fasteners"
     ],
     "discountBadge": "Bulk Discount",
-    "imageUrl": "./products/ss-rods-bars.png"
+    "imageUrl": "./products/ss-rods-bars.png?v=20261124-v4"
   },
   {
     "id": "chain-sprockets",
@@ -1242,7 +1242,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "High Precision",
     "discountBadge": "Special OEM Rate",
-    "imageUrl": "./products/servo-drives.png"
+    "imageUrl": "./products/servo-drives.png?v=20261124-v4"
   },
   {
     "id": "plcs",
@@ -1272,7 +1272,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "Core Controller",
     "discountBadge": "10% OFF",
-    "imageUrl": "./products/plcs.png"
+    "imageUrl": "./products/plcs.png?v=20261124-v4"
   },
   {
     "id": "hmis-touch-panels",
@@ -1301,7 +1301,7 @@ export const productsData: ProductItem[] = [
       "Batch Mixers"
     ],
     "discountBadge": "12% OFF",
-    "imageUrl": "./products/hmis-touch-panels.png"
+    "imageUrl": "./products/hmis-touch-panels.png?v=20261124-v4"
   },
   {
     "id": "io-modules",
@@ -1328,7 +1328,7 @@ export const productsData: ProductItem[] = [
       "Analog Signal Conditioning"
     ],
     "discountBadge": "Special Price",
-    "imageUrl": "./products/io-modules.png"
+    "imageUrl": "./products/io-modules.png?v=20261124-v4"
   },
   {
     "id": "remote-io-modules",
@@ -1354,7 +1354,7 @@ export const productsData: ProductItem[] = [
       "Distributed Plant Skids"
     ],
     "discountBadge": "10% OFF",
-    "imageUrl": "./products/remote-io-modules.png"
+    "imageUrl": "./products/remote-io-modules.png?v=20261124-v4"
   },
   {
     "id": "industrial-io-modules",
@@ -1380,7 +1380,7 @@ export const productsData: ProductItem[] = [
       "Linear Scale Reading"
     ],
     "discountBadge": "OEM Special",
-    "imageUrl": "./products/industrial-io-modules.png"
+    "imageUrl": "./products/industrial-io-modules.png?v=20261124-v4"
   },
   {
     "id": "industrial-automation-modules",
@@ -1406,7 +1406,7 @@ export const productsData: ProductItem[] = [
       "Machine Safety Guards"
     ],
     "discountBadge": "10% OFF",
-    "imageUrl": "./products/industrial-automation-modules.png"
+    "imageUrl": "./products/industrial-automation-modules.png?v=20261124-v4"
   },
   {
     "id": "smps-power-supplies",
@@ -1436,7 +1436,7 @@ export const productsData: ProductItem[] = [
     ],
     "badge": "24V Essential",
     "discountBadge": "10% OFF",
-    "imageUrl": "./products/smps-power-supplies.png"
+    "imageUrl": "./products/smps-power-supplies.png?v=20261124-v4"
   },
   {
     "id": "dc-dc-converters",
@@ -1646,7 +1646,7 @@ export const productsData: ProductItem[] = [
       "Cushion Stroke Regulation"
     ],
     "discountBadge": "10% OFF",
-    "imageUrl": "./products/speed-controllers.png"
+    "imageUrl": "./products/speed-controllers.png?v=20261124-v4"
   },
   {
     "id": "silencers-mufflers",
@@ -1674,7 +1674,7 @@ export const productsData: ProductItem[] = [
       "Vacuum Ejector Venting"
     ],
     "discountBadge": "Special Price",
-    "imageUrl": "./products/silencers-mufflers.png"
+    "imageUrl": "./products/silencers-mufflers.png?v=20261124-v4"
   },
   {
     "id": "pu-tubes",

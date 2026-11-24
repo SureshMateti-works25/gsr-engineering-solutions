@@ -115,8 +115,8 @@ export const Hero: React.FC<HeroProps> = ({
             <div className="text-[11px] text-slate-500">Ready Stock & Custom Fab</div>
           </div>
           <div className="p-3 bg-white/70 rounded-xl border border-slate-200/60 shadow-2xs">
-            <div className="font-extrabold text-sm sm:text-base text-[#0a2569]">27 OEM Brands</div>
-            <div className="text-[11px] text-slate-500">100% Genuine MTC 3.1</div>
+            <div className="font-extrabold text-sm sm:text-base text-[#0a2569]">Genuine Spares</div>
+            <div className="text-[11px] text-slate-500">100% Original MTC 3.1</div>
           </div>
           <div className="p-3 bg-white/70 rounded-xl border border-slate-200/60 shadow-2xs">
             <div className="font-extrabold text-sm sm:text-base text-emerald-700">Supply + Install + AMC</div>
