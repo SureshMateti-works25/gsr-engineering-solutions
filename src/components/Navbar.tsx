@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
-  Phone, 
   ShoppingBag, 
   Menu, 
   X, 
@@ -9,7 +8,6 @@ import {
   Briefcase, 
   Send, 
   FileText, 
-  Award,
   ChevronDown,
   Pill,
   FlaskConical,
@@ -74,7 +72,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   const isServicesActive = activePage === 'services';
   const isProjectsActive = activePage === 'projects';
   const isContactActive = activePage === 'contact';
-  const isBrandsActive = activePage === 'brands';
   const isFlyerActive = activePage === 'flyer';
 
   return (
@@ -205,20 +202,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>Projects</span>
             </button>
 
-            {/* 4. OEM BRANDS PAGE */}
-            <button
-              onClick={() => handlePageClick('brands')}
-              className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
-                isBrandsActive
-                  ? 'text-[#0a2569] bg-blue-50 border border-blue-200/80 font-bold shadow-2xs'
-                  : 'text-slate-700 hover:text-[#0a2569] hover:bg-slate-100'
-              }`}
-            >
-              <Award className={`w-4 h-4 ${isBrandsActive ? 'text-[#0a2569]' : 'text-slate-500'}`} />
-              <span>OEM Brands</span>
-            </button>
-
-            {/* 5. CONTACT PAGE */}
+            {/* 4. CONTACT PAGE */}
             <button
               onClick={() => handlePageClick('contact')}
               className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
@@ -231,7 +215,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>Contact</span>
             </button>
 
-            {/* 6. FLYER PAGE */}
+            {/* 5. FLYER PAGE */}
             <button
               onClick={() => handlePageClick('flyer')}
               className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 font-bold ${
@@ -247,22 +231,12 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           </nav>
 
-          {/* Action CTAs: Phone + RFQ Cart + Request a Quote */}
+          {/* Action CTAs: RFQ Cart + Mobile Menu Toggle */}
           <div className="flex items-center space-x-2.5">
-            {/* Direct Phone Call Link */}
-            <a
-              href="tel:+918712344439"
-              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-[#0a2569] hover:bg-slate-100 transition-colors"
-              title="Call Sales Hotline: +91 8712344439"
-            >
-              <Phone className="w-3.5 h-3.5 text-amber-500" />
-              <span>+91 8712344439</span>
-            </a>
-
             {/* RFQ Cart Button */}
             <button
               onClick={onOpenRfq}
-              className="relative p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 transition-all flex items-center gap-2 group shadow-2xs"
+              className="relative p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 transition-all flex items-center gap-2 group shadow-2xs cursor-pointer"
               title="View Request For Quote List"
               aria-label="Request For Quote List"
             >
@@ -275,15 +249,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                   {totalRfqCount}
                 </span>
               )}
-            </button>
-
-            {/* Request a Quote Button */}
-            <button
-              onClick={() => handlePageClick('contact')}
-              className="hidden sm:inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wide text-white bg-[#0a2569] hover:bg-blue-800 shadow-md shadow-blue-900/20 transition-all hover:scale-102 active:scale-98"
-            >
-              <span>Request a Quote</span>
-              <ArrowRight className="w-3.5 h-3.5 text-amber-300" />
             </button>
 
             {/* Mobile Menu Toggle */}
@@ -335,15 +300,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>Projects & Case Studies Page</span>
           </button>
           <button
-            onClick={() => handlePageClick('brands')}
-            className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-bold ${
-              isBrandsActive ? 'text-[#0a2569] bg-blue-50 border border-blue-200' : 'text-slate-800 hover:bg-slate-100'
-            }`}
-          >
-            <Award className="w-4 h-4 text-blue-700" />
-            <span>Authorized OEM Brands Page</span>
-          </button>
-          <button
             onClick={() => handlePageClick('flyer')}
             className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-bold text-[#0a2569] bg-amber-50 border border-amber-200"
           >
@@ -357,22 +313,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Send className="w-4 h-4 text-slate-500" />
             <span>Contact & RFQ Page</span>
           </button>
-
-          <div className="pt-3 border-t border-slate-200 flex flex-col gap-2">
-            <a
-              href="tel:+918712344439"
-              className="w-full py-2.5 px-4 rounded-xl text-center font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 flex items-center justify-center gap-2 text-xs border border-slate-200"
-            >
-              <Phone className="w-3.5 h-3.5 text-blue-600" />
-              <span>Call: +91 8712344439</span>
-            </a>
-            <button
-              onClick={() => handlePageClick('contact')}
-              className="w-full py-2.5 px-4 rounded-xl text-center font-extrabold uppercase text-white bg-[#0a2569] hover:bg-blue-800 text-xs shadow-sm"
-            >
-              Request a Quote
-            </button>
-          </div>
         </div>
       )}
     </header>
