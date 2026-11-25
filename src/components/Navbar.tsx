@@ -86,11 +86,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => handlePageClick('home')} 
             className="flex items-center space-x-3 text-left focus:outline-none group shrink-0"
           >
-            <div className="h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center p-1 bg-white rounded-xl border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform">
+            <div className="h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center p-0.5 bg-white rounded-xl border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform overflow-hidden">
               <img 
-                src="./gsr-logo.png" 
+                src="./gsr-logo.png?v=20261125-v2" 
                 alt="GSR Engineering Solutions Logo" 
-                className="h-9 sm:h-10 w-auto object-contain"
+                className="w-full h-full object-contain p-0.5"
               />
             </div>
             <div>
