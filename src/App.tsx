@@ -209,6 +209,9 @@ export function App() {
           <BrandsPage
             onBackToHome={() => handleNavigateToPage('home')}
             onNavigateToContact={() => handleNavigateToPage('contact')}
+            rfqList={rfqList}
+            onToggleRfq={handleToggleRfq}
+            onSelectProduct={setSelectedProductModal}
           />
         ) : (
           /* Home Landing Page (Domain-First, Ultra Clean & Streamlined) */

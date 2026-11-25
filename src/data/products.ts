@@ -79,7 +79,8 @@ export const productsData: ProductItem[] = [
     "brands": [
       "Ratnamani Metals & Tubes",
       "Tata Steel",
-      "Jindal Steel & Power"
+      "Jindal Steel & Power",
+      "RG SS"
     ],
     "popular": true,
     "applications": [
@@ -1512,7 +1513,8 @@ export const productsData: ProductItem[] = [
       "AirTAC",
       "Mindman",
       "CKD",
-      "Janatics Pneumatic"
+      "Janatics Pneumatic",
+      "Camozzi Automation"
     ],
     "popular": true,
     "applications": [
@@ -1545,7 +1547,9 @@ export const productsData: ProductItem[] = [
       "FESTO",
       "AirTAC",
       "Janatics Pneumatic",
-      "Parker Legris"
+      "Parker Legris",
+      "CKD",
+      "Camozzi Automation"
     ],
     "popular": true,
     "applications": [
@@ -1576,7 +1580,9 @@ export const productsData: ProductItem[] = [
       "FESTO",
       "AirTAC",
       "Mindman",
-      "Janatics Pneumatic"
+      "Janatics Pneumatic",
+      "Yuken",
+      "CKD"
     ],
     "popular": true,
     "applications": [
@@ -1608,7 +1614,8 @@ export const productsData: ProductItem[] = [
       "SMC",
       "FESTO",
       "AirTAC",
-      "Camozzi Automation"
+      "Camozzi Automation",
+      "RG SS"
     ],
     "popular": true,
     "applications": [
@@ -1755,7 +1762,8 @@ export const productsData: ProductItem[] = [
       "FESTO",
       "AirTAC",
       "Janatics Pneumatic",
-      "Camozzi Automation"
+      "Camozzi Automation",
+      "Yuken"
     ],
     "popular": false,
     "applications": [
