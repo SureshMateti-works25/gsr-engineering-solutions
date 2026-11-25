@@ -9,6 +9,7 @@ import {
   Briefcase, 
   Send, 
   FileText, 
+  Award,
   ChevronDown,
   Pill,
   FlaskConical,
@@ -73,6 +74,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const isServicesActive = activePage === 'services';
   const isProjectsActive = activePage === 'projects';
   const isContactActive = activePage === 'contact';
+  const isBrandsActive = activePage === 'brands';
   const isFlyerActive = activePage === 'flyer';
 
   return (
@@ -203,7 +205,20 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>Projects</span>
             </button>
 
-            {/* 4. CONTACT PAGE */}
+            {/* 4. OEM BRANDS PAGE */}
+            <button
+              onClick={() => handlePageClick('brands')}
+              className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
+                isBrandsActive
+                  ? 'text-[#0a2569] bg-blue-50 border border-blue-200/80 font-bold shadow-2xs'
+                  : 'text-slate-700 hover:text-[#0a2569] hover:bg-slate-100'
+              }`}
+            >
+              <Award className={`w-4 h-4 ${isBrandsActive ? 'text-[#0a2569]' : 'text-slate-500'}`} />
+              <span>OEM Brands</span>
+            </button>
+
+            {/* 5. CONTACT PAGE */}
             <button
               onClick={() => handlePageClick('contact')}
               className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 ${
@@ -216,7 +231,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>Contact</span>
             </button>
 
-            {/* 5. FLYER PAGE */}
+            {/* 6. FLYER PAGE */}
             <button
               onClick={() => handlePageClick('flyer')}
               className={`px-3.5 py-2 rounded-xl transition-all flex items-center gap-1.5 font-bold ${
@@ -318,6 +333,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Briefcase className="w-4 h-4 text-slate-500" />
             <span>Projects & Case Studies Page</span>
+          </button>
+          <button
+            onClick={() => handlePageClick('brands')}
+            className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-bold ${
+              isBrandsActive ? 'text-[#0a2569] bg-blue-50 border border-blue-200' : 'text-slate-800 hover:bg-slate-100'
+            }`}
+          >
+            <Award className="w-4 h-4 text-blue-700" />
+            <span>Authorized OEM Brands Page</span>
           </button>
           <button
             onClick={() => handlePageClick('flyer')}

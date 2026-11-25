@@ -6,6 +6,7 @@ import {
   Menu, 
   X, 
   Layers, 
+  Award,
   ChevronRight,
   Pill,
   FlaskConical,
@@ -21,12 +22,14 @@ interface QuickContactFloatingProps {
   rfqList: RfqItem[];
   onOpenRfq: () => void;
   onSelectDomain?: (domainId: string) => void;
+  onNavigatePage?: (pageRoute: string) => void;
 }
 
 export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({ 
   rfqList, 
   onOpenRfq,
-  onSelectDomain 
+  onSelectDomain,
+  onNavigatePage
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -171,6 +174,40 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
             )}
           </button>
         </div>
+      </div>
+
+      {/* Floating OEM Brands Button (Below Industries Button, Above Call Button) */}
+      <div className="relative group">
+        {/* Quick Label Badge */}
+        <button
+          onClick={() => {
+            if (onNavigatePage) {
+              onNavigatePage('brands');
+            } else {
+              window.location.hash = '#/brands';
+            }
+          }}
+          className="absolute right-14 top-1/2 -translate-y-1/2 bg-[#0a2569] text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-lg border border-amber-300 whitespace-nowrap flex items-center gap-1.5 hover:bg-blue-900 transition-colors cursor-pointer"
+        >
+          <Award className="w-3.5 h-3.5 text-amber-300" />
+          <span>OEM Brands</span>
+        </button>
+
+        {/* Circular Floating Button */}
+        <button
+          onClick={() => {
+            if (onNavigatePage) {
+              onNavigatePage('brands');
+            } else {
+              window.location.hash = '#/brands';
+            }
+          }}
+          className="relative w-12 h-12 rounded-full bg-[#0a2569] hover:bg-blue-900 text-white flex items-center justify-center shadow-xl shadow-blue-950/40 transition-all hover:scale-110 active:scale-95 border-2 border-amber-400 group z-10"
+          title="Authorized OEM Partner Brands"
+          aria-label="Authorized OEM Partner Brands"
+        >
+          <Award className="w-5 h-5 text-amber-300 group-hover:scale-110 transition-transform" />
+        </button>
       </div>
 
       {/* Floating Call Button */}

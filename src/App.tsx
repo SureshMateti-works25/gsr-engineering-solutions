@@ -9,6 +9,7 @@ import { ProjectsPage } from './components/ProjectsPage';
 import { ContactPage } from './components/ContactPage';
 import { FlyerPage } from './components/FlyerPage';
 import { CategoryPage } from './components/CategoryPage';
+import { BrandsPage } from './components/BrandsPage';
 import { Footer } from './components/Footer';
 import { ProductModal } from './components/ProductModal';
 import { RfqDrawer } from './components/RfqDrawer';
@@ -52,6 +53,10 @@ export function App() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#/flyer' || hash === '#flyer') {
         setActiveRoute('flyer');
+        setRouteParam('');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#/brands' || hash === '#brands' || hash === '#/oem-brands' || hash === '#oem-brands') {
+        setActiveRoute('brands');
         setRouteParam('');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash.startsWith('#/category/')) {
@@ -199,6 +204,12 @@ export function App() {
             onOpenFlyer={() => handleNavigateToPage('flyer')}
             onNavigateToContact={() => handleNavigateToPage('contact')}
           />
+        ) : activeRoute === 'brands' ? (
+          /* Dedicated Authorized OEM Brands Individual Page */
+          <BrandsPage
+            onBackToHome={() => handleNavigateToPage('home')}
+            onNavigateToContact={() => handleNavigateToPage('contact')}
+          />
         ) : (
           /* Home Landing Page (Domain-First, Ultra Clean & Streamlined) */
           <Hero
@@ -245,6 +256,7 @@ export function App() {
       <QuickContactFloating
         rfqList={rfqList}
         onOpenRfq={() => setIsRfqDrawerOpen(true)}
+        onNavigatePage={(pageRoute) => handleNavigateToPage(pageRoute)}
         onSelectDomain={(domId) => {
           if (domId === 'domains') {
             handleNavigateToPage('domains');
