@@ -15,7 +15,10 @@ import {
   Factory,
   Cpu,
   Droplets,
-  ArrowRight
+  ArrowRight,
+  Award,
+  Phone,
+  MessageCircle
 } from 'lucide-react';
 import type { RfqItem } from '../types';
 import { industryDomainsData } from '../data/domains';
@@ -78,23 +81,23 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs font-sans">
       
       {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18 sm:h-20">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           
           {/* Logo & Company Name */}
           <button 
             onClick={() => handlePageClick('home')} 
-            className="flex items-center space-x-3 text-left focus:outline-none group shrink-0"
+            className="flex items-center space-x-2 sm:space-x-3 text-left focus:outline-none group min-w-0 flex-1 sm:flex-initial"
           >
-            <div className="h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center p-0.5 bg-white rounded-xl border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform overflow-hidden">
+            <div className="h-10 w-10 sm:h-12 sm:w-12 flex items-center justify-center p-0.5 bg-white rounded-xl border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform overflow-hidden shrink-0">
               <img 
                 src="./gsr-logo.png?v=20261125-v2" 
                 alt="GSR Engineering Solutions Logo" 
                 className="w-full h-full object-contain p-0.5"
               />
             </div>
-            <div>
-              <div className="font-black text-base sm:text-lg tracking-tight text-[#0a2569] group-hover:text-blue-700 transition-colors">
+            <div className="min-w-0 pr-1">
+              <div className="font-black text-xs sm:text-base md:text-lg tracking-tight text-[#0a2569] group-hover:text-blue-700 transition-colors leading-tight truncate sm:whitespace-normal">
                 GSR ENGINEERING SOLUTIONS
               </div>
               <p className="text-[10px] text-slate-500 hidden sm:block tracking-wider uppercase font-semibold">
@@ -232,20 +235,20 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Action CTAs: RFQ Cart + Mobile Menu Toggle */}
-          <div className="flex items-center space-x-2.5">
+          <div className="flex items-center space-x-1.5 sm:space-x-2.5 shrink-0">
             {/* RFQ Cart Button */}
             <button
               onClick={onOpenRfq}
-              className="relative p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 transition-all flex items-center gap-2 group shadow-2xs cursor-pointer"
+              className="relative p-2 sm:p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 transition-all flex items-center gap-1.5 sm:gap-2 group shadow-2xs cursor-pointer"
               title="View Request For Quote List"
               aria-label="Request For Quote List"
             >
-              <ShoppingBag className="w-4.5 h-4.5 text-amber-600 group-hover:scale-110 transition-transform" />
+              <ShoppingBag className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-amber-600 group-hover:scale-110 transition-transform" />
               <span className="hidden md:inline text-xs font-bold uppercase tracking-wider text-slate-700">
                 RFQ Cart
               </span>
               {totalRfqCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-[11px] w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-pulse">
+                <span className="absolute -top-1.5 -right-1.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-[10px] sm:text-[11px] w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full flex items-center justify-center shadow-md animate-pulse">
                   {totalRfqCount}
                 </span>
               )}
@@ -254,10 +257,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
+              className="lg:hidden p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-none border border-slate-200 shadow-2xs"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5.5 h-5.5 sm:w-6 sm:h-6" /> : <Menu className="w-5.5 h-5.5 sm:w-6 sm:h-6" />}
             </button>
           </div>
 
@@ -266,53 +269,125 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu (Focused individual page links) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2 shadow-lg">
+        <div className="lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2.5 shadow-xl max-h-[calc(100vh-4.5rem)] overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200">
+          {/* 1. Industries Hub */}
           <button
             onClick={() => handlePageClick('domains')}
-            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold text-[#0a2569] bg-blue-50 border border-blue-200"
+            className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold ${
+              isDomainsActive
+                ? 'text-[#0a2569] bg-blue-50 border border-blue-200 shadow-xs'
+                : 'text-slate-800 hover:bg-slate-50 border border-slate-200'
+            }`}
           >
-            <Layers className="w-4 h-4 text-blue-700" />
-            <span>Industries Hub Page</span>
+            <div className="flex items-center gap-2.5">
+              <Layers className="w-4 h-4 text-blue-700" />
+              <span>Industries Hub Page</span>
+            </div>
+            <span className="text-[10px] font-black uppercase text-blue-700 bg-blue-100/70 px-2 py-0.5 rounded-md">
+              6 Sectors →
+            </span>
           </button>
-          <div className="pl-4 pr-1 py-1 grid grid-cols-2 gap-1.5">
+
+          {/* Sub-grid of 6 industries */}
+          <div className="pl-1 pr-1 py-1 grid grid-cols-2 gap-1.5">
             {industryDomainsData.map((d) => (
               <button
                 key={d.id}
                 onClick={() => handlePageClick(`domain/${d.id}`)}
-                className="text-left py-1.5 px-2 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100 truncate"
+                className="text-left py-2 px-2.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-blue-50 hover:text-blue-700 transition-colors truncate border border-slate-200/80 flex items-center gap-1.5"
               >
-                • {d.name.split(',')[0]}
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
+                <span className="truncate">{d.name.split(',')[0]}</span>
               </button>
             ))}
           </div>
+
+          {/* 2. OEM Partner Brands */}
+          <button
+            onClick={() => handlePageClick('brands')}
+            className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold ${
+              activePage === 'brands'
+                ? 'text-[#0a2569] bg-blue-50 border border-blue-200 shadow-xs'
+                : 'text-slate-800 hover:bg-slate-50 border border-slate-200'
+            }`}
+          >
+            <div className="flex items-center gap-2.5">
+              <Award className="w-4 h-4 text-amber-500" />
+              <span>Authorized OEM Partner Brands</span>
+            </div>
+            <span className="text-[10px] font-black uppercase text-amber-800 bg-amber-100 border border-amber-200 px-2 py-0.5 rounded-md">
+              27+ Brands
+            </span>
+          </button>
+
+          {/* 3. Services */}
           <button
             onClick={() => handlePageClick('services')}
-            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            className={`w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold ${
+              isServicesActive ? 'text-[#0a2569] bg-blue-50 border border-blue-200 font-bold' : 'text-slate-700 hover:bg-slate-50'
+            }`}
           >
             <Settings className="w-4 h-4 text-slate-500" />
-            <span>Services (Installation & AMC Page)</span>
+            <span>Services (Turnkey Installation & AMC)</span>
           </button>
+
+          {/* 4. Projects */}
           <button
             onClick={() => handlePageClick('projects')}
-            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            className={`w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold ${
+              isProjectsActive ? 'text-[#0a2569] bg-blue-50 border border-blue-200 font-bold' : 'text-slate-700 hover:bg-slate-50'
+            }`}
           >
             <Briefcase className="w-4 h-4 text-slate-500" />
-            <span>Projects & Case Studies Page</span>
+            <span>Projects & Plant Track Record</span>
           </button>
+
+          {/* 5. Flyer */}
           <button
             onClick={() => handlePageClick('flyer')}
-            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-bold text-[#0a2569] bg-amber-50 border border-amber-200"
+            className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-bold ${
+              isFlyerActive ? 'text-[#0a2569] bg-amber-100 border border-amber-300' : 'text-[#0a2569] bg-amber-50 border border-amber-200'
+            }`}
           >
-            <FileText className="w-4 h-4 text-amber-600" />
-            <span>Flyer (Catalogue Page)</span>
+            <div className="flex items-center gap-2.5">
+              <FileText className="w-4 h-4 text-amber-600" />
+              <span>Master Product Flyer / Catalogue</span>
+            </div>
+            <span className="text-[10px] font-black uppercase text-amber-800 bg-amber-200/80 px-2 py-0.5 rounded">
+              PDF / HD
+            </span>
           </button>
+
+          {/* 6. Contact */}
           <button
             onClick={() => handlePageClick('contact')}
-            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100"
+            className={`w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-sm font-semibold ${
+              isContactActive ? 'text-[#0a2569] bg-blue-50 border border-blue-200 font-bold' : 'text-slate-700 hover:bg-slate-50'
+            }`}
           >
             <Send className="w-4 h-4 text-slate-500" />
-            <span>Contact & RFQ Page</span>
+            <span>Contact & RFQ Quotation Desk</span>
           </button>
+
+          {/* Mobile Quick Action Buttons */}
+          <div className="pt-3 border-t border-slate-200 grid grid-cols-2 gap-2">
+            <a
+              href="tel:+918712344439"
+              className="py-2.5 px-3 rounded-xl bg-blue-50 text-blue-800 font-bold text-xs flex items-center justify-center gap-1.5 border border-blue-200"
+            >
+              <Phone className="w-3.5 h-3.5 text-blue-700" />
+              <span>Call Direct</span>
+            </a>
+            <a
+              href="https://wa.me/918712344439?text=Hello%20GSR%20Engineering%20Solutions,%20I%20need%20product%20details%20and%20pricing."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-2.5 px-3 rounded-xl bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm"
+            >
+              <MessageCircle className="w-3.5 h-3.5" />
+              <span>WhatsApp</span>
+            </a>
+          </div>
         </div>
       )}
     </header>

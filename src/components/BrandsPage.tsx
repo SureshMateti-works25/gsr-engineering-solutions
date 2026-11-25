@@ -169,7 +169,7 @@ export const BrandsPage: React.FC<BrandsPageProps> = ({
     <div className="bg-slate-50 min-h-screen font-sans pb-20">
       
       {/* Top Breadcrumb Header Bar */}
-      <div className="bg-white border-b border-slate-200 sticky top-16 z-20 backdrop-blur-md bg-white/95">
+      <div className="bg-white border-b border-slate-200 sticky top-16 sm:top-20 z-20 backdrop-blur-md bg-white/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-600">
             <button

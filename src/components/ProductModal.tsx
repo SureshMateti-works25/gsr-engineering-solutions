@@ -225,10 +225,10 @@ export const ProductModal: React.FC<ProductModalProps> = ({
         </div>
 
         {/* Modal Footer Actions */}
-        <div className="p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+        <div className="p-3.5 sm:p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3">
           <button
             onClick={() => onToggleRfq(product)}
-            className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
+            className={`w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all ${
               isInRfq
                 ? 'bg-emerald-600 text-white shadow-sm'
                 : 'bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 shadow-xs'
@@ -247,14 +247,14 @@ export const ProductModal: React.FC<ProductModalProps> = ({
             )}
           </button>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
             <a
               href={getWhatsAppMessage(product.name)}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 rounded-xl text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 flex items-center gap-1.5 transition-colors shadow-xs"
+              className="flex-1 sm:flex-initial px-3.5 sm:px-4 py-2.5 rounded-xl text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 flex items-center justify-center gap-1.5 transition-colors shadow-xs"
             >
-              <MessageCircle className="w-4 h-4 text-emerald-600" />
+              <MessageCircle className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>WhatsApp Quote</span>
             </a>
 
@@ -263,9 +263,9 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 onClose();
                 onQuickInquire(product);
               }}
-              className="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all"
+              className="flex-1 sm:flex-initial px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all text-center"
             >
-              Inquire via Contact Form
+              Contact Form
             </button>
           </div>
         </div>

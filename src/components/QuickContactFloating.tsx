@@ -59,12 +59,12 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
   }, []);
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 pointer-events-auto font-sans">
+    <div className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2 sm:gap-3 pointer-events-auto font-sans">
       {/* Floating RFQ Cart trigger when items added */}
       {totalRfqCount > 0 && (
         <button
           onClick={onOpenRfq}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs sm:text-sm shadow-xl shadow-amber-500/25 transition-all hover:scale-105 active:scale-95 border-2 border-white group"
+          className="flex items-center gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs sm:text-sm shadow-xl shadow-amber-500/25 transition-all hover:scale-105 active:scale-95 border-2 border-white group"
           title="Review RFQ List"
         >
           <ShoppingBag className="w-4 h-4 text-white" />
@@ -76,7 +76,7 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
       <div ref={menuRef} className="relative">
         {/* Industries Popup Drawer */}
         {isMenuOpen && (
-          <div className="absolute bottom-14 right-0 mb-2 w-72 sm:w-84 bg-white/98 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-200 p-3 space-y-2 z-50 animate-in fade-in slide-in-from-bottom-2 duration-150">
+          <div className="fixed inset-x-3 bottom-24 sm:static sm:absolute sm:bottom-14 sm:right-0 mb-2 sm:w-84 max-w-[calc(100vw-1.5rem)] sm:max-w-none bg-white/98 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-200 p-3 space-y-2 z-50 animate-in fade-in slide-in-from-bottom-2 duration-150">
             <div className="flex items-center justify-between pb-2 border-b border-slate-100 px-1">
               <div className="flex items-center gap-1.5">
                 <Layers className="w-4 h-4 text-blue-700" />
@@ -93,7 +93,7 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
               </button>
             </div>
 
-            <div className="space-y-1 max-h-[55vh] overflow-y-auto pr-0.5">
+            <div className="space-y-1 max-h-[50vh] sm:max-h-[55vh] overflow-y-auto pr-0.5">
               {industryDomainsData.map((d) => {
                 const Icon = getDomainIcon(d.iconName);
                 return (
@@ -149,11 +149,11 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
             <span className="relative inline-flex rounded-full h-4 w-4 bg-amber-500 border-2 border-white shadow-xs"></span>
           </span>
 
-          {/* Quick Label Badge */}
+          {/* Quick Label Badge (Visible on desktop/tablet to prevent mobile screen obstruction) */}
           {!isMenuOpen && (
             <button
               onClick={() => setIsMenuOpen(true)}
-              className="absolute right-14 top-1/2 -translate-y-1/2 bg-[#0a2569] text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-lg border border-amber-300 whitespace-nowrap flex items-center gap-1.5 hover:bg-blue-900 transition-colors cursor-pointer"
+              className="hidden sm:flex absolute right-14 top-1/2 -translate-y-1/2 bg-[#0a2569] text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-lg border border-amber-300 whitespace-nowrap items-center gap-1.5 hover:bg-blue-900 transition-colors cursor-pointer"
             >
               <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
               <span>Industries</span>
@@ -163,7 +163,7 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
           {/* Hamburger Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="relative w-12 h-12 rounded-full bg-[#0a2569] hover:bg-blue-800 text-white flex items-center justify-center shadow-xl shadow-blue-950/40 transition-all hover:scale-110 active:scale-95 border-2 border-amber-400 group z-10"
+            className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#0a2569] hover:bg-blue-800 text-white flex items-center justify-center shadow-xl shadow-blue-950/40 transition-all hover:scale-110 active:scale-95 border-2 border-amber-400 group z-10"
             title="Browse Industries Menu"
             aria-label="Browse Industries Menu"
           >
@@ -178,7 +178,7 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
 
       {/* Floating OEM Brands Button (Below Industries Button, Above Call Button) */}
       <div className="relative group">
-        {/* Quick Label Badge */}
+        {/* Quick Label Badge (Visible on desktop/tablet to prevent mobile screen obstruction) */}
         <button
           onClick={() => {
             if (onNavigatePage) {
@@ -187,7 +187,7 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
               window.location.hash = '#/brands';
             }
           }}
-          className="absolute right-14 top-1/2 -translate-y-1/2 bg-[#0a2569] text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-lg border border-amber-300 whitespace-nowrap flex items-center gap-1.5 hover:bg-blue-900 transition-colors cursor-pointer"
+          className="hidden sm:flex absolute right-14 top-1/2 -translate-y-1/2 bg-[#0a2569] text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-lg border border-amber-300 whitespace-nowrap items-center gap-1.5 hover:bg-blue-900 transition-colors cursor-pointer"
         >
           <Award className="w-3.5 h-3.5 text-amber-300" />
           <span>OEM Brands</span>
@@ -202,7 +202,7 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
               window.location.hash = '#/brands';
             }
           }}
-          className="relative w-12 h-12 rounded-full bg-[#0a2569] hover:bg-blue-900 text-white flex items-center justify-center shadow-xl shadow-blue-950/40 transition-all hover:scale-110 active:scale-95 border-2 border-amber-400 group z-10"
+          className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#0a2569] hover:bg-blue-900 text-white flex items-center justify-center shadow-xl shadow-blue-950/40 transition-all hover:scale-110 active:scale-95 border-2 border-amber-400 group z-10"
           title="Authorized OEM Partner Brands"
           aria-label="Authorized OEM Partner Brands"
         >
@@ -213,10 +213,10 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
       {/* Floating Call Button */}
       <a
         href="tel:+918712344439"
-        className="w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center shadow-lg shadow-blue-600/30 transition-all hover:scale-110 active:scale-95 border-2 border-white"
+        className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center shadow-lg shadow-blue-600/30 transition-all hover:scale-110 active:scale-95 border-2 border-white"
         title="Call G Sandeep Kumar: +91 8712344439"
       >
-        <Phone className="w-5 h-5" />
+        <Phone className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
       </a>
 
       {/* Floating WhatsApp Quick Chat Button */}
@@ -224,14 +224,14 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
         href="https://wa.me/918712344439?text=Hello%20GSR%20Engineering%20Solutions,%20I%20am%20looking%20for%20industrial%20products/services.%20Please%20assist%20me."
         target="_blank"
         rel="noopener noreferrer"
-        className="relative w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center shadow-2xl shadow-emerald-500/30 transition-all hover:scale-110 active:scale-95 border-2 border-white group"
+        className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center shadow-2xl shadow-emerald-500/30 transition-all hover:scale-110 active:scale-95 border-2 border-white group"
         title="Chat on WhatsApp (+91 8712344439)"
       >
         <span className="absolute -top-1 -right-1 flex h-4 w-4">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-400 border border-white"></span>
         </span>
-        <MessageCircle className="w-7 h-7" />
+        <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
       </a>
     </div>
   );
