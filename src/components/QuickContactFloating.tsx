@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import type { RfqItem } from '../types';
 import { industryDomainsData } from '../data/domains';
+import { forceScrollToTop } from '../utils/scroll';
 
 interface QuickContactFloatingProps {
   rfqList: RfqItem[];
@@ -102,6 +103,7 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
                     onClick={() => {
                       onSelectDomain?.(d.id);
                       setIsMenuOpen(false);
+                      forceScrollToTop();
                     }}
                     className="w-full text-left p-2 rounded-xl hover:bg-blue-50/80 transition-all flex items-center justify-between group border border-transparent hover:border-blue-200"
                   >
@@ -129,6 +131,7 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
                 onClick={() => {
                   onSelectDomain?.('domains');
                   setIsMenuOpen(false);
+                  forceScrollToTop();
                 }}
                 className="w-full py-1.5 text-center text-xs font-extrabold text-[#0a2569] hover:text-blue-800 hover:underline"
               >
@@ -186,6 +189,7 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
             } else {
               window.location.hash = '#/brands';
             }
+            forceScrollToTop();
           }}
           className="hidden sm:flex absolute right-14 top-1/2 -translate-y-1/2 bg-[#0a2569] text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-lg border border-amber-300 whitespace-nowrap items-center gap-1.5 hover:bg-blue-900 transition-colors cursor-pointer"
         >
@@ -201,6 +205,7 @@ export const QuickContactFloating: React.FC<QuickContactFloatingProps> = ({
             } else {
               window.location.hash = '#/brands';
             }
+            forceScrollToTop();
           }}
           className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#0a2569] hover:bg-blue-900 text-white flex items-center justify-center shadow-xl shadow-blue-950/40 transition-all hover:scale-110 active:scale-95 border-2 border-amber-400 group z-10"
           title="Authorized OEM Partner Brands"

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { 
   ArrowLeft, 
   Layers, 
@@ -16,6 +16,7 @@ import {
   MessageCircle
 } from 'lucide-react';
 import { industryDomainsData } from '../data/domains';
+import { forceScrollToTop } from '../utils/scroll';
 
 interface DomainsHubPageProps {
   onBackToHome: () => void;
@@ -28,6 +29,9 @@ export const DomainsHubPage: React.FC<DomainsHubPageProps> = ({
   onSelectDomain,
   onNavigateToContact
 }) => {
+  useEffect(() => {
+    forceScrollToTop();
+  }, []);
   const getDomainIcon = (iconName: string) => {
     switch (iconName) {
       case 'Pill': return Pill;

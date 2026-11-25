@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { 
   ArrowLeft, 
   Award, 
@@ -23,6 +23,7 @@ import { brandPartnersData } from '../data/brands';
 import { productsData } from '../data/products';
 import { BrandLogo } from './BrandLogo';
 import { ProductCard } from './ProductCard';
+import { forceScrollToTop } from '../utils/scroll';
 
 interface BrandsPageProps {
   onBackToHome: () => void;
@@ -77,6 +78,10 @@ export const BrandsPage: React.FC<BrandsPageProps> = ({
   const [selectedBrand, setSelectedBrand] = useState<BrandPartner | null>(null);
 
   const productsSectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    forceScrollToTop();
+  }, []);
 
   // Helper to extract products for a given brand name
   const getProductsForBrand = (brandName: string): ProductItem[] => {

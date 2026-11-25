@@ -15,6 +15,7 @@ import { ProductModal } from './components/ProductModal';
 import { RfqDrawer } from './components/RfqDrawer';
 import { QuickContactFloating } from './components/QuickContactFloating';
 import { CatalogueModal } from './components/CatalogueModal';
+import { forceScrollToTop } from './utils/scroll';
 
 export function App() {
   const [, setSelectedCategory] = useState<ProductCategory>('all');
@@ -34,36 +35,36 @@ export function App() {
         const domId = hash.replace('#/domain/', '');
         setActiveRoute('domain');
         setRouteParam(domId);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        forceScrollToTop();
       } else if (hash === '#/domains' || hash === '#domains') {
         setActiveRoute('domains');
         setRouteParam('');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        forceScrollToTop();
       } else if (hash === '#/services' || hash === '#services') {
         setActiveRoute('services');
         setRouteParam('');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        forceScrollToTop();
       } else if (hash === '#/projects' || hash === '#projects') {
         setActiveRoute('projects');
         setRouteParam('');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        forceScrollToTop();
       } else if (hash === '#/contact' || hash === '#contact' || hash === '#contact-us' || hash === '#rfq' || hash === '#quote') {
         setActiveRoute('contact');
         setRouteParam('');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        forceScrollToTop();
       } else if (hash === '#/flyer' || hash === '#flyer') {
         setActiveRoute('flyer');
         setRouteParam('');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        forceScrollToTop();
       } else if (hash === '#/brands' || hash === '#brands' || hash === '#/oem-brands' || hash === '#oem-brands') {
         setActiveRoute('brands');
         setRouteParam('');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        forceScrollToTop();
       } else if (hash.startsWith('#/category/')) {
         const cat = hash.replace('#/category/', '');
         setActiveRoute('category');
         setRouteParam(cat);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        forceScrollToTop();
       } else {
         setActiveRoute('home');
         setRouteParam('');
@@ -72,7 +73,11 @@ export function App() {
           const el = document.getElementById(sectionId);
           if (el) {
             setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 50);
+          } else {
+            forceScrollToTop();
           }
+        } else {
+          forceScrollToTop();
         }
       }
     };
@@ -81,6 +86,11 @@ export function App() {
     window.addEventListener('hashchange', handleHash);
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
+
+  // Ensure scroll top whenever route changes or re-renders
+  useEffect(() => {
+    forceScrollToTop();
+  }, [activeRoute, routeParam]);
 
   // RFQ handlers
   const handleToggleRfq = (product: ProductItem) => {
@@ -111,13 +121,20 @@ export function App() {
   };
 
   const handleNavigateToPage = (pageRoute: string) => {
+    forceScrollToTop();
     if (pageRoute === 'home') {
       window.location.hash = '';
       setActiveRoute('home');
       setRouteParam('');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      forceScrollToTop();
     } else {
-      window.location.hash = `#/${pageRoute}`;
+      const targetHash = `#/${pageRoute}`;
+      if (window.location.hash === targetHash) {
+        // Hash didn't change (user re-clicked current route from menu), manually force scroll
+        forceScrollToTop();
+      } else {
+        window.location.hash = targetHash;
+      }
     }
   };
 
@@ -159,6 +176,7 @@ export function App() {
         ) : activeRoute === 'domain' ? (
           /* Dedicated Individual Domain Page */
           <DomainPage
+            key={routeParam}
             domainId={routeParam}
             onBackToHome={() => handleNavigateToPage('domains')}
             onSelectOtherDomain={(otherId) => handleNavigateToPage(`domain/${otherId}`)}
@@ -196,6 +214,7 @@ export function App() {
         ) : activeRoute === 'category' ? (
           /* Dedicated Product Category Page */
           <CategoryPage
+            key={routeParam}
             categoryId={routeParam as ProductCategory}
             onBackToHome={() => handleNavigateToPage('home')}
             rfqList={rfqList}

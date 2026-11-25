@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   ArrowLeft, 
   Search, 
@@ -16,6 +16,7 @@ import type { ProductCategory, ProductItem, RfqItem } from '../types';
 import { productsData } from '../data/products';
 import { ProductCard } from './ProductCard';
 import { BrandLogo } from './BrandLogo';
+import { forceScrollToTop } from '../utils/scroll';
 import { caseStudiesData } from '../data/projects';
 
 interface CategoryPageProps {
@@ -40,6 +41,10 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSubCategory, setSelectedSubCategory] = useState<string>('all');
   const [selectedBrand, setSelectedBrand] = useState<string>('all');
+
+  useEffect(() => {
+    forceScrollToTop();
+  }, [categoryId]);
 
   const categoryDetails = useMemo(() => {
     switch (categoryId) {

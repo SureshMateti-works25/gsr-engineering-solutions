@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   ArrowLeft, 
   Search, 
@@ -21,6 +21,7 @@ import type { ProductItem, RfqItem, ProductCategory } from '../types';
 import { industryDomainsData } from '../data/domains';
 import { productsData, productCategoriesList } from '../data/products';
 import { ProductCard } from './ProductCard';
+import { forceScrollToTop } from '../utils/scroll';
 
 interface DomainPageProps {
   domainId: string;
@@ -44,6 +45,11 @@ export const DomainPage: React.FC<DomainPageProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [itemTypeFilter, setItemTypeFilter] = useState<'all' | 'specific' | 'common'>('all');
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory>('all');
+
+  // Immediately scroll to top when domain page loads or switches
+  useEffect(() => {
+    forceScrollToTop();
+  }, [domainId]);
 
   const domain = useMemo(() => {
     return industryDomainsData.find(d => d.id === domainId) || industryDomainsData[0];

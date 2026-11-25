@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import type { RfqItem } from '../types';
 import { industryDomainsData } from '../data/domains';
+import { forceScrollToTop } from '../utils/scroll';
 
 interface NavbarProps {
   rfqList: RfqItem[];
@@ -46,6 +47,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     onNavigateToPage(pageRoute);
     setMobileMenuOpen(false);
     setDomainsDropdownOpen(false);
+    forceScrollToTop();
   };
 
   const getDomainIcon = (iconName: string) => {
